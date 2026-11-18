@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>越 &amp; 尧 · 婚礼场地比较</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="review.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
+<script src="review.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <a class="wordmark" href="#compare">越 <i>&amp;</i> 尧</a>
+  <a class="guest-site" href="https://yueyao.de/">婚礼网站 ↗</a>
+</header>
+<main>
+  <section class="intro">
+    <p class="kicker" lang="en">T I R O L · 2 0 2 7</p>
+    <h1>婚礼场地比较</h1>
+    <p>我们正在比较三处蒂罗尔场地。页面以 50 位宾客为基准列出预算，婚礼地点和日期仍待确认。</p>
+  </section>
+  <nav class="tabs" aria-label="场地比较导航">
+    <a href="#compare">总览</a><a href="#kohlerhof">Kohlerhof</a><a href="#museum">Museum Restaurant–Café</a><a href="#speckbacherhof">Speckbacher Hof</a>
+  </nav>
+  <section id="compare" class="panel" aria-labelledby="compare-title">
+    <section class="travel-map" aria-labelledby="compare-title">
+      <h2 id="compare-title">场地与机场</h2>
+      <div id="venue-map" aria-label="三个婚礼场地与三个机场的互动地图" hidden></div>
+      <p id="venue-map-status" class="small" role="status">地图加载中。也可以使用下方地点链接。</p>
+      <div class="map-key" aria-label="地图地点">
+        <div><b>场地</b>
+          <a data-coordinates="47.33963,11.84312" data-marker="Kohlerhof" href="#kohlerhof">Kohlerhof</a>
+          <a data-coordinates="47.12766,10.26049" data-marker="Museum" href="#museum">Museum Restaurant–Café</a>
+          <a data-coordinates="47.31981,11.55" data-marker="Speckbacher Hof" href="#speckbacherhof">Speckbacher Hof</a>
+        </div>
+        <div><b>机场</b>
+          <a data-coordinates="48.3538,11.7861" data-marker="MUC" href="https://www.munich-airport.com/">慕尼黑 MUC</a>
+          <a data-coordinates="47.4646,8.5491" data-marker="ZRH" href="https://www.flughafen-zuerich.ch/en/">苏黎世 ZRH</a>
+          <a data-coordinates="47.2600,11.3439" data-marker="INN" href="https://www.innsbruck-airport.com/en">因斯布鲁克 INN</a>
+        </div>
+      </div>
+    </section>
+    <h2 id="venue-comparison-table">一览表</h2>
+    <div class="table-wrap" role="region" aria-labelledby="venue-comparison-table" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">比较项</th><th scope="col"><a href="#kohlerhof">Kohlerhof ↗</a></th><th scope="col"><a href="#museum">Museum Restaurant–Café ↗</a></th><th scope="col"><a href="#speckbacherhof">Speckbacher Hof ↗</a></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">场地类型</th><td>Fügen · 山谷度假酒店</td><td>St. Anton · 历史别墅餐厅</td><td>Gnadenwald · 山景婚礼酒店</td></tr>
+          <tr><th scope="row">海拔参考</th><td>约 550 米<br><a href="https://www.tirol.gv.at/gemeinden/gemeinde/70909">Fügen 镇 545 米</a></td><td>约 1,300 米以上<br><a href="https://www.stantonamarlberg.com/en/the-region-st-anton-am-arlberg/the-villages/st-anton?mobile=on">St. Anton 镇 1,304 米</a>，场地略高于镇中心</td><td>约 890 米<br><a href="https://www.hall-tirol.at/hall-in-tirol/diverses/wandern/Gnadenwald-St-Martin-Hinterhornalm.php">以酒店对面的 St. Martin 为参照</a></td></tr>
+          <tr><th scope="row">五月初户外</th><td>海拔最低，白天户外较值得考虑，仍需雨备</td><td>三家中海拔最高，早晚可能偏冷，优先考虑室内方案</td><td>比 Museum 低，五月初可考虑户外，仍需备选</td></tr>
+          <tr><th scope="row">2027 年档期</th><td><b>6 月 12 日暂留</b></td><td><b>6 月 12 日、19 日暂留</b></td><td>4 月 30 日、5 月 1 日、8 日、6 月 5 日、12 日曾报可选，需复核</td></tr>
+          <tr><th scope="row">50 人估算</th><td><strong>€6,332–6,760</strong><br>按 2027 婚宴邮件和餐单估算，含仪式搭建</td><td><strong>€6,683–7,530</strong><br>按现有菜单和酒单估算，仪式费待核</td><td><strong>€7,093–7,457</strong><br>按 2025/26 婚礼手册与 2026 餐单估算，专属吧台另计</td></tr>
+          <tr><th scope="row">空间与雨备</th><td>花园仪式、Gartensaal 晚宴；雨天室内方案待定</td><td>池塘或花园仪式，壁炉大厅雨备；晚宴可能分房</td><td>草地与池塘、Saal Theres、露台；雨天布局待核</td></tr>
+          <tr><th scope="row">户外视野<br><span class="small">你们的印象</span></th><td>花园与宴会厅相邻，换场方便</td><td>别墅环境独立安静，池边仪式区较局促，视野较收</td><td>三家中户外仪式区的山景最开阔</td></tr>
+          <tr><th scope="row">从慕尼黑出发</th><td>开车约 1¾–2 小时<br>火车约 2½–3 小时至 Fügen-Hart</td><td>开车约 2½–3 小时<br>火车约 3½–4½ 小时至 St. Anton</td><td>开车约 1¾–2¼ 小时<br>火车约 2¼–3 小时至 Hall in Tirol</td></tr>
+          <tr><th scope="row">从苏黎世出发</th><td>开车约 4 小时<br>火车约 4½–5 小时至 Fügen-Hart</td><td>开车约 2½ 小时<br>直达火车约 2½–3 小时至 St. Anton</td><td>开车约 3¾–4 小时<br>火车约 4–4½ 小时至 Hall in Tirol</td></tr>
+          <tr><th scope="row">火车到站后</th><td>距酒店约 1.2 公里，可安排接驳</td><td>镇中心下车，可步行至场地，带行李可打车</td><td>距酒店约 7 公里，接驳或出租车更方便</td></tr>
+          <tr><th scope="row">住宿</th><td>同址酒店可选，或步行两分钟的 Pension Kohler</td><td>场地无客房，镇上多家酒店步行可达，需核对开业日</td><td>同址酒店及 Michaelerhof；Hall in Tirol 备选，多数需车接驳</td></tr>
+          <tr><th scope="row">最需要核对</th><td>酒水按实耗、菜单调整、午夜加时</td><td>两个周末的酒店房量与开业日、50 人座位布局与停车</td><td>2027 年书面总报价、房量和 10% 附加费范围</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">已逐项核对餐酒单价及预算公式。三家总价是 50 人的用量估算，均未计住宿；仪式及附加费口径各异。Museum 和 Speckbacher Hof 的参考单价仍需确认 2027 年是否适用。</p>
+    <p class="small">交通时间从市区或主火车站起算，机场位置另见上图。火车时间到所列车站，末段接驳单列。时间为筹备估算，需按 2027 年日期查车次。五月初的体感是按海拔差异作的筹备判断，仍要看当天的气温、风雨和日照。</p>
+    <div class="overview-cards">
+      <a href="#kohlerhof"><img src="images/kohler.jpg" alt="Kohlerhof Gartensaal 的宴会摆台"><h3>Kohlerhof</h3><p>花园与宴会厅相邻，宾客可以自选住宿。</p></a>
+      <a href="#museum"><img src="images/museum.jpg" alt="Museum Restaurant–Café 历史别墅"><h3>Museum Restaurant–Café</h3><p>别墅独立安静，历史室内有特色；池边仪式空间较小。</p></a>
+      <a href="#speckbacherhof"><img src="images/speck.jpg" alt="Speckbacher Hof 的草坪仪式与山景"><h3>Speckbacher Hof</h3><p>山景草地、宴会厅和住宿集中在同一个场地。</p></a>
+    </div>
+  </section>
+
+  <section id="kohlerhof" class="panel" aria-labelledby="kohler-title">
+    <div class="venue-hero">
+      <img src="images/kohler.jpg" alt="Kohlerhof Gartensaal 的宴会桌与吊灯">
+      <div><p class="kicker">Fügen · Zillertal</p><h2 id="kohler-title">Kohlerhof</h2><p>度假酒店的花园和 Gartensaal 相邻，适合草地仪式、室内晚宴和留宿。花园大厅官网容量最高 150 人，本次咨询约 50 人。</p><p class="date"><b>2027 年 6 月 12 日</b> 暂时保留</p><a href="https://www.kohlerhof.com/de/hochzeiten-feierlichkeiten/die-location.html">场地官网与照片 ↗</a><span class="quiet">Hochfügener Straße 84, Fügen</span><p class="small">Fügen 镇海拔 545 米。五月初可考虑白天在花园办仪式，室内雨备仍需确认。</p></div>
+    </div>
+    <section aria-labelledby="kohler-photos-title">
+      <h3 id="kohler-photos-title">场地与酒店实景</h3>
+      <div class="image-pair kohler-photos">
+        <figure><a href="images/kohler-wedding.jpg" target="_blank" rel="noopener"><img src="images/kohler-wedding.jpg" loading="lazy" alt="Kohlerhof 吊灯下的婚宴布置，桌上有花艺和蜡烛"></a><figcaption>婚宴布置</figcaption></figure>
+        <figure><a href="images/kohler-hotel-out.jpg" target="_blank" rel="noopener"><img src="images/kohler-hotel-out.jpg" loading="lazy" alt="Kohlerhof 酒店外观和周围山谷"></a><figcaption>酒店外观与周边</figcaption></figure>
+        <figure><a href="images/kohler-hotel-room.jpg" target="_blank" rel="noopener"><img src="images/kohler-hotel-room.jpg" loading="lazy" alt="木饰客房，设双人床和窗边座位"></a><figcaption>客房示例</figcaption></figure>
+        <figure><a href="images/kohler-dining.jpg" target="_blank" rel="noopener"><img src="images/kohler-dining.jpg" loading="lazy" alt="Kohlerhof 室内餐厅，白桌布和红色地毯"></a><figcaption>酒店餐厅</figcaption></figure>
+      </div>
+    </section>
+    <div class="split"><article><h3>适合我们的地方</h3><ul><li>花园、晚宴和酒店都在原地，换场方便。</li><li>邮件确认婚宴不绑定住宿，宾客可住一晚或两晚，也没有餐饮最低消费。</li><li>€75 的四道菜已经含摆台、准备与宴会厅基础服务。</li></ul></article><article><h3>需要权衡</h3><ul><li>酒水按实际消耗计费，预算会随宾客饮量变动。</li><li>四道菜和迎宾小食偏传统，想换菜或增加亚洲风味需询价。</li><li>午夜附加费 €80/小时，确认起算和结束时间、雨天仪式摆位。</li></ul></article></div>
+    <section><h3>菜单与 50 人预算</h3><p>四道菜 €75/人。可选牛肉清汤或芦笋浓汤、混合沙拉、猪里脊或烤三文鱼或素食主菜，甜点为草莓 Panna Cotta。估算含三件小食/人、六瓶 Sekt 和 €350 户外仪式搭拆。</p>
+      <div class="table-wrap" role="region" aria-label="Kohlerhof 餐酒估算" tabindex="0"><table><thead><tr><th>饮料口径</th><th>酒水 / 人</th><th>50 人估算</th></tr></thead><tbody><tr><td>偏软饮</td><td>€28.94</td><td>€6,332</td></tr><tr><td>较多酒精饮料</td><td>€37.50</td><td>€6,760</td></tr></tbody></table></div>
+      <p class="small">迎宾 Sekt €35/瓶，婚宴红白葡萄酒 €30/0.75 L。仪式搭建不含装饰；午夜加时、额外消费与住宿另计。</p>
+      <div class="price-check">
+        <h4>价格核对</h4>
+        <p><b>场地邮件已列明</b> · 四道菜 €75/人、Sekt €35/瓶、婚宴红白酒 €30/0.75 L、仪式搭拆 €350，小食示例 €3.50、€3.80、€4.50，午夜加时 €80/小时。</p>
+        <p><b>餐单已核</b> · Cola 等 €5.80/0.5 L，Zillertal Helles €5.90/0.5 L。晚宴红酒按邮件里的婚宴瓶价计算。<a href="documents/Kohlerhof/speisekarte.pdf#page=24" target="_blank" rel="noopener">餐单，第 24 页 ↗</a></p>
+        <p><b>50 人推算</b> · 正餐 €3,750 ＋ 小食 €575（每人两件 €3.50、一件 €4.50）＋ 六瓶 Sekt €210 ＋ 实耗酒水 €1,447–1,875 ＋ 仪式 €350。加时和额外消费另计。</p>
+      </div>
+      <div data-docs="kohlerhof" class="documents" aria-label="Kohlerhof 原始资料"><a href="documents/Kohlerhof/speisekarte.pdf" target="_blank" rel="noopener">餐单与饮料 PDF ↗</a><a href="documents/Kohlerhof/nachmittagskarte.pdf" target="_blank" rel="noopener">下午茶菜单 PDF ↗</a></div>
+    </section>
+    <section class="venue-travel">
+      <h3>怎么到场地</h3>
+      <div class="table-wrap" role="region" aria-label="自驾和火车时间" tabindex="0"><table>
+        <thead><tr><th scope="col">出发地</th><th scope="col">开车到场地</th><th scope="col">火车到站</th></tr></thead>
+        <tbody><tr><th scope="row">慕尼黑</th><td>约 1¾–2 小时</td><td>约 2½–3 小时，经 Jenbach 换 Zillertalbahn 至 Fügen-Hart</td></tr>
+        <tr><th scope="row">苏黎世</th><td>约 4 小时</td><td>约 4½–5 小时，通常经 Innsbruck、Jenbach 至 Fügen-Hart</td></tr></tbody>
+      </table></div>
+      <p>Fügen-Hart 站距酒店约 1.2 公里。酒店可协助安排 Jenbach 站、慕尼黑机场或因斯布鲁克机场接驳。对从慕尼黑自驾的宾客较方便。</p>
+      <p class="small">时间为市区或主站出发的筹备估算。<a href="https://www.kohlerhof.com/de/der-kohlerhof/ihr-aufenthalt-bei-uns/anreise-lage.html">Kohlerhof 官方交通 ↗</a> · <a href="https://www.oebb.at/en/">ÖBB 查车次 ↗</a></p>
+    </section>
+    <section><h3>附近住宿</h3><p>宾客可直接住场地酒店。若想压低住宿成本，先核对附近旅馆团体房量与那周的报价。以下价格来自笔记与询价，距离为笔记估算。</p>
+      <p class="small">Google 地图评分和评价数查于 <time datetime="2026-11-18">2026 年 11 月 18 日</time>。</p>
+      <div class="hotel-grid">
+        <article class="hotel"><h4>Hotel Kohlerhof</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Kohlerhof%2C+F%C3%BCgen%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.4/5</strong> · 3,944 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/kohler-hotel-out.jpg" target="_blank" rel="noopener"><img src="images/kohler-hotel-out.jpg" loading="lazy" alt="Hotel Kohlerhof 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/kohler-hotel-room.jpg" target="_blank" rel="noopener"><img src="images/kohler-hotel-room.jpg" loading="lazy" alt="Hotel Kohlerhof 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>同址 · €115/人/晚，含早餐。单人房加 €30；同价可住一晚或两晚，婚礼当晚套房赠送。</p><p class="hotel-source"><a href="https://www.kohlerhof.com/de/zimmer-preise/bildergalerie.html">官网图册 ↗</a></p></article>
+        <article class="hotel"><h4>Pension Kohler</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Pension+Kohler%2C+F%C3%BCgen%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.1/5</strong> · 43 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/pension-close-out.jpg" target="_blank" rel="noopener"><img src="images/pension-close-out.jpg" loading="lazy" alt="Pension Kohler 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/pension.jpg" target="_blank" rel="noopener"><img src="images/pension.jpg" loading="lazy" alt="Pension Kohler 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>步行约 2 分钟 · 11 间。双人房 €150/房/晚，单人 €85/晚，需锁房。</p><p class="hotel-source"><a href="https://pension-kohler.at/">住宿官网 ↗</a></p></article>
+        <article class="hotel"><h4>Hotel Standlhof</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Standlhof%2C+Uderns%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.6/5</strong> · 439 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/standlhof-out.jpg" target="_blank" rel="noopener"><img src="images/standlhof-out.jpg" loading="lazy" alt="Hotel Standlhof 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/standlhof.jpg" target="_blank" rel="noopener"><img src="images/standlhof.jpg" loading="lazy" alt="Hotel Standlhof 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>车程约 4 分钟 · 约 30 间。参考 €113–126/房/晚，不含早。6 月 12 日所在周暂无法给团体报价。</p><p class="hotel-source"><a href="https://www.standlhof.at/">酒店官网 ↗</a></p></article>
+      </div>
+      <p class="small">另一备选 KOSIS Sports Lifestyle Hotel，笔记参考距场地约 1 公里、约 €172/晚，日期和房量待核。 <a href="https://www.google.com/maps/search/?api=1&amp;query=KOSIS+Sports+Lifestyle+Hotel%2C+F%C3%BCgen%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.6/5</strong> · 728 条评价 ↗</a></p>
+    </section>
+  </section>
+
+  <section id="museum" class="panel" aria-labelledby="museum-title">
+    <div class="venue-hero">
+      <img src="images/museum-villa-new.png" alt="St. Anton Museum Restaurant–Café 的木质历史别墅、草坡和远山">
+      <div><p class="kicker">St. Anton am Arlberg</p><h2 id="museum-title">Museum Restaurant–Café</h2><p>历史别墅、滑雪博物馆与山间餐厅。花园池塘适合仪式，露台做迎宾，历史餐室做晚宴，壁炉大厅可作为雨天备选。</p><p class="date"><b>2027 年 6 月 12 日、6 月 19 日</b> 两个日期暂时保留</p><a href="https://www.museum-restaurant.at/de/hochzeiten/">场地官网与照片 ↗</a><span class="quiet">Rudi-Matt-Weg 10, St. Anton am Arlberg</span><p class="small">St. Anton 镇海拔 1,304 米，场地略在镇中心上方。五月初早晚可能偏冷，壁炉大厅可作为仪式备选。</p></div>
+    </div>
+    <section aria-labelledby="museum-photos-title">
+      <h3 id="museum-photos-title">室内与户外实景</h3>
+      <div class="museum-photos">
+        <figure><a href="images/museum-dining-room.png" target="_blank" rel="noopener"><img src="images/museum-dining-room.png" loading="lazy" alt="木饰天花板、彩窗和白桌布的室内餐室"></a><figcaption>历史餐室</figcaption></figure>
+        <figure><a href="images/museum-fireplace-room.png" target="_blank" rel="noopener"><img src="images/museum-fireplace-room.png" loading="lazy" alt="带木楼梯、彩窗、壁炉和红椅的大厅"></a><figcaption>壁炉大厅 · 室内仪式备选</figcaption></figure>
+        <figure><a href="images/museum-pond-ceremony.png" target="_blank" rel="noopener"><img src="images/museum-pond-ceremony.png" loading="lazy" alt="小桥旁的池畔草地，摆有仪式桌椅"></a><figcaption>池边仪式区 · 小桥与草地</figcaption></figure>
+      </div>
+    </section>
+    <div class="split"><article><h3>适合我们的地方</h3><ul><li>历史餐室和壁炉大厅有木饰、彩窗与楼梯，是你们最喜欢的部分。别墅周围有草坡和树林，场地有独立、安静的感觉。</li><li>室内大厅本身也有特色，雨天可把仪式或迎宾移入室内。</li><li>宾客可以住在 St. Anton 镇上，多个住宿选项步行可到。</li></ul></article><article><h3>需要权衡</h3><ul><li>池边小岛和草地的仪式区较局促，山景视野较收。晚宴如果分餐室，需确认 50 人座位布局和致辞效果。</li><li>五月初户外可能偏冷。6 月 12 日可能仍有部分酒店歇业，6 月 19 日的房量也要确认。</li><li>停车、仪式布置与酒水包价时长尚需书面确认。</li></ul></article></div>
+    <section><h3>菜单与 50 人预算</h3><p>参考四道菜 €79–84/人。Menu 2 有牛肉塔塔、土豆汤、鲑鳟鱼或鸡胸肉、焦糖布蕾。三套均可加 €5/人升级为五道菜。</p>
+      <div class="table-wrap" role="region" aria-label="Museum 餐酒估算" tabindex="0"><table><thead><tr><th>四道菜</th><th>偏软饮</th><th>较多酒精饮料</th></tr></thead><tbody><tr><td>Menu 1 · €82/人</td><td>€6,833</td><td>€7,430</td></tr><tr><td>Menu 2 · €79/人</td><td>€6,683</td><td>€7,280</td></tr><tr><td>Menu 3 · €84/人</td><td>€6,933</td><td>€7,530</td></tr></tbody></table></div>
+      <p class="small">含正餐、约三件小食/人、六瓶 Prosecco 及相应酒水。50 人场地与组织费 €500，餐饮达到 €1,000 时可免；估算按达到门槛处理。邮件曾列参考酒水套餐 €35/人/2.5 小时，每加一小时 €15/人，起泡酒另计。仪式搭建等费用待核。</p>
+      <div class="price-check">
+        <h4>价格核对</h4>
+        <p><b>PDF 单价已核</b> · 四道菜 €82 / €79 / €84，五道菜各加 €5；小食 €3.20 或 €4.50/件。Cola €4.90/0.33 L，Stiegl Pils €7.60/0.5 L，杯售 Zweigelt €6.80/0.125 L，Prosecco €45/0.75 L。<a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Menu.pdf#page=4" target="_blank" rel="noopener">菜单，第 4–6、8 页 ↗</a> · <a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Getra%CC%88nkekarte.pdf#page=1" target="_blank" rel="noopener">饮料单，第 1–3 页 ↗</a> · <a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Weinkarte%20.pdf#page=8" target="_blank" rel="noopener">酒单，第 8 页 ↗</a></p>
+        <p><b>50 人推算</b> · 每人三件小食，按均价 €3.85，加六瓶 Prosecco，酒水按饮料单折算的 2 L/人估计。邮件按每瓶约 7 杯，六瓶约 42 杯；若安排 50 人各一杯，按八瓶估算需另加 €90。场地组织费按餐饮消费达到减免条件处理。<a href="documents/Museum%20Restaurant%20Cafe/RESTAURANT%20MUSEUM.pdf#page=2" target="_blank" rel="noopener">场地手册，第 2 页 ↗</a></p>
+        <p><b>2027 待复核</b> · 邮件明确菜单和价格可能调整。€35/人/2.5 小时、延时 €15/人/小时是以往婚宴的餐酒套餐示例，未纳入上表。仪式布置费待报价。</p>
+      </div>
+      <div data-docs="museum" class="documents" aria-label="Museum 原始资料"><a href="documents/Museum%20Restaurant%20Cafe/RESTAURANT%20MUSEUM.pdf" target="_blank" rel="noopener">场地手册 PDF ↗</a><a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Menu.pdf" target="_blank" rel="noopener">婚礼菜单 PDF ↗</a><a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Weinkarte%20.pdf" target="_blank" rel="noopener">葡萄酒单 PDF ↗</a><a href="documents/Museum%20Restaurant%20Cafe/Museum%20Restaurant%20Getra%CC%88nkekarte.pdf" target="_blank" rel="noopener">饮料单 PDF ↗</a></div>
+    </section>
+    <section class="venue-travel">
+      <h3>怎么到场地</h3>
+      <div class="table-wrap" role="region" aria-label="自驾和火车时间" tabindex="0"><table>
+        <thead><tr><th scope="col">出发地</th><th scope="col">开车到场地</th><th scope="col">火车到站</th></tr></thead>
+        <tbody><tr><th scope="row">慕尼黑</th><td>约 2½–3 小时</td><td>约 3½–4½ 小时，可选经 Kufstein 或 Innsbruck 的班次</td></tr>
+        <tr><th scope="row">苏黎世</th><td>约 2½ 小时</td><td>约 2½–3 小时，Zürich HB 有直达 St. Anton 的班次</td></tr></tbody>
+      </table></div>
+      <p>从苏黎世机场落地，可先坐火车到 Zürich HB 再接直达车，或按班次规划换乘。St. Anton 站在镇中心，可步行到场地，有大件行李时可打车。对经苏黎世入境且不租车的宾客较方便。</p>
+      <p class="small">时间为市区或主站出发的筹备估算。<a href="https://www.stantonamarlberg.com/en/the-region-st-anton-am-arlberg/travel">St. Anton 官方交通 ↗</a> · <a href="https://www.oebb.at/en/">ÖBB 查车次 ↗</a></p>
+    </section>
+    <section><h3>附近住宿</h3><p>先对比两个暂留周末能锁多少房。6 月 19 日值得与已报价酒店逐一确认；6 月 12 日要优先问是否能提前开业。</p>
+      <p class="small">Google 地图评分和评价数查于 <time datetime="2026-11-18">2026 年 11 月 18 日</time>。</p>
+      <div class="hotel-grid">
+        <article class="hotel"><h4>Skihotel Galzig</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Skihotel+Galzig%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.8/5</strong> · 106 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/galzig-out.jpg" target="_blank" rel="noopener"><img src="images/galzig-out.jpg" loading="lazy" alt="Skihotel Galzig 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/galzig.jpg" target="_blank" rel="noopener"><img src="images/galzig.jpg" loading="lazy" alt="Skihotel Galzig 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>步行约 6 分钟 · 笔记报价 €80/人/晚含早，约 21 间，可住一晚。通常六月中旬开放。</p><p class="hotel-source"><a href="https://www.skihotelgalzig.at/de/info/bildergalerie/">酒店官网图册 ↗</a></p></article>
+        <article class="hotel"><h4>Hotel Garni Rundeck</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.9/5</strong> · 170 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/rundeck-out.jpg" target="_blank" rel="noopener"><img src="images/rundeck-out.jpg" loading="lazy" alt="Hotel Garni Rundeck 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/rundeck.jpg" target="_blank" rel="noopener"><img src="images/rundeck.jpg" loading="lazy" alt="Hotel Garni Rundeck 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>步行约 9 分钟 · 双人 €140/房/晚含早，税另计。计划 6 月 17 日开业，超过 15 间可谈提前开。</p><p class="hotel-source"><a href="https://www.hotelrundeck.at/">酒店官网 ↗</a></p></article>
+        <article class="hotel"><h4>Hotel Kristall</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Kristall%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.5/5</strong> · 58 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/kristall.jpg" target="_blank" rel="noopener"><img src="images/kristall.jpg" loading="lazy" alt="Hotel Kristall 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/kristall-special-1.jpg" target="_blank" rel="noopener"><img src="images/kristall-special-1.jpg" loading="lazy" alt="Hotel Kristall 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>步行约 9 分钟 · 笔记记录 6 月 18–20 日可询，€75/人/晚含早。房型与总床位要再核。</p><p class="hotel-source"><a href="https://www.hotelkristall.com/en/rooms/">酒店官网 ↗</a></p></article>
+        <article class="hotel"><h4>ALPtyrol Appartements</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=ALPtyrol+Appartements%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.9/5</strong> · 62 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/alp-gallery-00.jpg" target="_blank" rel="noopener"><img src="images/alp-gallery-00.jpg" loading="lazy" alt="ALPtyrol Appartements 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/alptyrol-penthouse-lilie.jpg" target="_blank" rel="noopener"><img src="images/alptyrol-penthouse-lilie.jpg" loading="lazy" alt="Penthouse Lilie 的客厅与餐桌"></a><figcaption>Penthouse Lilie · 顶层 8 人套房</figcaption></figure></div><p>步行约 9 分钟 · 笔记参考 €50–100/人/晚，六月中旬起通常至少两晚。适合多人合住。</p><p>官网列出 ALPtyrol 主楼 11 套公寓，其中 6 套标为 2–4 人，面积 35–55 m²。这 6 套中，5 套配一张双人床和一组上下铺。另有 2 人、2–3 人、4 人和 2–5 人各一套。图中的 Penthouse Lilie 为 110 m²，设 4 间双人卧室，最多住 8 人。婚礼周末可订套数待确认。</p><p class="hotel-source"><a href="https://www.alptyrol.at/en/apartments-alptyrol/">主楼房型一览 ↗</a> · <a href="https://www.alptyrol.at/en/apartments/penthouse-lilie/">Penthouse Lilie 官网 ↗</a></p></article>
+        <article class="hotel"><h4>Hotel Alte Post</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Alte+Post%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.5/5</strong> · 297 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/altepost-out.jpg" target="_blank" rel="noopener"><img src="images/altepost-out.jpg" loading="lazy" alt="Hotel Alte Post 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/altepost-room.jpg" target="_blank" rel="noopener"><img src="images/altepost-room.jpg" loading="lazy" alt="Hotel Alte Post 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>步行约 7 分钟 · 曾报两个暂留周末均有房。约 30 间的团体参考价 €200/房/晚含早，单住 €130/晚，需再确认。</p><p class="hotel-source"><a href="https://www.hotel-alte-post.at/de/zimmer-st-anton/">酒店官网 ↗</a></p></article>
+      </div>
+    </section>
+  </section>
+
+  <section id="speckbacherhof" class="panel" aria-labelledby="speck-title">
+    <div class="venue-hero">
+      <img src="images/speck.jpg" alt="Speckbacher Hof 户外婚礼草坪与山谷">
+      <div><p class="kicker">Gnadenwald · Karwendel</p><h2 id="speck-title">Speckbacher Hof</h2><p>山景婚礼酒店。草地、池塘、露台与酒店客房集中，拟用 Saal Theres 办约 50 人的宴会，资料标示含舞池最多 70 人。</p><p class="date"><b>2027 年 4 月 30 日、5 月 1 日或 8 日、6 月 5 日或 12 日</b> 10 月 27 日电话里曾报可选，尚待书面复核；5 月 15 日当时不可用。</p><a href="https://www.speckbacherhof.at/hochzeitslocation-innsbruck/hochzeit-saal-theres-andre/">场地官网与照片 ↗</a><span class="quiet">St. Martin 2, Gnadenwald</span><p class="small">酒店对面的 St. Martin 约海拔 890 米。五月初通常比 St. Anton 更适合考虑白天户外仪式，仍要按当天气温和风雨判断。</p></div>
+    </div>
+    <section class="venue-tour" aria-labelledby="speck-tour-title">
+      <h3 id="speck-tour-title">户外场地与 360° 导览</h3>
+      <figure>
+        <a href="https://www.speckbacherhof.at/wp-content/uploads/360grad/index.html" target="_blank" rel="noopener">
+          <img src="images/speck-360-overview.png" width="1512" height="1184" loading="lazy" alt="Speckbacher Hof 360° 导览截图，标出花园餐区、露天仪式区、活动露台和游泳池塘">
+        </a>
+        <figcaption>导览截图标出了花园餐区、露天仪式区、活动露台和游泳池塘。</figcaption>
+      </figure>
+      <p><a href="https://www.speckbacherhof.at/wp-content/uploads/360grad/index.html" target="_blank" rel="noopener">打开官方 360° 互动导览 ↗</a></p>
+    </section>
+    <section aria-labelledby="theres-photos-title">
+      <h3 id="theres-photos-title">Saal Theres 宴会厅</h3>
+      <div class="image-pair theres-photos">
+        <figure><a href="images/theres-long-table.jpg" target="_blank" rel="noopener"><img src="images/theres-long-table.jpg" alt="Saal Theres 木饰宴会厅内的白色长桌和成排座椅" loading="lazy"></a><figcaption>长桌宴会布置</figcaption></figure>
+        <figure><a href="images/theres-window-table.jpg" target="_blank" rel="noopener"><img src="images/theres-window-table.jpg" alt="Saal Theres 全景窗前的宴会桌和窗外绿景" loading="lazy"></a><figcaption>窗边宴会布置</figcaption></figure>
+      </div>
+      <p class="small">两张照片均来自婚礼手册第 36 页。手册标注 Saal Theres 最多 70 人，含音乐和舞池空间。 <a href="documents/Speckbacherhof/Speckbacherhof.pdf#page=19" target="_blank" rel="noopener">看手册原页与平面图 ↗</a></p>
+    </section>
+    <div class="split"><article><h3>适合我们的地方</h3><ul><li>户外仪式区的山景在三家里最开阔，这是你们目前最喜欢的户外视野。露台迎宾、同厅晚宴和住宿可以集中安排。</li><li>Saal Theres 有全景窗和露台入口；电话笔记记载投影与音响可免费使用。</li><li>春季四道菜选择较多，酒水可以比较按量计费与套餐。</li></ul></article><article><h3>需要权衡</h3><ul><li>现有手册为 2025–26 年参考，2027 年整单报价和附加费计费基数待确定。</li><li>椅子、拱门、外带蛋糕服务和可能的吧台人员费用需核齐。</li><li>如果场地房量不足，住 Hall in Tirol 的客人需要接驳或自行开车。</li></ul></article></div>
+    <section><h3>菜单与 50 人预算</h3><p>春季四道菜约 €67–75/人。估算基于 €67 菜单、基本三件小食 €11/人或升级小食 €25.50/人，并计入 50 把椅子、拱门、外带蛋糕服务费与预计 10% 能源/人员附加费。</p>
+      <div class="table-wrap" role="region" aria-label="Speckbacher Hof 餐酒估算" tabindex="0"><table><thead><tr><th>饮料方案</th><th>基础小食</th><th>升级小食</th></tr></thead><tbody><tr><td>周五偏软饮 · 不含 Prosecco<br><small>旧笔记，待复核</small></td><td>€6,326</td><td>€7,123</td></tr><tr><td>周五较多酒精饮料 · 不含 Prosecco<br><small>旧笔记，待复核</small></td><td>€6,599</td><td>€7,396</td></tr><tr><td>偏软饮 · 加六瓶 Prosecco</td><td>€7,093</td><td>€7,891</td></tr><tr><td>较多酒精饮料 · 加六瓶 Prosecco</td><td>€7,457</td><td>€8,255</td></tr><tr><td>Klein 套餐 + Aperitif</td><td>€9,081</td><td>€9,878</td></tr></tbody></table></div>
+      <p class="small">按量方案的午夜后延至 02:00 参考加 €8/人；手册的套餐含至 02:00。吧台 €200 是否适用、10% 覆盖范围、周五迎宾优惠与场地费需书面确认。蛋糕本身、额外布置、交通、住宿另计。</p>
+      <div class="price-check">
+        <h4>价格核对</h4>
+        <p><b>参考 PDF 已核</b> · 2025/26 春季四道菜 €67–75/人，基础小食 €11/三件、升级小食 €8.50/件，Aperitif €18/人；Klein、Groß、In Heaven 分别为 €52、€59、€72/人。白椅 €9/把，拱门 €180，外带蛋糕服务 €4.50/人，手册载明整单加 10%。<a href="documents/Speckbacherhof/Speckbacherhof.pdf#page=9" target="_blank" rel="noopener">2025/26 婚礼手册，春季菜单 ↗</a> · <a href="documents/Speckbacherhof/Speckbacherhof.pdf#page=24" target="_blank" rel="noopener">婚礼手册，酒水套餐 ↗</a> · <a href="documents/Speckbacherhof/Speckbacherhof.pdf#page=32" target="_blank" rel="noopener">婚礼手册，延时和 10% 附加费 ↗</a></p>
+        <p><b>按较新的日常餐单重算</b> · 2026-08-28 版 Cola 等 €5.90/0.5 L，Pils €5.50/0.5 L，Zweigelt €4.30/0.125 L，Prosecco €49.90/0.7 L。按两个 2 L/人的用量，酒水分别是 €27.88 和 €34.50/人，另加六瓶起泡酒。50 人基础小食版重算仍为 €7,093.24 和 €7,457.34。<a href="documents/Speckbacherhof/Speisekarte-web-ab-28.8.2026.pdf#page=11" target="_blank" rel="noopener">2026-08-28 餐单，第 11–14 页 ↗</a></p>
+        <p><b>旧笔记 · 待复核</b> · 保留周五两行旧估算，1.5 L 的配比、免迎宾酒条件及 2027 年适用性待确认。筹备笔记另有一组不同的酒水人均数，本页两个 2 L 情境以重算数为准。</p>
+        <p><b>另计项目</b> · Saal Theres 手册列专属吧台 €200，选 In Heaven 可免。上表未计这笔；如收取且纳入 10% 附加费，预计再加 €220。2027 年书面报价和附加费范围仍待确认。<a href="documents/Speckbacherhof/Speckbacherhof.pdf#page=19" target="_blank" rel="noopener">婚礼手册，Saal Theres 专属吧台 ↗</a></p>
+      </div>
+      <div data-docs="speckbacherhof" class="documents" aria-label="Speckbacher Hof 原始资料"><a href="documents/Speckbacherhof/Speckbacherhof.pdf" target="_blank" rel="noopener">婚礼手册 PDF ↗</a><a href="documents/Speckbacherhof/Speisekarte-web-ab-28.8.2026.pdf" target="_blank" rel="noopener">餐厅菜单 PDF ↗</a><a href="documents/Speckbacherhof/speisekarte.pdf" target="_blank" rel="noopener">餐单与饮料 PDF ↗</a><a href="documents/Speckbacherhof/WeisseSonntagsKarte2024.pdf" target="_blank" rel="noopener">旧周日菜单 PDF ↗</a></div>
+    </section>
+    <section class="venue-travel">
+      <h3>怎么到场地</h3>
+      <div class="table-wrap" role="region" aria-label="自驾和火车时间" tabindex="0"><table>
+        <thead><tr><th scope="col">出发地</th><th scope="col">开车到场地</th><th scope="col">火车到站</th></tr></thead>
+        <tbody><tr><th scope="row">慕尼黑</th><td>约 1¾–2¼ 小时</td><td>约 2¼–3 小时至 Hall in Tirol，视班次经 Kufstein 或 Innsbruck</td></tr>
+        <tr><th scope="row">苏黎世</th><td>约 3¾–4 小时</td><td>约 4–4½ 小时，通常经 Innsbruck 换车至 Hall in Tirol</td></tr></tbody>
+      </table></div>
+      <p>Hall in Tirol 站距酒店约 7 公里，可预订出租车或安排集体接驳。慕尼黑自驾的行程相对短；从因斯布鲁克机场到场地可直接安排车接。</p>
+      <p class="small">时间为市区或主站出发的筹备估算。<a href="https://www.speckbacherhof.at/kontakt/">Speckbacher Hof 官方交通 ↗</a> · <a href="https://www.oebb.at/en/">ÖBB 查车次 ↗</a></p>
+    </section>
+    <section><h3>附近住宿</h3><p>先问同址酒店和 Michaelerhof 可以给多少房，再决定是否为 Hall in Tirol 备选安排接驳。房价为手册旧价或笔记中的询价，2027 年需按日期复核。</p>
+      <p class="small">Google 地图评分和评价数查于 <time datetime="2026-11-18">2026 年 11 月 18 日</time>。</p>
+      <div class="hotel-grid">
+        <article class="hotel"><h4>Speckbacher Hof</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Speckbacher+Hof%2C+Gnadenwald%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.1/5</strong> · 840 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/speck-out.jpg" target="_blank" rel="noopener"><img src="images/speck-out.jpg" loading="lazy" alt="Speckbacher Hof 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/speck-room-official.jpg" target="_blank" rel="noopener"><img src="images/speck-room-official.jpg" loading="lazy" alt="Speckbacher Hof 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>同址 · 2026 手册 Residenz 双人房 €118/人/晚起，含早、税另计；2027 婚礼房量与团价待询。</p><p class="hotel-source"><a href="https://www.speckbacherhof.at/zimmer-und-preise/">酒店官网 ↗</a></p></article>
+        <article class="hotel"><h4>Michaelerhof</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Michaelerhof%2C+St.+Michael+25%2C+Gnadenwald%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>3.8/5</strong> · 52 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/michaeler-out-official.jpg" target="_blank" rel="noopener"><img src="images/michaeler-out-official.jpg" loading="lazy" alt="Michaelerhof 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/michaeler-room.jpg" target="_blank" rel="noopener"><img src="images/michaeler-room.jpg" loading="lazy" alt="Michaelerhof 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>场地方提到的补充住宿。手册 2026 双人房 €98/人/晚、单人 €108/晚参考，含早；无早餐价格待询。</p><p class="hotel-source"><a href="https://www.speckbacherhof.at/zimmer-und-preise/">客房官网 ↗</a> · <a href="https://www.gnadenwald.gv.at/Michaelerhof">外观来源 ↗</a></p></article>
+        <article class="hotel"><h4>Hwest Hotel Hall</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hwest+Hotel+Hall%2C+Hall+in+Tirol%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.1/5</strong> · 1,999 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/hwest-out-official.jpg" target="_blank" rel="noopener"><img src="images/hwest-out-official.jpg" loading="lazy" alt="Hwest Hotel Hall 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/hwest-delivery-room.jpg" target="_blank" rel="noopener"><img src="images/hwest-delivery-room.jpg" loading="lazy" alt="Hwest Hotel Hall 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>车程约 15 分钟 · 笔记邮件价双人入住 €66/人/晚含早，单住 €119/晚。房量和日期待核。</p><p class="hotel-source"><a href="https://www.hall-wattens.at/en/hall-in-tirol/accommodation/details/hotel/hwest-hotel-hall.html">官方住宿图册 ↗</a></p></article>
+        <article class="hotel"><h4>Hotel Heiligkreuz</h4><p class="hotel-rating"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Heiligkreuz%2C+Hall+in+Tirol%2C+Austria" target="_blank" rel="noopener">Google 地图 <strong>4.5/5</strong> · 288 条评价 ↗</a></p><div class="hotel-photo-pair"><figure><a href="images/heilig-out-direct.jpg" target="_blank" rel="noopener"><img src="images/heilig-out-direct.jpg" loading="lazy" alt="Hotel Heiligkreuz 外观"></a><figcaption>外观</figcaption></figure><figure><a href="images/heilig-room-direct.jpg" target="_blank" rel="noopener"><img src="images/heilig-room-direct.jpg" loading="lazy" alt="Hotel Heiligkreuz 客房示例"></a><figcaption>客房示例</figcaption></figure></div><p>车程约 11 分钟 · 曾查双人房 €135/房/晚不含早或 €155 含早，婚礼日期价格待核。</p><p class="hotel-source"><a href="https://www.heiligkreuz.at/">酒店官网 ↗</a></p></article>
+      </div>
+    </section>
+  </section>
+</main>
+<footer><span>越 &amp; 尧</span><span>场地比较 · 本地筹备页</span></footer>
+</body>
+</html>
