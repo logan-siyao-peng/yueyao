@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
-<link rel="stylesheet" href="public/style.css">
-<script src="public/wedding.js" defer></script>
+<link rel="stylesheet" href="public/style.css?v=rsvp-diet">
+<script src="public/wedding.js?v=rsvp-diet" defer></script>
 </head>
 <body>
 <header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav aria-label="主导航" data-en-aria-label="Main navigation"><a href="#details"><span data-en="Wedding details">婚礼信息</span></a><a href="#photos"><span data-en="Gallery">相册</span></a><a href="#rsvp"><span data-en="RSVP">出席回执</span></a></nav>
@@ -94,8 +94,37 @@
 <form id="reply" method="post" action="/api/rsvp" hidden>
 <div class="fields"><label><span data-en="Name">姓名</span> <span aria-hidden="true">*</span><input name="name" required maxlength="100" autocomplete="name"></label><label><span data-en="Email address">电子邮箱</span> <span aria-hidden="true">*</span><input type="email" name="email" required maxlength="254" autocomplete="email"></label></div>
 <fieldset><legend><span data-en="Do you think you’ll be able to join us?">你预计会出席吗？</span></legend><div class="choices"><label><input type="radio" name="attendance" value="yes" required> <span data-en="Planning to attend">预计出席</span></label><label><input type="radio" name="attendance" value="maybe"> <span data-en="Unsure">待定</span></label><label><input type="radio" name="attendance" value="no"> <span data-en="Unable to attend">无法出席</span></label></div></fieldset>
-<label id="party-field" hidden><span data-en="Number of guests (including you)">预计出席人数（含本人）</span><input type="number" name="party_size" min="1" max="12" value="1" disabled></label>
-<label><span data-en="Dietary requirements or a message (optional)">饮食需求或留言（选填）</span><textarea name="note" maxlength="1000" rows="3"></textarea></label>
+<label><span data-en="Phone or WeChat ID (optional)">电话或微信号（选填）</span><input name="contact" maxlength="100"></label>
+<fieldset id="party-field" hidden disabled>
+  <legend><span data-en="Your group and stay">同行与住宿</span></legend>
+  <div class="fields">
+    <label><span data-en="Adults (including you)">成人总人数（含本人）</span><select name="additional_adults"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option><option value="4">5</option></select></label>
+    <label><span data-en="Children joining you">同行儿童人数</span><select name="child_count"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
+  </div>
+  <div id="child-ages" class="fields" hidden></div>
+  <p class="form-note" data-en="For meal planning, ages are grouped as under 3, 3–12, and 13 or older. Guests aged 13 or older count toward adult meals. Enter anyone under 18 under children so we can group them by age.">婚宴餐食暂按未满 3 岁、3–12 岁、满 13 岁分组。满 13 岁按成人餐统计。未满 18 岁的同行宾客请填在儿童人数里。</p>
+  <label><span data-en="Names of accompanying adults (optional)">同行成人姓名（选填）</span><input name="companion_names" maxlength="300"></label>
+</fieldset>
+<label id="stay-field"><span data-en="How many nights do you expect to stay? (optional)">预计住几晚？（选填）</span>
+    <select name="stay_nights">
+      <option value="" data-en="Undecided">待定</option>
+      <option value="0" data-en="No overnight stay">不住宿</option>
+      <option value="1" data-en="1 night (Saturday to Sunday)">一晚（周六至周日）</option>
+      <option value="2" data-en="2 nights (Friday to Sunday)">两晚（周五至周日）</option>
+      <option value="3+" data-en="More than 2 nights">超过两晚</option>
+    </select>
+  </label>
+<label><span data-en="Dietary requirements (optional)">饮食需求（选填）</span>
+  <select name="dietary_preference">
+    <option value="" data-en="Not specified">未填写</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian">素食</option>
+    <option value="vegan" data-en="Vegan">纯素</option>
+    <option value="other" data-en="Allergies, restrictions, or other requirements">过敏、忌口或其他要求</option>
+  </select>
+</label>
+<label><span data-en="Dietary notes or a message (optional)">饮食备注或留言（选填）</span>
+<span class="form-note" data-en="Please list any allergies or foods to avoid. If your group has different requirements, let us know who needs what.">有过敏或忌口的话，请写明食材。同行宾客需求不同时，请注明哪位宾客需要什么餐。</span><textarea name="note" maxlength="1000" rows="3"></textarea></label>
 <p class="form-note"><span data-en="We’ll use these details to plan for our guests and contact you about the wedding.">我们会用这些信息安排宾客和联系你。</span></p>
 <button type="submit" class="button"><span data-en="Send RSVP">提交回执</span> <span aria-hidden="true">↗</span></button>
 <p id="feedback" role="status"></p>

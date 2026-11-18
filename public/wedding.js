@@ -130,14 +130,39 @@ fetch(form.action, {method: "HEAD", cache: "no-store"})
   })
   .catch(() => { /* The static page keeps the RSVP availability message visible. */ });
 const partyField = document.querySelector("#party-field");
-const partySize = form.elements.party_size;
+const stayField = document.querySelector("#stay-field");
+const ageFields = document.querySelector("#child-ages");
+const childAgeInputs = Array.from({length: form.elements.child_count.options.length - 1}, (_, index) => {
+  const label = document.createElement("label");
+  const title = document.createElement("span");
+  title.dataset.en = `Child ${index + 1}: age on wedding day (0 for under 1)`;
+  title.textContent = `第 ${index + 1} 位儿童婚礼当天的年龄（未满 1 岁填 0）`;
+  const input = document.createElement("input");
+  input.type = "number";
+  input.name = `child_age_${index + 1}`;
+  input.min = "0";
+  input.max = "17";
+  input.required = true;
+  label.append(title, input);
+  ageFields.append(label);
+  return input;
+});
 const feedback = document.querySelector("#feedback");
 const submit = form.querySelector("button");
 function updatePartyField() {
-  const attending = form.elements.attendance.value === "yes";
-  partyField.hidden = !attending;
-  partySize.disabled = !attending;
-  partySize.required = attending;
+  const planning = ["yes", "maybe"].includes(form.elements.attendance.value);
+  partyField.hidden = !planning;
+  partyField.disabled = !planning;
+  const unavailable = form.elements.attendance.value === "no";
+  stayField.hidden = unavailable;
+  form.elements.stay_nights.disabled = unavailable;
+  const count = Number(form.elements.child_count.value);
+  ageFields.hidden = !planning || count === 0;
+  childAgeInputs.forEach((input, index) => {
+    const active = planning && index < count;
+    input.parentElement.hidden = !active;
+    input.disabled = !active;
+  });
 }
 form.addEventListener("change", updatePartyField);
 updatePartyField();
@@ -159,7 +184,10 @@ const messages = new Map([
   ["请输入有效的姓名。", "Please enter your name."],
   ["请输入有效的电子邮箱。", "Please enter a valid email address."],
   ["请选择出席意向。", "Please select whether you expect to attend."],
+  ["请填写有效的同行人数及儿童年龄。", "Please enter valid guest counts and each child’s age."],
+  ["请检查联系方式、同行姓名和住宿选项。", "Please check the contact, companion names and overnight stay option."],
   ["请输入 1 至 12 人。", "Please enter a whole number from 1 to 12."],
+  ["请选择有效的饮食选项。", "Please select a valid dietary option."],
   ["留言最多 1000 个字符。", "Please keep your message to 1,000 characters or fewer."],
   ["页面不存在。", "This page could not be found."],
   ["请通过网页提交回执。", "Please use the RSVP form to reply."],
@@ -216,7 +244,7 @@ form.addEventListener("submit", async event => {
   event.preventDefault();
   const invalid = form.querySelector(":invalid:not(fieldset)");
   if (invalid) {
-    showFeedback(validationMessages[invalid.name]);
+    showFeedback(validationMessages[invalid.name] || "请填写有效的同行人数及儿童年龄。");
     invalid.focus();
     return;
   }
