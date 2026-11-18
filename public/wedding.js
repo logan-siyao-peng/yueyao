@@ -122,13 +122,16 @@ setInterval(() => {
 
 const form = document.querySelector("#reply");
 const rsvpUnavailable = document.querySelector("#rsvp-unavailable");
+const submit = form.querySelector("button[type=submit]");
+let canSubmit = false;
 fetch(form.action, {method: "HEAD", cache: "no-store"})
   .then(response => {
     if (response.status !== 204) return;
     rsvpUnavailable.hidden = true;
-    form.hidden = false;
+    canSubmit = true;
+    submit.disabled = false;
   })
-  .catch(() => { /* The static page keeps the RSVP availability message visible. */ });
+  .catch(() => { /* The form remains available as a preview. */ });
 const partyField = document.querySelector("#party-field");
 const stayField = document.querySelector("#stay-field");
 const ageFields = document.querySelector("#child-ages");
@@ -148,7 +151,6 @@ const childAgeInputs = Array.from({length: form.elements.child_count.options.len
   return input;
 });
 const feedback = document.querySelector("#feedback");
-const submit = form.querySelector("button");
 function updatePartyField() {
   const planning = ["yes", "maybe"].includes(form.elements.attendance.value);
   partyField.hidden = !planning;
@@ -242,6 +244,7 @@ const validationMessages = {
 form.noValidate = true;
 form.addEventListener("submit", async event => {
   event.preventDefault();
+  if (!canSubmit) return;
   const invalid = form.querySelector(":invalid:not(fieldset)");
   if (invalid) {
     showFeedback(validationMessages[invalid.name] || "请填写有效的同行人数及儿童年龄。");
