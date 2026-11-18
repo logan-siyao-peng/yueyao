@@ -1,0 +1,6 @@
+.wedding-data/
+__pycache__/
+rsvps.csv
+.DS_Store
+/photos/
+/venues/
