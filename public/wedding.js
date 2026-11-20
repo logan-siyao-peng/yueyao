@@ -390,10 +390,12 @@ const sitePages = new Map(
   Array.from(document.querySelector("#wedding-pages").children, page => [`#${page.id}`, page])
 );
 const siteTabs = document.querySelectorAll(".site-tabs a");
+const siteFooter = document.querySelector("body > footer");
 
 function showSitePage() {
   const current = sitePages.has(location.hash) ? location.hash : "#home";
   for (const [hash, page] of sitePages) page.hidden = hash !== current;
+  siteFooter.hidden = current === "#home";
   if (current === "#details") showWeddingMap();
   for (const tab of siteTabs) {
     if (tab.hash === current) tab.setAttribute("aria-current", "page");
