@@ -214,6 +214,7 @@ function applyLanguage(language) {
   showFeedback(currentMessage);
   updatePlaybackLabel();
   updateTimeline();
+  document.dispatchEvent(new Event("wedding-language-change"));
 }
 
 let initialLanguage = "zh-Hans";
@@ -272,4 +273,145 @@ form.addEventListener("submit", async event => {
   } finally {
     submit.disabled = false;
   }
+});
+
+const weddingMapElement = document.querySelector("#wedding-map");
+const weddingMapControls = document.querySelector(".map-controls");
+let weddingMap;
+let stationMarker;
+
+function updateStationLabel() {
+  if (!stationMarker) return;
+  const link = document.querySelector('[data-map-point="station"]');
+  const label = document.documentElement.lang === "en" ? link.dataset.markerEn : link.dataset.marker;
+  stationMarker.setTooltipContent(label);
+  stationMarker.options.title = label;
+  stationMarker.options.alt = label;
+  const icon = stationMarker.getElement();
+  icon?.setAttribute("title", label);
+  icon?.setAttribute("aria-label", label);
+  stationMarker.closePopup();
+}
+
+function showWeddingMap() {
+  if (!window.L) return;
+  if (weddingMap) {
+    weddingMap.invalidateSize({pan: false});
+    return;
+  }
+  weddingMapElement.hidden = false;
+  weddingMapControls.hidden = false;
+  weddingMap = L.map(weddingMapElement, {scrollWheelZoom: false});
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(weddingMap);
+
+  const regionalPoints = [];
+  const localPoints = [];
+  const hotelLabels = {
+    "Hotel Kristall": ["right", [12, -18]],
+    "ALPtyrol Appartements": ["right", [12, 2]],
+    "Haus Pepi Eiter": ["left", [-12, 5]],
+    "Skihotel Galzig": ["top", [0, -12]],
+    "Hotel Garni Rundeck": ["right", [12, 16]],
+    "Hotel Montana": ["left", [-12, -12]]
+  };
+  for (const link of document.querySelectorAll("[data-map-point]")) {
+    const coordinates = link.dataset.coordinates.split(",").map(Number);
+    const kind = link.dataset.mapPoint;
+    const label = link.dataset.marker || link.textContent.trim().split(" · ")[0];
+    regionalPoints.push(coordinates);
+    if (kind !== "airport") localPoints.push(coordinates);
+    const marker = L.marker(coordinates, {
+      title: label,
+      alt: label,
+      zIndexOffset: kind === "venue" ? 100 : 0,
+      icon: L.divIcon({
+        className: `wedding-map-pin wedding-map-pin-${kind}`,
+        iconSize: [17, 17]
+      })
+    }).addTo(weddingMap);
+    if (kind === "station") stationMarker = marker;
+    const [direction, offset] = kind === "station" ? ["bottom", [0, 10]]
+      : hotelLabels[label] || ["top", [0, -10]];
+    marker.bindTooltip(label, {
+      permanent: true,
+      direction,
+      offset,
+      className: `wedding-map-label wedding-map-label-${kind}`
+    });
+    marker.bindPopup(() => {
+      const popup = document.createElement("div");
+      const title = document.createElement("strong");
+      title.textContent = kind === "venue" ? label : kind === "station" ? marker.options.title : link.textContent.trim();
+      popup.append(title);
+      const distance = link.closest("article, li")?.querySelector(".map-distance");
+      if (distance) {
+        const summary = document.createElement("div");
+        summary.textContent = distance.textContent;
+        popup.append(summary);
+      }
+      const directions = document.createElement("a");
+      directions.href = link.href;
+      directions.textContent = kind === "venue" ? "Google Maps ↗"
+        : document.documentElement.lang === "en" ? "Directions on Google Maps ↗" : "Google Maps 路线 ↗";
+      popup.append(document.createElement("br"), directions);
+      return popup;
+    });
+  }
+
+  const viewButtons = weddingMapControls.querySelectorAll("button");
+  function setView(view) {
+    weddingMap.closePopup();
+    weddingMap.fitBounds(view === "local" ? localPoints : regionalPoints, {
+      padding: [30, 30],
+      maxZoom: 17
+    });
+    for (const button of viewButtons) {
+      button.setAttribute("aria-pressed", String(button.dataset.mapView === view));
+    }
+  }
+  for (const button of viewButtons) {
+    button.addEventListener("click", () => setView(button.dataset.mapView));
+  }
+  function updateMapLabels() {
+    weddingMapElement.classList.toggle("map-show-hotel-labels", weddingMap.getZoom() >= 14);
+  }
+  weddingMap.on("zoomend", updateMapLabels);
+  setView("regional");
+  updateMapLabels();
+  updateStationLabel();
+}
+
+document.addEventListener("wedding-language-change", updateStationLabel);
+
+const sitePages = new Map(
+  Array.from(document.querySelector("#wedding-pages").children, page => [`#${page.id}`, page])
+);
+const siteTabs = document.querySelectorAll(".site-tabs a");
+
+function showSitePage() {
+  const current = sitePages.has(location.hash) ? location.hash : "#home";
+  for (const [hash, page] of sitePages) page.hidden = hash !== current;
+  if (current === "#details") showWeddingMap();
+  for (const tab of siteTabs) {
+    if (tab.hash === current) tab.setAttribute("aria-current", "page");
+    else tab.removeAttribute("aria-current");
+  }
+}
+
+showSitePage();
+window.addEventListener("hashchange", () => {
+  showSitePage();
+  window.scrollTo(0, 0);
+});
+document.addEventListener("click", event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || !sitePages.has(link.hash) || event.button !== 0 ||
+      event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  if (location.hash !== link.hash) history.pushState(null, "", link.hash);
+  showSitePage();
+  window.scrollTo(0, 0);
 });

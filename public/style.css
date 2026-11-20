@@ -13,7 +13,11 @@ i,em{font-family:Georgia,serif}
 nav{display:flex;gap:clamp(12px,3vw,42px);font-size:.86rem}
 .hero{min-height: min(690px,76vh);display:grid;grid-template-columns:1fr 1.12fr}
 .hero-copy{padding:clamp(55px,9vw,135px) 6vw;align-self:center}
-.hero-photo{min-height:350px;background:#c1ac91 url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88") center/cover no-repeat}
+.hero-photo{position:relative;min-height:350px;background:#c1ac91}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:24% center}
+.hero-links{display:flex;gap:8px 20px;flex-wrap:wrap;margin:20px 0 0}
+.hero-map,.hero-links a{text-decoration:underline;text-underline-offset:.2em}
+.hero-map{font-size:.9rem}
 h1,h2{font-family:var(--serif);font-weight:500;margin:0;line-height:1.15}
 h1{font-size:clamp(3.25rem,7.4vw,7.5rem);letter-spacing:.04em}
 h1 em{color:#64704d;font-size:.54em;letter-spacing:0}
@@ -56,7 +60,7 @@ input[type=radio]{accent-color:var(--olive)}
 details{border-bottom:1px solid var(--rule);max-width:760px;padding:12px 0}
 summary{cursor:pointer}
 footer{padding:32px 6vw;color:white;background:var(--olive);text-align:center}
-@media(max-width:690px){.hero,.details,.rsvp{grid-template-columns:1fr}.hero-photo{min-height:290px}.details,.rsvp{gap:24px}}
+@media(max-width:690px){.hero,.details,.rsvp{grid-template-columns:1fr}.hero-photo{min-height:0;aspect-ratio:3/2}.details,.rsvp{gap:24px}}
 @media(max-width:380px){.fields{grid-template-columns:1fr}}
 .languages{display:inline-flex;border:1px solid var(--olive);flex-shrink:0}
 .languages button{border:0;background:transparent;color:var(--olive);padding:6px 10px;font:inherit;font-size:.86rem;cursor:pointer}
@@ -88,3 +92,62 @@ html[lang=zh-Hans] :is(#gallery-title,.photo-strip figcaption,#gallery-month){
 }
 
 label > .form-note{display:block;margin-top:4px}
+
+.wedding-guide address{font-style:normal}
+.venue-portrait{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;align-self:center}
+.venue-travel,.venue-stays{margin-top:clamp(28px,5vw,60px)}
+.stay-terms{padding-left:1.2em;margin:12px 0}
+.stay-terms li+li{margin-top:5px}
+.wedding-guide h3{font:500 1.7rem var(--serif);margin:0}
+.guide-list{padding:0;list-style:none}
+.guide-list li{padding:9px 0;border-bottom:1px solid var(--rule)}
+.guide-links{display:flex;flex-wrap:wrap;gap:8px 20px}
+.guide-links a,.guide-stays a{text-decoration:underline;text-underline-offset:.2em}
+.stay-detail{display:block;color:var(--muted);font-size:.9rem}
+.stay-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,48px);margin-top:24px}
+.stay-card{border-top:1px solid var(--rule);padding-top:16px}
+.stay-card h4{font:500 1.4rem var(--serif);margin:0}
+.stay-card p{margin:10px 0}
+.stay-card a{text-decoration:underline;text-underline-offset:.2em}
+.stay-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stay-photos figure{margin:0}
+.stay-photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.stay-photos figcaption{font-size:.82rem;color:var(--muted);padding-top:4px}
+@media(max-width:760px){.stay-cards{grid-template-columns:1fr}}
+
+.site-tabs{flex-wrap:wrap;column-gap:clamp(10px,2vw,26px);row-gap:6px}
+.site-tabs a[aria-current=page]{text-decoration:underline;text-underline-offset:.35em}
+.rsvp-faq{grid-column:1/-1;width:100%}
+
+.schedule-draft{color:var(--muted)}
+.schedule-list{max-width:850px;padding:0;list-style:none;margin:28px 0 0}
+.schedule-list>li{display:grid;grid-template-columns:minmax(95px,125px) minmax(0,1fr);gap:clamp(10px,3vw,32px);border-top:1px solid var(--rule);padding:18px 0}
+.schedule-list>li>:first-child{color:var(--olive);font-variant-numeric:tabular-nums}
+.schedule-list h3{font:500 1.3rem var(--serif);margin:0}
+.schedule-list p{margin:5px 0 0;color:var(--muted)}
+.schedule-prompts{margin:8px 0 0;padding-left:1.2em}
+
+.map-overview,.arrival-guide,.local-guide{margin-top:24px}
+.venue-travel h4{font:500 1.23rem var(--serif);margin:0}
+.map-controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.map-controls button{font:inherit;background:transparent;border:1px solid var(--olive);color:var(--olive);padding:6px 12px;cursor:pointer}
+.map-controls button[aria-pressed=true]{color:white;background:var(--olive)}
+#wedding-map{height:clamp(340px,54vw,560px);border:1px solid var(--rule);background:#ede9dc;z-index:0}
+.wedding-map-pin{border-radius:50%;border:2px solid white;box-shadow:0 1px 4px #0007;background:#cf8549}
+.wedding-map-pin-airport{background:#346386}
+.wedding-map-pin-venue{background:#485939}
+.airport-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:14px}
+.airport-grid article{border-top:1px solid var(--rule);padding-top:12px}
+.airport-grid a,.map-hotel-list a{text-decoration:underline;text-underline-offset:.2em}
+.airport-grid ul,.local-guide>ul:not(.map-hotel-list){padding-left:1.2em}
+.airport-grid li+li,.local-guide li+li{margin-top:5px}
+.map-distance{color:var(--muted);font-size:.92rem}
+.map-hotel-list{padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px}
+.map-hotel-list li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--rule);padding:6px 0}
+@media(max-width:760px){.airport-grid,.map-hotel-list{grid-template-columns:1fr}}
+
+.wedding-map-label{font-weight:600;color:var(--ink);font-size:.75rem}
+#wedding-map:not(.map-show-hotel-labels) .wedding-map-label-hotel{display:none}
+
+.wedding-map-pin-station{background:#78517d}
+#wedding-map:not(.map-show-hotel-labels) .wedding-map-label-station{display:none}

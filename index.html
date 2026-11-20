@@ -8,23 +8,237 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
-<link rel="stylesheet" href="public/style.css?v=rsvp-preview">
-<script src="public/wedding.js?v=rsvp-preview" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<link rel="stylesheet" href="public/style.css?v=schedule-window">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
+<script src="public/wedding.js?v=station-sun" defer></script>
 </head>
 <body>
-<header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav aria-label="主导航" data-en-aria-label="Main navigation"><a href="#details"><span data-en="Wedding details">婚礼信息</span></a><a href="#photos"><span data-en="Gallery">相册</span></a><a href="#rsvp"><span data-en="RSVP">出席回执</span></a></nav>
+<header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation"><a href="#home"><span data-en="Home">首页</span></a><a href="#details"><span data-en="Venue">场地</span></a><a href="#schedule"><span data-en="Schedule">婚礼流程</span></a><a href="#activities"><span data-en="Things to do">附近活动</span></a><a href="#photos"><span data-en="Gallery">相册</span></a><a href="#rsvp"><span data-en="RSVP">出席回执</span></a></nav>
 <div class="languages" role="group" aria-label="选择语言" data-en-aria-label="Choose language">
-<button lang="zh-Hans" type="button" aria-pressed="true">中文</button>
-<button lang="en" type="button" aria-pressed="false">English</button>
+<button lang="zh-Hans" type="button" aria-pressed="true" aria-label="中文">中</button>
+<button lang="en" type="button" aria-pressed="false" aria-label="English">EN</button>
 </div></header>
-<main id="home">
-<section class="hero" aria-labelledby="names">
-<div class="hero-copy"><p class="eyebrow" lang="en">THE WEDDING OF</p><h1 id="names"><span data-en="Yue">越</span> <em>&amp;</em> <span data-en="Yao">尧</span></h1><p class="intro"><span data-en="We’d love to share this special day with you.">想和你分享，我们人生里很特别的一天。</span></p><a class="button" href="#rsvp"><span data-en="RSVP">填写出席回执</span> <span aria-hidden="true">↗</span></a></div>
-<div class="hero-photo" role="img" aria-label="婚礼花艺示意照片" data-en-aria-label="Sample photo of wedding flowers"></div>
+<main id="wedding-pages">
+<section id="home" class="hero" aria-labelledby="names">
+  <div class="hero-copy">
+    <p class="eyebrow" lang="en">THE WEDDING OF</p>
+    <h1 id="names"><span data-en="Yue">越</span> <em>&amp;</em> <span data-en="Yao">尧</span></h1>
+    <p class="intro">
+      <time datetime="2027-06-19" data-en="Saturday, June 19, 2027">2027 年 6 月 19 日（周六）</time><br>
+      Museum Restaurant–Café<br>
+      <a class="hero-map" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg"><span data-en="Open in Google Maps">在 Google 地图上查看</span> ↗</a>
+    </p>
+    <a class="button" href="#rsvp"><span data-en="RSVP">填写出席回执</span> <span aria-hidden="true">↗</span></a>
+    <p class="hero-links">
+      <a href="#details"><span data-en="Venue, travel &amp; stays">场地、交通与住宿</span> ↗</a>
+      <a href="#schedule"><span data-en="Wedding schedule">婚礼流程</span> ↗</a>
+    </p>
+  </div>
+  <div class="hero-photo">
+    <img src="public/museum-venue.jpg" alt="Museum Restaurant–Café 的历史别墅和山景" data-en-alt="The historic Museum Restaurant–Café villa and mountain scenery" fetchpriority="high">
+  </div>
 </section>
-<section id="details" class="section details">
-<div><p class="eyebrow" lang="en">THE CELEBRATION</p><h2><span data-en="Wedding details">婚礼信息</span></h2><p><span data-en="We’ll share more details here once we confirm the date and venue.">等日期和场地确定后，我们会在这里更新婚礼安排。</span></p><p><a href="venue-comparison/"><span data-en="Compare the shortlisted venues">查看候选场地</span> ↗</a></p></div>
-<dl><div><dt><span data-en="Date">婚礼日期</span></dt><dd><span data-en="To be confirmed">待确认</span></dd></div><div><dt><span data-en="Venue">婚礼场地</span></dt><dd><span data-en="To be confirmed">待确认</span></dd></div></dl>
+<section id="details" class="section wedding-guide" aria-labelledby="details-title">
+  <div class="details">
+    <div>
+      <p class="eyebrow" lang="en">THE CELEBRATION</p>
+      <h2 id="details-title">Museum Restaurant–Café</h2>
+      <p><span data-en="We’re celebrating in St. Anton am Arlberg, Tyrol, Austria, at a historic wooden villa on the hillside that houses a ski museum and restaurant.">我们会在奥地利蒂罗尔的 St. Anton am Arlberg 举办婚礼。场地是一座坐落在山坡上的木质历史别墅，里面有滑雪博物馆和餐厅。</span></p>
+      <address>Rudi-Matt-Weg 10, 6580 St. Anton am Arlberg, <span data-en="Austria">奥地利</span></address>
+      <p class="guide-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a><a href="https://www.museum-restaurant.at/de/hochzeiten/"><span data-en="Venue website">场地官网</span> ↗</a></p>
+    </div>
+    <img class="venue-portrait" src="public/museum-venue.jpg" alt="Museum Restaurant–Café 的历史别墅和山景" data-en-alt="The historic Museum Restaurant–Café villa and mountain scenery" loading="lazy">
+  </div>
+  <section class="venue-travel" aria-labelledby="travel-title">
+    <h3 id="travel-title"><span data-en="Travel">交通</span></h3>
+    <section class="map-overview" aria-labelledby="map-title">
+      <h4 id="map-title"><span data-en="Venue and airport map">场地与机场地图</span></h4>
+      <div class="map-controls" hidden>
+        <button type="button" data-map-view="regional" aria-pressed="true"><span data-en="Airport overview">机场总览</span></button>
+        <button type="button" data-map-view="local" aria-pressed="false"><span data-en="Venue and hotels">场地与住宿</span></button>
+      </div>
+      <div id="wedding-map" role="region" aria-labelledby="map-title" hidden></div>
+      <p class="guide-links"><a data-map-point="venue" data-coordinates="47.1276294,10.2604917" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg">Museum Restaurant–Café · Google Maps ↗</a></p>
+    </section>
+    <section class="arrival-guide" aria-labelledby="arrival-title">
+      <h4 id="arrival-title"><span data-en="Getting to St. Anton">如何抵达 St. Anton</span></h4>
+      <div class="airport-grid">
+        <article>
+          <h4><a data-map-point="airport" data-coordinates="47.4646,8.5491" data-marker="Zürich · ZRH" href="https://www.google.com/maps/dir/?api=1&amp;origin=Z%C3%BCrich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Zürich Airport (ZRH)">苏黎世机场（ZRH）</span></a></h4>
+          <p class="map-distance"><span data-en="About 200 km to St. Anton">到 St. Anton 约 200 公里</span></p>
+          <ul><li><span data-en="If you’re flying internationally, check Zürich first. The onward journey is usually shorter than from Munich.">国际旅客可优先比较苏黎世航班，后续陆路通常比慕尼黑短。</span></li><li><span data-en="Direct trains from Zürich HB take about 2½–3 hours, plus the airport transfer. Driving from the city takes about 2½ hours.">从 Zürich HB 有直达火车，车程约 2½–3 小时；机场到主站另计。市区自驾约 2½ 小时。</span></li></ul>
+        </article>
+        <article>
+          <h4><a data-map-point="airport" data-coordinates="47.2600,11.3439" data-marker="Innsbruck · INN" href="https://www.google.com/maps/dir/?api=1&amp;origin=Innsbruck+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Innsbruck Airport (INN)">因斯布鲁克机场（INN）</span></a></h4>
+          <p class="map-distance"><span data-en="About 100 km to St. Anton">到 St. Anton 约 100 公里</span></p>
+          <ul><li><span data-en="The closest of the three airports, with fewer international flight options.">三个机场里离场地最近，国际航班选择相对少。</span></li><li><span data-en="Travel to Innsbruck Hbf first, then take a train to St. Anton.">可先到 Innsbruck Hbf，再搭火车去 St. Anton。</span></li></ul>
+        </article>
+        <article>
+          <h4><a data-map-point="airport" data-coordinates="48.3538,11.7861" data-marker="Munich · MUC" href="https://www.google.com/maps/dir/?api=1&amp;origin=Munich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Munich Airport (MUC)">慕尼黑机场（MUC）</span></a></h4>
+          <p class="map-distance"><span data-en="About 250 km to St. Anton">到 St. Anton 约 250 公里</span></p>
+          <ul><li><span data-en="Munich is one of our starting points. The onward journey to St. Anton is longer.">慕尼黑是我们的出发地之一，去 St. Anton 的陆路相对更长。</span></li><li><span data-en="From the city, allow 2½–3 hours by car or 3½–4½ hours by train, plus the airport transfer.">从市区自驾约 2½–3 小时，火车约 3½–4½ 小时；机场接驳另计。</span></li></ul>
+        </article>
+      </div>
+      <p><span data-en="For train travel, choose St. Anton am Arlberg station. Pick the airport that works best for your flights, connections and itinerary.">乘火车请选择 St. Anton am Arlberg 站。请结合机票、转车时间和自己的行程决定从哪个机场来。</span></p>
+      <p class="guide-links"><a href="https://www.oebb.at/en/"><span data-en="Check ÖBB trains">查 ÖBB 车次</span> ↗</a><a href="https://www.stantonamarlberg.com/en/the-region-st-anton-am-arlberg/travel"><span data-en="Tourism office airport distances">旅游局机场距离参考</span> ↗</a></p>
+    </section>
+    <section class="local-guide" aria-labelledby="local-travel-title">
+      <h4 id="local-travel-title"><span data-en="Getting around St. Anton">St. Anton 镇内交通</span></h4>
+      <ul>
+        <li><span data-en="The station is in the town centre. The venue is uphill, so consider a taxi if you have luggage.">火车站在镇中心，到场地是上坡路。带大件行李可从车站打车。</span></li>
+        <li><span data-en="The six stays below are about 6–9 minutes from the venue on foot. Select a hotel for walking directions on Google Maps.">以下六家住宿步行到场地约 6–9 分钟。点酒店名可查看 Google Maps 步行路线。</span></li>
+      </ul>
+      <p class="guide-links"><a data-map-point="station" data-coordinates="47.12739,10.26699" data-marker="St. Anton 火车站" data-marker-en="St. Anton Train Station" href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg+Bahnhof&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking"><span data-en="Walk from the station">车站到场地的步行路线</span> ↗</a><a href="https://www.stantonamarlberg.com/en/service/timetables"><span data-en="Local bus timetables">当地公交时刻</span> ↗</a></p>
+      <ul class="map-hotel-list">
+        <li><a data-map-point="hotel" data-coordinates="47.1298522,10.2667522" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Kristall%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">Hotel Kristall</a><span class="map-distance"><span data-en="About 9 min on foot">步行约 9 分钟</span></span></li>
+<li><a data-map-point="hotel" data-coordinates="47.1286357,10.2668082" href="https://www.google.com/maps/dir/?api=1&amp;origin=ALPtyrol+Appartements%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">ALPtyrol Appartements</a><span class="map-distance"><span data-en="About 9 min on foot">步行约 9 分钟</span></span></li>
+<li><a data-map-point="hotel" data-coordinates="47.1263341,10.2605686" href="https://www.google.com/maps/dir/?api=1&amp;origin=Haus+Pepi+Eiter%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">Haus Pepi Eiter</a><span class="map-distance"><span data-en="About 6 min on foot">步行约 6 分钟</span></span></li>
+<li><a data-map-point="hotel" data-coordinates="47.128396,10.2638698" href="https://www.google.com/maps/dir/?api=1&amp;origin=Skihotel+Galzig%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">Skihotel Galzig</a><span class="map-distance"><span data-en="About 6 min on foot">步行约 6 分钟</span></span></li>
+<li><a data-map-point="hotel" data-coordinates="47.1279907,10.2659759" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">Hotel Garni Rundeck</a><span class="map-distance"><span data-en="About 9 min on foot">步行约 9 分钟</span></span></li>
+<li><a data-map-point="hotel" data-coordinates="47.1298846,10.2663256" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Montana%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking">Hotel Montana</a><span class="map-distance"><span data-en="About 9 min on foot">步行约 9 分钟</span></span></li>
+      </ul>
+    </section>
+  </section>
+  <section class="venue-stays" aria-labelledby="stay-title">
+    <h3 id="stay-title"><span data-en="Where to stay">优选住宿</span></h3>
+    <p><span data-en="These six St. Anton options are listed without ranking. Rates are current planning references or hotel quotes. Confirm your dates, availability and final price directly before booking.">以下六家均在 St. Anton，按筹备清单列出，排名不分先后。价格为目前收集的参考或酒店询价，订房前请向住宿方确认日期、房量和最终价格。</span></p>
+    <div class="stay-cards">
+      <article class="stay-card">
+        <h4>Hotel Kristall</h4>
+        <p class="stay-detail"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Kristall%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.5/5 (58 reviews)">Google 地图 4.5/5（58 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/kristall-exterior.jpg"><img src="public/museum-stays/kristall-exterior.jpg" loading="lazy" alt="Hotel Kristall 外观" data-en-alt="Hotel Kristall Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/kristall-room.jpg"><img src="public/museum-stays/kristall-room.jpg" loading="lazy" alt="Hotel Kristall 标准双人房" data-en-alt="Hotel Kristall Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
+        <p><strong><span data-en="Double room €150/night · Triple-occupancy suite €225/night">双人房 €150/晚 · 三人套房 €225/晚</span></strong></p>
+        <p><span data-en="The enquiry notes indicate about 50 beds, 38 in doubles and 12 in suites. Confirm the number of double rooms directly with the hotel.">酒店询价记录为 38 个双人房床位加 12 个套房床位，合计约 50 人。双人房间数请以酒店确认为准。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="The group enquiry indicated flexible guest-list changes without a cancellation fee. Scope and deadline were not specified. Confirm the terms for individual bookings.">团体询价回复说名单可灵活调整且不收取消费，适用范围及截止日未说明。个人订房请另行确认。</span></li>
+          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="The group quote allows card payment at the hotel with no prepayment. American Express is not accepted.">团体询价可免预付，宾客到店刷卡，不接受 American Express。</span></li>
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="At the time of enquiry, online bookings were shown from June 20. Email the hotel for the wedding night.">询价时官网仅显示 6 月 20 日起可订，婚礼当晚请邮件确认。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Check-in time and early check-in are to be confirmed.">入住时间和能否提前入住待确认。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.hotelkristall.com/en/rooms/doublerooms/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:info@hotelkristall.com"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+      <article class="stay-card">
+        <h4>ALPtyrol Appartements</h4>
+        <p class="stay-detail"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=ALPtyrol+Appartements%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (62 reviews)">Google 地图 4.9/5（62 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/alptyrol-exterior.jpg"><img src="public/museum-stays/alptyrol-exterior.jpg" loading="lazy" alt="ALPtyrol Appartements 外观" data-en-alt="ALPtyrol Appartements Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/alptyrol-room.jpg"><img src="public/museum-stays/alptyrol-room.jpg" loading="lazy" alt="ALPtyrol Appartements Galzigblick 基础双人公寓" data-en-alt="ALPtyrol Appartements Galzigblick two-person apartment"></a><figcaption><span data-en="Galzigblick two-person apartment">Galzigblick 基础双人公寓</span></figcaption></figure></div>
+        <p><strong><span data-en="About €70–100 per person per night">约 €70–100/人/晚</span></strong></p>
+        <p><span data-en="The main building lists 11 apartments for 2–8 guests each. The property estimates an overall capacity of about 50–60. Check wedding-weekend availability directly. A two-night minimum applies, and rates vary by apartment and occupancy.">主楼官网列 11 套公寓，每套可住 2–8 人。住宿方估计总体最多约 50–60 人，婚礼周末房量请另询。至少住两晚，价格随房型和入住人数变化。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="The quote allows free cancellation at least two weeks before arrival. Confirm that this applies to your apartment and rate.">按询价回复，入住前至少两周可免费取消。请确认所订房型及费率是否适用。</span></li>
+          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="A 50% deposit is due at booking. A 5% discount applies to a single group booking. It does not apply to individually booked and paid stays.">预订时支付 50%。统一团体预订有 5% 折扣，宾客各自预订付款不适用。</span></li>
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="The property cannot hold a room block. Some apartments have 90 × 200 cm bunk beds.">住宿方无法为团体预留房量。部分公寓有 90 × 200 cm 上下铺。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Regular check-in is at 2 pm. Ask shortly before arrival if you need early check-in.">通常 14:00 入住。需要提前到店的，请临近入住时再询问。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.alptyrol.at/en/apartments-alptyrol/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:info@alptyrol.at"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+      <article class="stay-card">
+        <h4>Haus Pepi Eiter</h4>
+        <p class="stay-detail"><span data-en="About 6 min on foot to the venue">步行到场地约 6 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Haus+Pepi+Eiter%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.8/5 (69 reviews)">Google 地图 4.8/5（69 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/pepi-eiter-exterior.jpg"><img src="public/museum-stays/pepi-eiter-exterior.jpg" loading="lazy" alt="Haus Pepi Eiter 外观" data-en-alt="Haus Pepi Eiter Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/pepi-eiter-room.jpg"><img src="public/museum-stays/pepi-eiter-room.jpg" loading="lazy" alt="Haus Pepi Eiter 标准双人房" data-en-alt="Haus Pepi Eiter Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
+        <p><strong><span data-en="Quote of about €145–160 per room">询价约 €145–160/间</span></strong></p>
+        <p><span data-en="The guesthouse sleeps up to about 20 and offers singles, doubles and triples. It confirmed Friday, June 18 check-in is possible. Confirm the rate, length of stay and availability directly.">全馆最多约 20 位，有单人、双人和三人房。酒店回复可于周五 6 月 18 日入住，具体房价、晚数和房量请直接确认。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="The quoted rate allows free cancellation more than one month before arrival.">询价可在距入住超过一个月时免费取消。</span></li>
+          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="Payment is due one month before arrival.">入住前一个月付款。</span></li>
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="The guesthouse indicated it can hold some rooms until two months before the wedding. There is no group discount. Email to confirm availability.">询价可为婚礼预留部分房间至婚礼前两个月，无团体折扣。请邮件确认房量。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="The guesthouse confirmed arrival is possible on Friday, June 18, and that noon check-in is possible on Saturday, June 19.">酒店确认周五 6 月 18 日可入住，周六 6 月 19 日可从 12:00 入住。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.pepi-eiter.at/de/zimmer/zimmerpreise/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:haus@pepi-eiter.at"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+      <article class="stay-card">
+        <h4>Skihotel Galzig</h4>
+        <p class="stay-detail"><span data-en="About 6 min on foot to the venue">步行到场地约 6 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Skihotel+Galzig%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.8/5 (106 reviews)">Google 地图 4.8/5（106 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/galzig-exterior.jpg"><img src="public/museum-stays/galzig-exterior.jpg" loading="lazy" alt="Skihotel Galzig 外观" data-en-alt="Skihotel Galzig Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/galzig-room.jpg"><img src="public/museum-stays/galzig-room.jpg" loading="lazy" alt="Skihotel Galzig Economy 双人房" data-en-alt="Skihotel Galzig Economy double room"></a><figcaption><span data-en="Economy double room">Economy 双人房</span></figcaption></figure></div>
+        <p><strong><span data-en="Economy double room about €118/night as a website reference">Economy 双人房官网参考约 €118/晚</span></strong></p>
+        <p><span data-en="About 21 rooms. Earlier quotes including breakfast ranged from €70 to €80 per person per night. Check directly for a one-night stay, since the online rate was checked for two nights.">约 21 间客房。此前收到的含早报价为 €70–80/人/晚。官网预订按两晚查询，如需只住一晚，请直接问酒店确认当晚房价和房量。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="Website reference rates recorded during planning were €118 for Economy and €128 for Komfort, with a two-night online minimum. An earlier email indicated one-night stays may be possible. Check directly.">筹备时记录的官网双人房参考价为 Economy €118、Komfort €128，官网最少两晚。此前邮件表示可住一晚，请直接问酒店确认。</span></li>
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Ask the hotel about cancellation deadlines and fees.">取消期限和费用请向酒店确认。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Check-in time and early check-in are to be confirmed.">入住时间和能否提前入住待确认。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.skihotelgalzig.at/de/zimmer-suiten/doppelzimmer-economy/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:info@skihotelgalzig.at"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+      <article class="stay-card">
+        <h4>Hotel Garni Rundeck</h4>
+        <p class="stay-detail"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (170 reviews)">Google 地图 4.9/5（170 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/rundeck-exterior.jpg"><img src="public/museum-stays/rundeck-exterior.jpg" loading="lazy" alt="Hotel Garni Rundeck 外观" data-en-alt="Hotel Garni Rundeck Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/rundeck-room.jpg"><img src="public/museum-stays/rundeck-room.jpg" loading="lazy" alt="Hotel Garni Rundeck 标准双人房" data-en-alt="Hotel Garni Rundeck Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
+        <p><strong><span data-en="Double occupancy €140/night · Single occupancy €85/night">双人入住 €140/晚 · 单人入住 €85/晚</span></strong></p>
+        <p><span data-en="The hotel quote allows one or two nights. Email the hotel to confirm availability for the wedding weekend.">询价显示可住一晚或两晚。婚礼周末的可用房量请邮件确认。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="One- or two-night stays were quoted. Email the hotel, since direct online booking was not listed at the time of enquiry.">可住一晚或两晚。筹备时未见官网可直接订房，请邮件确认。</span></li>
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Ask the hotel about cancellation deadlines and fees.">取消期限和费用请向酒店确认。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Check-in time and early check-in are to be confirmed.">入住时间和能否提前入住待确认。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.hotelrundeck.at/zimmer/doppelzimmer-3/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:info@hotelrundeck.at"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+      <article class="stay-card">
+        <h4>Hotel Montana</h4>
+        <p class="stay-detail"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Montana%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.6/5 (43 reviews)">Google 地图 4.6/5（43 条评价）</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/montana-exterior.jpg"><img src="public/museum-stays/montana-exterior.jpg" loading="lazy" alt="Hotel Montana 外观" data-en-alt="Hotel Montana Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/montana-room.jpg"><img src="public/museum-stays/montana-room.jpg" loading="lazy" alt="Hotel Montana 标准双人房" data-en-alt="Hotel Montana Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
+        <p><strong><span data-en="Wedding-weekend rate to be confirmed">婚礼周末房价待确认</span></strong></p>
+        <p><span data-en="The hotel has 13 doubles and suites. Ask about one- or two-night stays, rates and availability.">酒店共 13 间双人房和套房，可询一晚或两晚。请直接确认房价和可用房量。</span></p>
+        <ul class="stay-terms">
+          <li><strong><span data-en="Booking">预订</span></strong> <span data-en="The hotel confirmed one- or two-night stays are possible and does not offer a group discount. June availability was not shown online at the time of enquiry.">酒店回复可住一晚或两晚，无团体折扣。询价时官网未显示六月房量。</span></li>
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Ask the hotel about cancellation deadlines and fees.">取消期限和费用请向酒店确认。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Check-in time and early check-in are to be confirmed.">入住时间和能否提前入住待确认。</span></li>
+        </ul>
+        <p class="guide-links"><a href="https://www.hotelmontana.at/de/zimmer-preise/"><span data-en="Hotel website">酒店官网</span> ↗</a><a href="mailto:info@hotelmontana.at"><span data-en="Email for rates and availability">邮件询价</span> ↗</a></p>
+      </article>
+    </div>
+  </section>
+</section>
+<section id="schedule" class="section schedule-page" aria-labelledby="schedule-title">
+  <h2 id="schedule-title"><span data-en="Wedding schedule">婚礼流程</span></h2>
+  <p><time datetime="2027-06-19" data-en="Saturday, June 19, 2027">2027 年 6 月 19 日（周六）</time></p>
+  <p class="schedule-draft"><span data-en="Yao’s draft for discussion and reference only. Times, activities, food and drinks are still being discussed.">尧的讨论稿，仅供参考。时间、节目和餐饮仍在讨论中。</span></p>
+  <ol class="schedule-list">
+    <li>
+      <time datetime="2027-06-19T14:30" data-en="2:30 pm">下午 2:30</time>
+      <div><h3><span data-en="Reception">迎宾</span></h3><p><span data-en="Say hello and help yourself to bread-based bites. Only beer and soft drinks will be served before the ceremony.">到场后先打个招呼，吃一点面包类小食。仪式前只供应啤酒和软饮。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T15:00" data-en="3:00 pm">下午 3:00</time>
+      <div><h3><span data-en="Icebreaker">破冰活动</span></h3><p><span data-en="Get to know each other through a few easy questions.">从几个轻松的问题开始，让大家互相认识。</span></p>
+        <ul class="schedule-prompts"><li><span data-en="What’s your name?">你叫什么？</span></li><li><span data-en="What would you like people to remember about you?">你希望大家怎么记住你？</span></li><li><span data-en="What’s something fun that happened on your trip to St. Anton?">来 St. Anton 的路上，有没有发生什么有意思的事？</span></li><li><span data-en="What are you most looking forward to this wedding weekend?">这个婚礼周末，你最期待什么？</span></li></ul></div>
+    </li>
+    <li>
+      <span data-en="3:30–4:00 pm">下午 3:30–4:00</span>
+      <div><h3><span data-en="Outdoor wedding ceremony">户外婚礼仪式</span></h3><p><span data-en="The outdoor ceremony is expected to start between 3:30 and 4:00 pm, weather permitting.">天气允许的话，户外仪式预计在这个时段开始。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T16:30" data-en="4:30 pm">下午 4:30</time>
+      <div><h3><span data-en="Aperitif and passed bites">小食与闲聊</span></h3><p><span data-en="After the ceremony, we’ll toast with Champagne and serve a second round of bites on trays. Beef tartare is one idea. We can take group photos during this time, once everyone has had a chance to grab a drink.">仪式后以香槟举杯，再上第二轮小食。服务员会端着托盘在宾客间走动，菜品可考虑牛肉塔塔。 等大家拿到饮料后，可以在这段时间拍宾客合照。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T17:30" data-en="5:30–6:00 pm">下午 5:30–6:00</time>
+      <div>
+        <h3><span data-en="Portraits by the pond and on the lawn">池边与草地拍照</span></h3>
+        <p><span data-en="A short portrait session for the two grooms while guests enjoy the aperitif. We’ll use the pond and bridge for closer portraits and the lawn to the east for wider shots. We’ll choose the order based on the light.">宾客继续享用迎宾酒和小食，两位新郎抽空拍一组照。池边和小桥适合近景，地图右侧的草地适合拍带山景的广角照。先拍哪边看现场光线。</span></p>
+      </div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T18:30" data-en="6:30 pm">下午 6:30</time>
+      <div><h3><span data-en="Dinner">晚餐</span></h3><p><span data-en="Red and white wine will be served after dinner.">晚餐结束后开始供应红葡萄酒和白葡萄酒。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T20:30" data-en="8:30 pm">晚上 8:30</time>
+      <div><h3><span data-en="Roast the Brooms">新郎吐槽大会</span></h3><p><span data-en="We started the afternoon getting to know each other. Now it’s a chance to get to know the two grooms a little better. If you feel like sharing, jump in with a funny story, a playful roast, or a few heartfelt words.">下午大家先互相认识，到了晚上，也可以借这个机会更了解两位新郎。想说就说，讲件趣事、随口吐槽两句，或者说几句心里话都可以。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-19T22:00" data-en="10:00 pm">晚上 10:00</time>
+      <div><h3><span data-en="Wedding cake">切婚礼蛋糕</span></h3><p><span data-en="We’ll cut the wedding cake together. A savoury bite later in the evening could be an Austrian Leberkäsesemmel, a bread roll filled with baked meat loaf.">一起切蛋糕。如果晚些时候想加一轮咸点，可以考虑奥地利式 Leberkäsesemmel（夹烤肉糕的小面包）。</span></p></div>
+    </li>
+  </ol>
+</section>
+<section id="activities" class="section" aria-labelledby="activities-title">
+  <h2 id="activities-title"><span data-en="Things to do nearby">附近活动</span></h2>
+  <p data-en="If you’re staying in St. Anton for the weekend, here are a few ways to explore the area on your own. Check opening times and conditions before you go.">如果你会在 St. Anton 多待一会儿，可以自行安排这些活动。出发前请查看开放时间和当天情况。</p>
+  <ul class="guide-list guide-stays">
+    <li><a href="https://www.stantonamarlberg.com/en/summer/hiking"><span data-en="Hiking around St. Anton">St. Anton 周边徒步</span> ↗</a></li>
+    <li><a href="https://www.stantonamarlberg.com/en/the-region-st-anton-am-arlberg/the-villages/st-anton/summer"><span data-en="Verwall Valley and Arlberg WellCom">Verwall 山谷和 Arlberg WellCom 休闲中心</span> ↗</a></li>
+    <li><a href="https://www.stantonamarlberg.com/en/summer/mountain-region/arlberger-mountain-railways"><span data-en="Summer mountain lifts">夏季登山缆车</span> ↗</a></li>
+  </ul>
 </section>
 <section id="photos" class="section gallery" aria-labelledby="gallery-title">
 <div class="gallery-header">
@@ -89,7 +303,7 @@
 </div>
 </section>
 <section id="rsvp" class="section rsvp">
-<div><p class="eyebrow" lang="en">KINDLY REPLY</p><h2><span data-en="RSVP">出席回执</span></h2><p><span data-en="We’re still finalizing the date and venue. In the meantime, let us know if you think you can join us.">婚期和场地仍在筹备中。你可以先告诉我们你的出席意向。</span></p></div>
+<div><p class="eyebrow" lang="en">KINDLY REPLY</p><h2><span data-en="RSVP">出席回执</span></h2><p><span data-en="Let us know if you expect to join us on Saturday, June 19, 2027.">请告诉我们你是否预计能参加 2027 年 6 月 19 日（周六）的婚礼。</span></p></div>
 <p id="rsvp-unavailable" data-en="You can try the form below. Online submission is not available yet.">可以先试填下方表单。目前暂未开放线上提交。</p>
 <form id="reply" method="post" action="/api/rsvp">
 <div class="fields"><label><span data-en="Name">姓名</span> <span aria-hidden="true">*</span><input name="name" required maxlength="100" autocomplete="name"></label><label><span data-en="Email address">电子邮箱</span> <span aria-hidden="true">*</span><input type="email" name="email" required maxlength="254" autocomplete="email"></label></div>
@@ -129,8 +343,8 @@
 <button type="submit" class="button" disabled><span data-en="Send RSVP">提交回执</span> <span aria-hidden="true">↗</span></button>
 <p id="feedback" role="status"></p>
 </form>
+<section class="faq rsvp-faq" aria-labelledby="faq-title"><h2 id="faq-title"><span data-en="Frequently asked questions">常见问题</span></h2><details><summary><span data-en="What if I’m not sure whether I can attend yet?">现在还不能确定是否出席，怎么办？</span></summary><p><span data-en="Choose “Unsure” on the RSVP form.">可以在回执中选择「待定」。</span></p></details><details><summary><span data-en="When will the wedding schedule be available?">什么时候能看到婚礼流程？</span></summary><p><span data-en="We’ll post the arrival and ceremony times under Schedule once they’re confirmed.">到场时间和仪式安排确认后，会更新到「婚礼流程」。</span></p></details></section>
 </section>
-<section class="section faq" aria-labelledby="faq-title"><h2 id="faq-title"><span data-en="Frequently asked questions">常见问题</span></h2><details><summary><span data-en="What if I’m not sure whether I can attend yet?">现在还不能确定是否出席，怎么办？</span></summary><p><span data-en="Choose “Unsure” on the RSVP form.">可以在回执中选择「待定」。</span></p></details><details><summary><span data-en="When will travel details and the wedding schedule be available?">什么时候能看到交通和婚礼流程？</span></summary><p><span data-en="We’ll add the address, directions and wedding schedule once the venue and timing are confirmed.">等场地和时间确认后，我们会补充地址、到达方式和当日安排。</span></p></details></section>
 </main>
 <footer><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></footer>
 </body>
