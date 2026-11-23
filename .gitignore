@@ -4,3 +4,5 @@ rsvps.csv
 .DS_Store
 /photos/
 /venues/
+
+.wrangler/
