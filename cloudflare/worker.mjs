@@ -39,6 +39,16 @@ export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
     if (path === '/todo') return todos.fetch(request, env);
+    if (path === '/api/todos') {
+      const headers = {'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store'};
+      if (request.method !== 'GET') return new Response(null, {status:405, headers:{...headers, Allow:'GET'}});
+      try {
+        const {results} = await env.DB.prepare('SELECT title, complete FROM wedding_todos ORDER BY id').all();
+        return Response.json(results.map(({title, complete}) => ({title, complete:Boolean(complete)})), {headers});
+      } catch {
+        return Response.json({error:'暂时无法读取待办。'}, {status:503, headers});
+      }
+    }
     if (path !== '/api/rsvp') return new Response(null, {status:404});
     const origin = request.headers.get('Origin');
     if (!origins.has(origin)) return new Response(null, {status:403});

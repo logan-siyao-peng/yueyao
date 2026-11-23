@@ -47,6 +47,7 @@ function page(rows) {
   return `<!doctype html><html lang="zh-Hans"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>越 &amp; 尧 · To Do</title>
   <style>body{font:16px/1.55 system-ui,sans-serif;background:#f9f5ed;color:#262a20;margin:0;padding:28px 18px}main{max-width:42rem;margin:auto}a{color:inherit}form{display:flex;gap:.5rem;flex-wrap:wrap}input,button{font:inherit;padding:.4rem .65rem;border:1px solid #777963;background:#fffdf8;color:inherit}form>input:not([type=hidden]){flex:1;min-width:0}button{cursor:pointer}ul{list-style:none;padding:0}li{padding:.75rem 0;border-bottom:1px solid #d6cfbe;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between}li span{overflow-wrap:anywhere}.done{text-decoration:line-through;color:#5b5d50}</style>
   <main><a href="https://yueyao.de/plan/">越 &amp; 尧 · 婚礼筹备</a><h1>To Do</h1>
+  <p>这份清单也会显示在公开筹备页。</p>
   <form method="post"><label for="title">新增待办</label><input id="title" name="title" required maxlength="160"><button name="action" value="add">添加</button></form>
   <ul>${tasks}</ul></main></html>`;
 }

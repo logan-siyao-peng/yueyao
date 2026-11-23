@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>越 &amp; 尧 · 婚礼筹备</title>
   <link rel="stylesheet" href="/public/style.css">
-  <link rel="stylesheet" href="/public/plan.css?v=readonly">
+  <link rel="stylesheet" href="/public/plan.css?v=sync-todo">
+  <script src="/public/plan-todos.js" defer></script>
 </head>
 <body class="plan">
   <header class="top">
@@ -22,12 +23,9 @@
     <section id="todo" aria-labelledby="todo-title">
       <h1 id="todo-title">To Do</h1>
       <p><a class="button" href="https://yueyao-rsvp.loganpeng1992.workers.dev/todo">登录编辑待办 ↗</a></p>
-      <ul class="guide-list">
-        <li>确认婚礼当天的到场与仪式时间</li>
-        <li>和 Museum Café 确认餐酒菜单</li>
-        <li>核对住宿房量与预订条款</li>
-        <li>确认宾客名单与出席回执安排</li>
-      </ul>
+      <p id="public-todo-status" class="plan-note" role="status">正在读取待办…</p>
+      <ul id="public-todos" class="guide-list"></ul>
+      <noscript><p>请启用 JavaScript 查看最新待办。</p></noscript>
     </section>
     <section id="schedule" aria-labelledby="plan-schedule-title">
       <h1 id="plan-schedule-title">婚礼流程草案</h1>
