@@ -151,3 +151,24 @@ label > .form-note{display:block;margin-top:4px}
 
 .wedding-map-pin-station{background:#78517d}
 #wedding-map:not(.map-show-hotel-labels) .wedding-map-label-station{display:none}
+
+#attendance-slider{display:block;width:100%;padding:0;accent-color:var(--olive)}
+label > .rsvp-error[hidden]{display:none}
+.rsvp-error{color:#a62a26}
+#reply input[aria-invalid=true]{border-color:#a62a26}
+#reply .adult-guest input[type=range]{display:block;width:100%;padding:0;accent-color:var(--olive)}
+.rsvp-slider-labels{position:relative;height:1.4em;margin-inline:.5rem;font-size:clamp(.65rem,2.4vw,.78rem);letter-spacing:-.025em}
+.rsvp-slider-labels span{position:absolute;transform:translateX(-50%)}
+.rsvp-slider-labels span:nth-child(1){left:0;transform:none}
+.rsvp-slider-labels span:nth-child(2){left:20%}
+.rsvp-slider-labels span:nth-child(3){left:40%}
+.rsvp-slider-labels span:nth-child(4){left:50%}
+.rsvp-slider-labels span:nth-child(5){left:60%}
+.rsvp-slider-labels span:nth-child(6){left:80%}
+.rsvp-slider-labels span:nth-child(7){left:100%;transform:translateX(-100%)}
+#reply{min-width:0}
+#reply > fieldset,#reply > div,#reply select{min-width:0;width:100%}
+#reply .fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+#party-field > .fields:first-of-type{align-items:end}
+@media(max-width:380px){#reply .fields{grid-template-columns:minmax(0,1fr)}}
+#reply .rsvp-stay{display:grid;gap:16px;border-top:1px solid var(--rule);padding-top:16px}

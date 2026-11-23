@@ -134,39 +134,85 @@ fetch(form.action, {method: "HEAD", cache: "no-store"})
   .catch(() => { /* The form remains available as a preview. */ });
 const partyField = document.querySelector("#party-field");
 const stayField = document.querySelector("#stay-field");
-const ageFields = document.querySelector("#child-ages");
-const childAgeInputs = Array.from({length: form.elements.child_count.options.length - 1}, (_, index) => {
-  const label = document.createElement("label");
-  const title = document.createElement("span");
-  title.dataset.en = `Child ${index + 1}: age on wedding day (0 for under 1)`;
-  title.textContent = `第 ${index + 1} 位儿童婚礼当天的年龄（未满 1 岁填 0）`;
-  const input = document.createElement("input");
-  input.type = "number";
-  input.name = `child_age_${index + 1}`;
-  input.min = "0";
-  input.max = "17";
-  input.required = true;
-  label.append(title, input);
-  ageFields.append(label);
-  return input;
-});
+const slider = document.querySelector("#attendance-slider");
+const sliderPercent = document.querySelector("#attendance-percent");
+const sliderDescription = document.querySelector("#attendance-description");
+const attendanceOptions = [
+  [0, "肯定不出席", "Definitely not attending"],
+  [20, "大概不出席", "Unlikely to attend"],
+  [40, "可能不出席", "Might not attend"],
+  [50, "不确定", "Unsure"],
+  [60, "可能会出席", "Might attend"],
+  [80, "大概会出席", "Likely to attend"],
+  [100, "肯定会出席", "Definitely attending"],
+];
+const adultNames = document.querySelector("#adult-names");
+const adultGuests = [...adultNames.querySelectorAll(".adult-guest")];
+const lodging = document.querySelector("#lodging-preference");
+const stay = form.elements.stay_nights;
+const probabilitySliders = [slider, ...adultNames.querySelectorAll("input[type=range]")];
+
+function updateProbability(control, value) {
+  const [percent, chinese, english] = attendanceOptions.reduce((nearest, option) =>
+    Math.abs(option[0] - value) < Math.abs(nearest[0] - value) ? option : nearest
+  );
+  const description = document.documentElement.lang === "en" ? english : chinese;
+  control.value = percent;
+  control.setAttribute("aria-valuetext", `${percent}% · ${description}`);
+  if (control === slider) {
+    sliderPercent.textContent = `${percent}%`;
+    sliderDescription.textContent = description;
+    form.elements.attendance_probability.value = percent;
+  } else {
+    const guest = control.closest(".adult-guest");
+    guest.querySelector("output").textContent = `${percent}% · ${description}`;
+    guest.querySelector("input[type=hidden]").value = percent;
+  }
+}
+const email = form.elements.email;
+const emailError = document.querySelector("#rsvp-email-error");
 const feedback = document.querySelector("#feedback");
+
+function showEmailError(show) {
+  emailError.hidden = !show;
+  if (show) email.setAttribute("aria-invalid", "true");
+  else email.removeAttribute("aria-invalid");
+}
+email.addEventListener("blur", () => showEmailError(email.value !== "" && !email.validity.valid));
+email.addEventListener("input", () => {
+  if (!emailError.hidden) showEmailError(!email.validity.valid);
+});
+
 function updatePartyField() {
-  const planning = ["yes", "maybe"].includes(form.elements.attendance.value);
+  probabilitySliders.forEach(control => updateProbability(control, Number(control.value)));
+  const planning = Number(slider.value) > 0;
   partyField.hidden = !planning;
   partyField.disabled = !planning;
-  const unavailable = form.elements.attendance.value === "no";
-  stayField.hidden = unavailable;
-  form.elements.stay_nights.disabled = unavailable;
-  const count = Number(form.elements.child_count.value);
-  ageFields.hidden = !planning || count === 0;
-  childAgeInputs.forEach((input, index) => {
+  stayField.hidden = !planning;
+  form.elements.stay_nights.disabled = !planning;
+  const count = Number(form.elements.additional_adults.value);
+  adultNames.hidden = !planning || count === 0;
+  adultGuests.forEach((guest, index) => {
     const active = planning && index < count;
-    input.parentElement.hidden = !active;
-    input.disabled = !active;
+    guest.hidden = !active;
+    guest.querySelectorAll("input").forEach(input => { input.disabled = !active; });
+  });
+  lodging.hidden = !planning || stay.value === "0";
+  form.elements.lodging_preference.disabled = lodging.hidden;
+}
+for (const control of probabilitySliders) {
+  control.addEventListener("input", updatePartyField);
+  control.addEventListener("keydown", event => {
+    const direction = {ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1}[event.key];
+    if (!direction) return;
+    event.preventDefault();
+    const index = attendanceOptions.findIndex(([percent]) => percent === Number(control.value));
+    control.value = attendanceOptions[Math.max(0, Math.min(attendanceOptions.length - 1, index + direction))][0];
+    updatePartyField();
   });
 }
-form.addEventListener("change", updatePartyField);
+stay.addEventListener("change", updatePartyField);
+form.elements.additional_adults.addEventListener("change", updatePartyField);
 updatePartyField();
 const languageButtons = document.querySelectorAll(".languages button");
 const translations = Array.from(document.querySelectorAll("[data-en]"), element => ({
@@ -179,16 +225,19 @@ const attributeTranslations = ["content", "aria-label", "alt"].flatMap(attribute
   }))
 );
 const messages = new Map([
-  ["正在提交…", "Sending your RSVP…"],
-  ["回执已收到，谢谢你！", "We’ve received your RSVP. Thank you!"],
+  ["正在寄出…", "Sending your note…"],
+  ["收到你的信啦，谢谢你！", "We got your note. Thank you!"],
   ["暂时无法提交。请保留已填写的内容，稍后再试。", "We couldn’t send your RSVP. Your entries are still here. Please try again shortly."],
   ["请检查回执格式。", "Please check the information you entered."],
   ["请输入有效的姓名。", "Please enter your name."],
   ["请输入有效的电子邮箱。", "Please enter a valid email address."],
+  ["请填写有效的同行人数。", "Enter valid guest counts."],
+  ["请填写每位同行成人的法定姓名。", "Enter the legal name of each accompanying adult."],
   ["请选择出席意向。", "Please select whether you expect to attend."],
   ["请填写有效的同行人数及儿童年龄。", "Please enter valid guest counts and each child’s age."],
   ["请检查联系方式、同行姓名和住宿选项。", "Please check the contact, companion names and overnight stay option."],
   ["请输入 1 至 12 人。", "Please enter a whole number from 1 to 12."],
+  ["请选择有效的住宿选项。", "Choose a valid lodging option."],
   ["请选择有效的饮食选项。", "Please select a valid dietary option."],
   ["留言最多 1000 个字符。", "Please keep your message to 1,000 characters or fewer."],
   ["页面不存在。", "This page could not be found."],
@@ -212,6 +261,7 @@ function applyLanguage(language) {
   for (const entry of attributeTranslations) entry.element.setAttribute(entry.attribute, entry[variant]);
   for (const button of languageButtons) button.setAttribute("aria-pressed", String(button.lang === language));
   showFeedback(currentMessage);
+  updatePartyField();
   updatePlaybackLabel();
   updateTimeline();
   document.dispatchEvent(new Event("wedding-language-change"));
@@ -238,6 +288,9 @@ for (const button of languageButtons) {
 const validationMessages = {
   name: "请输入有效的姓名。",
   email: "请输入有效的电子邮箱。",
+  dietary_preference: "请选择有效的饮食选项。",
+  adult_name_1: "请填写每位同行成人的法定姓名。",
+  adult_name_2: "请填写每位同行成人的法定姓名。",
   attendance: "请选择出席意向。",
   party_size: "请输入 1 至 12 人。",
   note: "留言最多 1000 个字符。"
@@ -247,13 +300,14 @@ form.addEventListener("submit", async event => {
   event.preventDefault();
   if (!canSubmit) return;
   const invalid = form.querySelector(":invalid:not(fieldset)");
+  showEmailError(!email.validity.valid);
   if (invalid) {
     showFeedback(validationMessages[invalid.name] || "请填写有效的同行人数及儿童年龄。");
     invalid.focus();
     return;
   }
   submit.disabled = true;
-  showFeedback("正在提交…");
+  showFeedback("正在寄出…");
   try {
     const response = await fetch(form.action, {
       method: "POST",
@@ -266,8 +320,9 @@ form.addEventListener("submit", async event => {
       return;
     }
     form.reset();
+    showEmailError(false);
     updatePartyField();
-    showFeedback("回执已收到，谢谢你！");
+    showFeedback("收到你的信啦，谢谢你！");
   } catch {
     showFeedback(failed);
   } finally {

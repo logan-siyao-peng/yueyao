@@ -9,12 +9,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<link rel="stylesheet" href="public/style.css?v=home-centered">
+<link rel="stylesheet" href="public/style.css?v=rsvp-stay">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
-<script src="public/wedding.js?v=home-copy" defer></script>
+<script src="public/wedding.js?v=rsvp-note" defer></script>
 </head>
 <body>
-<header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation"><a href="#home"><span data-en="Home">首页</span></a><a href="#details"><span data-en="Venue">场地</span></a><a href="#schedule"><span data-en="Schedule">婚礼流程</span></a><a href="#activities"><span data-en="Things to do">附近活动</span></a><a href="#photos"><span data-en="Gallery">相册</span></a><a href="#rsvp"><span data-en="RSVP">出席回执</span></a></nav>
+<header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation">
+  <a href="#home"><span data-en="Home">首页</span></a>
+  <a href="#rsvp"><span data-en="RSVP">诚邀</span></a>
+  <a href="#details"><span data-en="Getting Here">抵达</span></a>
+  <a href="#schedule"><span data-en="The Celebration">共聚</span></a>
+  <a href="#activities"><span data-en="Explore">漫游</span></a>
+  <a href="#photos"><span data-en="Our Story">我们的故事</span></a>
+</nav>
 <div class="languages" role="group" aria-label="选择语言" data-en-aria-label="Choose language">
 <button lang="zh-Hans" type="button" aria-pressed="true" aria-label="中文">中</button>
 <button lang="en" type="button" aria-pressed="false" aria-label="English">EN</button>
@@ -23,17 +30,19 @@
 <section id="home" aria-labelledby="names">
   <div class="hero">
     <div class="hero-copy">
-      <p class="eyebrow" data-en="THE WEDDING OF">婚礼邀请</p>
       <h1 id="names"><span data-en="Yue">越</span> <em>&amp;</em> <span data-en="Yao">尧</span></h1>
       <p class="intro">
         <time datetime="2027-06-19" data-en="Saturday, June 19, 2027">2027 年 6 月 19 日（周六）</time><br>
-        <span data-en="Museum Restaurant–Café">博物馆餐厅与咖啡馆</span><br>
+        <span lang="en">Museum Restaurant Cafe</span><br>
+        <span data-en="St. Anton, Austria">奥地利圣安东</span><br>
         <a class="hero-map" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a>
       </p>
-      <a class="button" href="#rsvp"><span data-en="RSVP">填写出席回执</span> <span aria-hidden="true">↗</span></a>
+      <a class="button" href="#rsvp"><span data-en="Send us a note">给我们捎个信</span> <span aria-hidden="true">↗</span></a>
       <p class="hero-links">
-        <a href="#details"><span data-en="Venue, travel &amp; stays">场地、交通与住宿</span> ↗</a>
-        <a href="#schedule"><span data-en="Wedding schedule">婚礼流程</span> ↗</a>
+        <a href="#details"><span data-en="Getting Here (Travel &amp; Stays)">抵达（交通和住宿）</span> ↗</a>
+        <a href="#schedule"><span data-en="The Celebration (Wedding Schedule)">共聚（婚礼流程）</span> ↗</a>
+        <a href="#activities"><span data-en="Explore (A Sunday in St. Anton)">漫游（周日闲逛）</span> ↗</a>
+        <a href="#photos"><span data-en="Our Story">我们的故事</span> ↗</a>
       </p>
     </div>
     <div class="hero-photo">
@@ -44,7 +53,6 @@
 <section id="details" class="section wedding-guide" aria-labelledby="details-title">
   <div class="details">
     <div>
-      <p class="eyebrow" lang="en">THE CELEBRATION</p>
       <h2 id="details-title">Museum Restaurant–Café</h2>
       <p><span data-en="We’re celebrating in St. Anton am Arlberg, Tyrol, Austria, at a historic wooden villa on the hillside that houses a ski museum and restaurant.">我们会在奥地利蒂罗尔的 St. Anton am Arlberg 举办婚礼。场地是一座坐落在山坡上的木质历史别墅，里面有滑雪博物馆和餐厅。</span></p>
       <address>Rudi-Matt-Weg 10, 6580 St. Anton am Arlberg, <span data-en="Austria">奥地利</span></address>
@@ -193,48 +201,45 @@
 <section id="schedule" class="section schedule-page" aria-labelledby="schedule-title">
   <h2 id="schedule-title"><span data-en="Wedding schedule">婚礼流程</span></h2>
   <p><time datetime="2027-06-19" data-en="Saturday, June 19, 2027">2027 年 6 月 19 日（周六）</time></p>
-  <p class="schedule-draft"><span data-en="Yao’s draft for discussion and reference only. Times, activities, food and drinks are still being discussed.">尧的讨论稿，仅供参考。时间、节目和餐饮仍在讨论中。</span></p>
+  <p class="schedule-draft"><span data-en="Here’s how we expect the day to unfold. We may adjust the times slightly as we finalize the details with the venue.">这是当天的大致流程。和场地确认细节后，具体时间可能会略有调整。</span></p>
   <ol class="schedule-list">
     <li>
       <time datetime="2027-06-19T14:30" data-en="2:30 pm">下午 2:30</time>
-      <div><h3><span data-en="Reception">迎宾</span></h3><p><span data-en="Say hello and help yourself to bread-based bites. Only beer and soft drinks will be served before the ceremony.">到场后先打个招呼，吃一点面包类小食。仪式前只供应啤酒和软饮。</span></p></div>
+      <div><h3><span data-en="Arrival">到场</span></h3><p><span data-en="You made it to St. Anton! Ready to party?">一路来到圣安东，终于见面啦！准备好一起玩了吗？</span></p></div>
     </li>
     <li>
       <time datetime="2027-06-19T15:00" data-en="3:00 pm">下午 3:00</time>
-      <div><h3><span data-en="Icebreaker">破冰活动</span></h3><p><span data-en="Get to know each other through a few easy questions.">从几个轻松的问题开始，让大家互相认识。</span></p>
-        <ul class="schedule-prompts"><li><span data-en="What’s your name?">你叫什么？</span></li><li><span data-en="What would you like people to remember about you?">你希望大家怎么记住你？</span></li><li><span data-en="What’s something fun that happened on your trip to St. Anton?">来 St. Anton 的路上，有没有发生什么有意思的事？</span></li><li><span data-en="What are you most looking forward to this wedding weekend?">这个婚礼周末，你最期待什么？</span></li></ul></div>
+      <div><h3><span data-en="Icebreaker">破冰</span></h3><p><span data-en="You’re all dear friends of ours, and we’d love for you to become friends with each other, too.">你们都是我们很重要的朋友，我们也想让你们成为朋友。</span></p></div>
     </li>
     <li>
       <span data-en="3:30–4:00 pm">下午 3:30–4:00</span>
-      <div><h3><span data-en="Outdoor wedding ceremony">户外婚礼仪式</span></h3><p><span data-en="The outdoor ceremony is expected to start between 3:30 and 4:00 pm, weather permitting.">天气允许的话，户外仪式预计在这个时段开始。</span></p></div>
+      <div><h3><span data-en="Ceremony">仪式</span></h3><p><span data-en="If the weather plays along, join us outdoors for the ceremony.">天气好的话，就请你在山风和草地间，陪我们一起见证这一刻。</span></p></div>
     </li>
     <li>
       <time datetime="2027-06-19T16:30" data-en="4:30 pm">下午 4:30</time>
-      <div><h3><span data-en="Aperitif and passed bites">小食与闲聊</span></h3><p><span data-en="After the ceremony, we’ll toast with Champagne and serve a second round of bites on trays. Beef tartare is one idea. We can take group photos during this time, once everyone has had a chance to grab a drink.">仪式后以香槟举杯，再上第二轮小食。服务员会端着托盘在宾客间走动，菜品可考虑牛肉塔塔。 等大家拿到饮料后，可以在这段时间拍宾客合照。</span></p></div>
-    </li>
-    <li>
-      <time datetime="2027-06-19T17:30" data-en="5:30–6:00 pm">下午 5:30–6:00</time>
-      <div>
-        <h3><span data-en="Portraits by the pond and on the lawn">池边与草地拍照</span></h3>
-        <p><span data-en="A short portrait session for the two grooms while guests enjoy the aperitif. We’ll use the pond and bridge for closer portraits and the lawn to the east for wider shots. We’ll choose the order based on the light.">宾客继续享用迎宾酒和小食，两位新郎抽空拍一组照。池边和小桥适合近景，地图右侧的草地适合拍带山景的广角照。先拍哪边看现场光线。</span></p>
-      </div>
+      <div><h3><span data-en="Aperitif &amp; photos">闲聊</span></h3><p><span data-en="Let’s keep the conversation going over a glass of Champagne and take a few photos in the June afternoon light.">倒一杯香槟，接着聊。六月的午后阳光这么好，怎么能不一起拍几张照片？</span></p></div>
     </li>
     <li>
       <time datetime="2027-06-19T18:30" data-en="6:30 pm">下午 6:30</time>
-      <div><h3><span data-en="Dinner">晚餐</span></h3><p><span data-en="Red and white wine will be served after dinner.">晚餐结束后开始供应红葡萄酒和白葡萄酒。</span></p></div>
+      <div><h3><span data-en="Dinner">晚宴</span></h3><p><span data-en="We can hardly imagine everyday life without good food, let alone a wedding.">寻常日子尚且离不开美食，何况是我们的婚礼。</span></p></div>
     </li>
     <li>
       <time datetime="2027-06-19T20:30" data-en="8:30 pm">晚上 8:30</time>
-      <div><h3><span data-en="Roast the Brooms">新郎吐槽大会</span></h3><p><span data-en="We started the afternoon getting to know each other. Now it’s a chance to get to know the two grooms a little better. If you feel like sharing, jump in with a funny story, a playful roast, or a few heartfelt words.">下午大家先互相认识，到了晚上，也可以借这个机会更了解两位新郎。想说就说，讲件趣事、随口吐槽两句，或者说几句心里话都可以。</span></p></div>
+      <div><h3><span data-en="Party">派对</span></h3><p><span data-en="Maybe we’ll dance, maybe we’ll sing, or maybe we’ll just talk about whatever comes to mind.">也许跳跳舞，也许唱唱歌，也许就天南地北地聊。</span></p></div>
     </li>
     <li>
       <time datetime="2027-06-19T22:00" data-en="10:00 pm">晚上 10:00</time>
-      <div><h3><span data-en="Wedding cake">切婚礼蛋糕</span></h3><p><span data-en="We’ll cut the wedding cake together. A savoury bite later in the evening could be an Austrian Leberkäsesemmel, a bread roll filled with baked meat loaf.">一起切蛋糕。如果晚些时候想加一轮咸点，可以考虑奥地利式 Leberkäsesemmel（夹烤肉糕的小面包）。</span></p></div>
+      <div><h3><span data-en="Cake">蛋糕</span></h3><p><span data-en="Who can say no to a late-night slice of cake? Let’s end the day on a sweet note.">谁能拒绝夜里的一块蛋糕呢？给这一天留个甜甜的结尾。</span></p></div>
+    </li>
+    <li>
+      <time datetime="2027-06-20T00:00" data-en="Midnight">午夜 12:00</time>
+      <div><h3><span data-en="Night stroll">夜归</span></h3><p><span data-en="Let’s walk through St. Anton after dark, then say goodnight as we head back to our rooms.">我们一起走过深夜的圣安东，回房前互道晚安。</span></p></div>
     </li>
   </ol>
 </section>
 <section id="activities" class="section" aria-labelledby="activities-title">
-  <h2 id="activities-title"><span data-en="Things to do nearby">附近活动</span></h2>
+  <h2 id="activities-title"><span data-en="Explore St. Anton">漫游圣安东</span></h2>
+  <p><span data-en="Follow a path through the meadows, and see where the mountains take you.">沿着草地走一走，让山间的小路带你去看看。</span></p>
   <p data-en="If you’re staying in St. Anton for the weekend, here are a few ways to explore the area on your own. Check opening times and conditions before you go.">如果你会在 St. Anton 多待一会儿，可以自行安排这些活动。出发前请查看开放时间和当天情况。</p>
   <ul class="guide-list guide-stays">
     <li><a href="https://www.stantonamarlberg.com/en/summer/hiking"><span data-en="Hiking around St. Anton">St. Anton 周边徒步</span> ↗</a></li>
@@ -244,7 +249,7 @@
 </section>
 <section id="photos" class="section gallery" aria-labelledby="gallery-title">
 <div class="gallery-header">
-  <div><p class="eyebrow" lang="en">THE ALBUM</p><h2 id="gallery-title"><span data-en="Gallery">相册</span></h2></div>
+  <div><h2 id="gallery-title"><span data-en="Our Story">我们的故事</span></h2></div>
   <div class="controls">
     <button type="button" id="previous" aria-label="上一张照片" data-en-aria-label="Previous photo">←</button>
     <button type="button" id="gallery-playback"
@@ -305,47 +310,99 @@
 </div>
 </section>
 <section id="rsvp" class="section rsvp">
-<div><p class="eyebrow" lang="en">KINDLY REPLY</p><h2><span data-en="RSVP">出席回执</span></h2><p><span data-en="Let us know if you expect to join us on Saturday, June 19, 2027.">请告诉我们你是否预计能参加 2027 年 6 月 19 日（周六）的婚礼。</span></p></div>
+<div>
+  <h2><span data-en="See you in the Alps this June">六月，山间见</span></h2>
+  <p><span data-en="On Saturday, June 19, 2027, come spend an early summer day with us among the mountains and meadows of St. Anton, Austria, and celebrate with us as husbands.">2027 年 6 月 19 日（周六），想请你来奥地利圣安东，在蒂罗尔的青山与草地间，和我们一起过一个初夏的好日子，庆祝我们成为彼此的老公。</span></p>
+  <p><span data-en="Still figuring out your plans? That’s okay. Let us know how likely you are to make it so we can get a sense of how many people will join us and who might need a place to stay. If you write again, please use the same email.">行程还没定也没关系，先跟我们说说，你有多大可能来、需不需要住宿。之后想再告诉我们新的打算，用同一个邮箱就好。</span></p>
+</div>
 <p id="rsvp-unavailable" data-en="You can try the form below. Online submission is not available yet.">可以先试填下方表单。目前暂未开放线上提交。</p>
 <form id="reply" method="post" action="/api/rsvp">
-<div class="fields"><label><span data-en="Name">姓名</span> <span aria-hidden="true">*</span><input name="name" required maxlength="100" autocomplete="name"></label><label><span data-en="Email address">电子邮箱</span> <span aria-hidden="true">*</span><input type="email" name="email" required maxlength="254" autocomplete="email"></label></div>
-<fieldset><legend><span data-en="Do you think you’ll be able to join us?">你预计会出席吗？</span></legend><div class="choices"><label><input type="radio" name="attendance" value="yes" required> <span data-en="Planning to attend">预计出席</span></label><label><input type="radio" name="attendance" value="maybe"> <span data-en="Unsure">待定</span></label><label><input type="radio" name="attendance" value="no"> <span data-en="Unable to attend">无法出席</span></label></div></fieldset>
-<label><span data-en="Phone or WeChat ID (optional)">电话或微信号（选填）</span><input name="contact" maxlength="100"></label>
-<fieldset id="party-field" hidden disabled>
-  <legend><span data-en="Your group and stay">同行与住宿</span></legend>
-  <div class="fields">
-    <label><span data-en="Adults (including you)">成人总人数（含本人）</span><select name="additional_adults"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option><option value="4">5</option></select></label>
-    <label><span data-en="Children joining you">同行儿童人数</span><select name="child_count"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>
-  </div>
-  <div id="child-ages" class="fields" hidden></div>
-  <p class="form-note" data-en="For meal planning, ages are grouped as under 3, 3–12, and 13 or older. Guests aged 13 or older count toward adult meals. Enter anyone under 18 under children so we can group them by age.">婚宴餐食暂按未满 3 岁、3–12 岁、满 13 岁分组。满 13 岁按成人餐统计。未满 18 岁的同行宾客请填在儿童人数里。</p>
-  <label><span data-en="Names of accompanying adults (optional)">同行成人姓名（选填）</span><input name="companion_names" maxlength="300"></label>
-</fieldset>
-<label id="stay-field"><span data-en="How many nights do you expect to stay? (optional)">预计住几晚？（选填）</span>
-    <select name="stay_nights">
-      <option value="" data-en="Undecided">待定</option>
-      <option value="0" data-en="No overnight stay">不住宿</option>
-      <option value="1" data-en="1 night (Saturday to Sunday)">一晚（周六至周日）</option>
-      <option value="2" data-en="2 nights (Friday to Sunday)">两晚（周五至周日）</option>
-      <option value="3+" data-en="More than 2 nights">超过两晚</option>
-    </select>
+<p class="form-note" data-en="Fields marked with * are required.">带 * 的项目为必填。</p>
+<div class="fields">
+  <label><span data-en="Legal name">法定姓名</span> <span aria-hidden="true">*</span>
+    <input name="name" required maxlength="100" autocomplete="name">
   </label>
-<label><span data-en="Dietary requirements (optional)">饮食需求（选填）</span>
-  <select name="dietary_preference">
-    <option value="" data-en="Not specified">未填写</option>
+  <label><span data-en="Email address">电子邮箱</span> <span aria-hidden="true">*</span>
+    <input type="email" name="email" required maxlength="254" autocomplete="email" aria-describedby="rsvp-email-error" pattern="[^\s@]+@[^\s@.]+(?:[.][^\s@.]+)+">
+    <span id="rsvp-email-error" class="form-note rsvp-error" aria-live="polite" hidden data-en="Enter a valid email address, such as name@example.com.">请输入有效邮箱，例如 name@example.com。</span>
+  </label>
+</div>
+<fieldset>
+  <legend><label for="attendance-slider"><span data-en="How likely are you to make it?">你有多大可能来？</span> <span aria-hidden="true">*</span></label></legend>
+  <output for="attendance-slider"><strong id="attendance-percent">50%</strong> · <span id="attendance-description">不确定</span></output>
+  <input type="range" id="attendance-slider" min="0" max="100" step="1" value="50" aria-valuetext="50%，不确定">
+  <input type="hidden" name="attendance_probability" value="50">
+  <div class="rsvp-slider-labels" aria-hidden="true"><span>0%</span><span>20%</span><span>40%</span><span>50%</span><span>60%</span><span>80%</span><span>100%</span></div>
+</fieldset>
+<fieldset id="party-field">
+  <div class="fields">
+    <label><span data-en="Adults coming with you">和你一起来的大朋友</span> <span aria-hidden="true">*</span><select name="additional_adults" required><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label>
+    <label><span data-en="Children coming with you">和你一起来的小朋友</span> <span aria-hidden="true">*</span><select name="child_count" required><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label>
+  </div>
+  <div id="adult-names" class="fields" hidden>
+    <div class="adult-guest" hidden>
+    <label><span data-en="Additional adult guest 1 · Legal name">额外同行成人 1 · 法定姓名</span> <span aria-hidden="true">*</span><input name="adult_name_1" maxlength="100" required disabled></label>
+      <label for="adult-attendance-1"><span data-en="Additional adult guest 1 · Likelihood of attending">额外同行成人 1 · 出席概率</span></label>
+      <output for="adult-attendance-1">50%</output>
+      <input type="range" id="adult-attendance-1" min="0" max="100" step="1" value="50" disabled>
+      <input type="hidden" name="adult_probability_1" value="50" disabled>
+    </div>
+    <div class="adult-guest" hidden>
+    <label><span data-en="Additional adult guest 2 · Legal name">额外同行成人 2 · 法定姓名</span> <span aria-hidden="true">*</span><input name="adult_name_2" maxlength="100" required disabled></label>
+      <label for="adult-attendance-2"><span data-en="Additional adult guest 2 · Likelihood of attending">额外同行成人 2 · 出席概率</span></label>
+      <output for="adult-attendance-2">50%</output>
+      <input type="range" id="adult-attendance-2" min="0" max="100" step="1" value="50" disabled>
+      <input type="hidden" name="adult_probability_2" value="50" disabled>
+    </div>
+  </div>
+</fieldset>
+<label><span data-en="Any dietary preferences?">你们有什么饮食偏好？</span> <span aria-hidden="true">*</span>
+  <select name="dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
     <option value="none" data-en="No special requirements">无特殊要求</option>
-    <option value="vegetarian" data-en="Vegetarian">素食</option>
-    <option value="vegan" data-en="Vegan">纯素</option>
-    <option value="other" data-en="Allergies, restrictions, or other requirements">过敏、忌口或其他要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
   </select>
 </label>
-<label><span data-en="Dietary notes or a message (optional)">饮食备注或留言（选填）</span>
-<span class="form-note" data-en="Please list any allergies or foods to avoid. If your group has different requirements, let us know who needs what.">有过敏或忌口的话，请写明食材。同行宾客需求不同时，请注明哪位宾客需要什么餐。</span><textarea name="note" maxlength="1000" rows="3"></textarea></label>
-<p class="form-note"><span data-en="We’ll use these details to plan for our guests and contact you about the wedding.">我们会用这些信息安排宾客和联系你。</span></p>
-<button type="submit" class="button" disabled><span data-en="Send RSVP">提交回执</span> <span aria-hidden="true">↗</span></button>
+<div id="stay-field" class="rsvp-stay">
+  <p class="form-note" data-en="Haven’t figured out where to stay yet? Just choose “Undecided” for now. Drop us a message once your travel plans are set.">住宿还没定也没关系，先选「待定」就好。等行程定了，再私聊告诉我们。</p>
+  <label><span data-en="How many nights do you expect to stay?">预计住几晚？</span>
+    <select name="stay_nights">
+      <option value="" data-en="Undecided">待定</option>
+      <option value="1" data-en="1 night · June 19–20, 2027 (Saturday–Sunday)">一晚 · 2027 年 6 月 19–20 日（周六至周日）</option>
+      <option value="2" data-en="2 nights · June 18–20, 2027 (Friday–Sunday)">两晚 · 2027 年 6 月 18–20 日（周五至周日）</option>
+      <option value="3+" data-en="More than 2 nights (add dates in the notes)">超过两晚（请在备注填写日期）</option>
+      <option value="0" data-en="No overnight stay">不住宿</option>
+    </select>
+  </label>
+<div id="lodging-preference">
+  <label><span data-en="Preferred lodging">住宿意向</span>
+    <select name="lodging_preference">
+      <option value="" data-en="Undecided">待定</option>
+      <option value="kristall" data-en="Hotel Kristall (double €150/night, one or two nights)">Hotel Kristall（双人房 €150／晚，可住一或两晚）</option>
+      <option value="galzig" data-en="Skihotel Galzig (double from about €118/night, two-night online minimum, one night subject to confirmation)">Skihotel Galzig（双人房约 €118 起／晚，官网两晚起；住一晚待确认）</option>
+      <option value="rundeck" data-en="Hotel Garni Rundeck (double €140/night, one or two nights)">Hotel Garni Rundeck（双人房 €140／晚，可住一或两晚）</option>
+      <option value="alptyrol" data-en="ALPtyrol Appartements (about €70–100/person/night, minimum two nights)">ALPtyrol Appartements（约 €70–100／人／晚，至少两晚）</option>
+      <option value="own" data-en="I’ll arrange my own accommodation">自行安排住宿</option>
+    </select>
+  </label>
+</div>
+</div>
+<div>
+  <label for="rsvp-note"><span data-en="Additional notes">备注</span></label>
+  <ul id="rsvp-note-help" class="form-note">
+    <li><span data-en="Staying more than two nights? Share your planned check-in and check-out dates.">住宿超过两晚，请写预计入住和退房日期。</span></li>
+    <li><span data-en="For allergies or dietary restrictions, tell us which guest needs to avoid which ingredients.">有过敏或忌口，请写哪位宾客需要避开哪些食材。</span></li>
+    <li><span data-en="Bringing children? Please share each child’s approximate age on June 19, 2027, so we can plan for them.">如果带小朋友来，告诉我们他们到婚礼那天大概几岁，我们好提前准备。</span></li>
+    <li><span data-en="Let us know about anything else we can help arrange, such as a high chair, a cot, or step-free access.">如需高脚椅、婴儿床或无台阶通行等安排，也可以写在这里。</span></li>
+  </ul>
+  <textarea id="rsvp-note" name="note" maxlength="1000" rows="3" aria-describedby="rsvp-note-help"></textarea>
+</div>
+<p class="form-note"><span data-en="Your reply helps us get ready for the day. If we have any questions, we’ll message you directly.">谢谢你告诉我们这些。有需要确认的地方，我们会私下找你聊。</span></p>
+<button type="submit" class="button" disabled><span data-en="Send your note">把信寄给我们</span> <span aria-hidden="true">↗</span></button>
 <p id="feedback" role="status"></p>
 </form>
-<section class="faq rsvp-faq" aria-labelledby="faq-title"><h2 id="faq-title"><span data-en="Frequently asked questions">常见问题</span></h2><details><summary><span data-en="What if I’m not sure whether I can attend yet?">现在还不能确定是否出席，怎么办？</span></summary><p><span data-en="Choose “Unsure” on the RSVP form.">可以在回执中选择「待定」。</span></p></details><details><summary><span data-en="When will the wedding schedule be available?">什么时候能看到婚礼流程？</span></summary><p><span data-en="We’ll post the arrival and ceremony times under Schedule once they’re confirmed.">到场时间和仪式安排确认后，会更新到「婚礼流程」。</span></p></details></section>
+<section class="faq rsvp-faq" aria-labelledby="faq-title"><h2 id="faq-title"><span data-en="Frequently asked questions">常见问题</span></h2><details><summary><span data-en="What if I’m not sure whether I can attend yet?">现在还不能确定是否出席，怎么办？</span></summary><p><span data-en="Leave the RSVP slider at 50% if you’re unsure.">可将回执滑杆留在 50%（不确定）。</span></p></details><details><summary><span data-en="When will the wedding schedule be available?">什么时候能看到婚礼流程？</span></summary><p><span data-en="We’ll post the arrival and ceremony times under Schedule once they’re confirmed.">到场时间和仪式安排确认后，会更新到「婚礼流程」。</span></p></details></section>
 </section>
 </main>
 <footer><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></footer>
