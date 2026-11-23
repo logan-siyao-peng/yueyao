@@ -121,10 +121,14 @@ setInterval(() => {
 }, 2000);
 
 const form = document.querySelector("#reply");
+const publicSites = new Set(["https://yueyao.de", "https://www.yueyao.de"]);
+const rsvpEndpoint = publicSites.has(location.origin)
+  ? "https://yueyao-rsvp.loganpeng1992.workers.dev/api/rsvp"
+  : form.action;
 const rsvpUnavailable = document.querySelector("#rsvp-unavailable");
 const submit = form.querySelector("button[type=submit]");
 let canSubmit = false;
-fetch(form.action, {method: "HEAD", cache: "no-store"})
+fetch(rsvpEndpoint, {method: "HEAD", cache: "no-store"})
   .then(response => {
     if (response.status !== 204) return;
     rsvpUnavailable.hidden = true;
@@ -309,7 +313,7 @@ form.addEventListener("submit", async event => {
   submit.disabled = true;
   showFeedback("正在寄出…");
   try {
-    const response = await fetch(form.action, {
+    const response = await fetch(rsvpEndpoint, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(Object.fromEntries(new FormData(form)))
