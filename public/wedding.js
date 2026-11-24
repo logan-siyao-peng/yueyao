@@ -35,8 +35,67 @@ function currentSlide() {
   return Math.min(slides.length - 1, Math.max(0, Math.round(strip.scrollLeft / (strip.clientWidth || 1))));
 }
 
+let animatedSlide = null;
+
+function animateStory(slide) {
+  if (!galleryVisible || animatedSlide === slide) return;
+  animatedSlide?.classList.remove("story-active");
+  animatedSlide = slide;
+  slide.classList.add("story-active");
+}
+
+function prepareStoryLines() {
+  for (const slide of slides) {
+    const caption = slide.querySelector("figcaption");
+    const story = caption.querySelector(".story-copy");
+    let delay = 0;
+    if (!caption.classList.contains("story-has-context")) {
+      for (const item of caption.querySelectorAll("time, h3")) {
+        item.classList.add("story-line");
+        item.style.setProperty("--story-delay", `${delay}s`);
+        delay += 0.5;
+      }
+    }
+    if (!story) continue;
+    const bySentence = strip.dataset.storyEffect === "sentence";
+    const lines = story.textContent.trim().split("\n").map((line, index) => {
+      const span = document.createElement("span");
+      span.className = "story-line";
+      span.textContent = line;
+      span.style.setProperty("--story-delay", `${delay}s`);
+      if (!bySentence || index === 0 || /[。！？.!?]$/.test(line.trim())) delay += 0.5;
+      return span;
+    });
+    story.replaceChildren(...lines.flatMap((line, index) =>
+      index ? [document.createTextNode("\n"), line] : [line]
+    ));
+  }
+}
+
+if (new URLSearchParams(location.search).get("preview") === "story-effects") {
+  const preview = document.querySelector("#story-effect-preview");
+  const effect = document.querySelector("#story-effect");
+  function replayEffect() {
+    setPlayback(false);
+    animatedSlide?.classList.remove("story-active");
+    animatedSlide = null;
+    // Commit the class removal so replaying the same effect restarts it.
+    void strip.offsetWidth;
+    animateStory(slides[currentSlide()]);
+  }
+
+  preview.hidden = false;
+  effect.addEventListener("change", () => {
+    strip.dataset.storyEffect = effect.value;
+    prepareStoryLines();
+    replayEffect();
+  });
+  document.querySelector("#story-effect-replay").addEventListener("click", replayEffect);
+}
+
 function updateTimeline() {
   const index = currentSlide();
+  animateStory(slides[index]);
   galleryCount.textContent = `${index + 1} / ${slides.length}`;
   const month = slideDates[index].textContent;
   datePicker.value = slideMonths[index];
@@ -55,6 +114,31 @@ for (let month = 0; month <= lastMonth; month += 12) {
 }
 strip.classList.add("has-timeline");
 timeline.hidden = false;
+const storySection = strip.closest(".gallery");
+const storyFrame = strip.querySelector(".story-image");
+let storyFitFrame = 0;
+
+function scheduleStoryFit() {
+  if (storyFitFrame) return;
+  storyFitFrame = requestAnimationFrame(() => {
+    storyFitFrame = 0;
+    if (!storySection.getClientRects().length) return;
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+    const fixedHeight = timeline.getBoundingClientRect().bottom + window.scrollY
+      - storyFrame.getBoundingClientRect().height;
+    const available = `${Math.max(72, Math.floor(viewportHeight - fixedHeight - 8))}px`;
+    if (storySection.style.getPropertyValue("--story-available-height") !== available) {
+      storySection.style.setProperty("--story-available-height", available);
+    }
+  });
+}
+
+const storyFitObserver = new ResizeObserver(scheduleStoryFit);
+storyFitObserver.observe(storySection);
+storyFitObserver.observe(document.querySelector(".top"));
+window.addEventListener("resize", scheduleStoryFit);
+window.visualViewport?.addEventListener("resize", scheduleStoryFit);
+scheduleStoryFit();
 strip.addEventListener("scroll", updateTimeline, {passive: true});
 datePicker.addEventListener("focus", () => setPlayback(false));
 datePicker.addEventListener("input", () => {
@@ -116,6 +200,11 @@ motionPreference.addEventListener("change", event => {
 });
 const galleryObserver = new IntersectionObserver(([entry]) => {
   galleryVisible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+  if (galleryVisible) animateStory(slides[currentSlide()]);
+  else {
+    animatedSlide?.classList.remove("story-active");
+    animatedSlide = null;
+  }
 }, {threshold: 0.2});
 galleryObserver.observe(strip);
 setInterval(() => {
@@ -264,6 +353,7 @@ function applyLanguage(language) {
   document.documentElement.lang = language;
   const variant = language === "en" ? "english" : "chinese";
   for (const entry of translations) entry.element.textContent = entry[variant];
+  prepareStoryLines();
   for (const entry of attributeTranslations) entry.element.setAttribute(entry.attribute, entry[variant]);
   for (const button of languageButtons) button.setAttribute("aria-pressed", String(button.lang === language));
   showFeedback(currentMessage);
