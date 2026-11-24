@@ -32,7 +32,7 @@ h2{font-size:clamp(2.2rem,4.5vw,4rem)}
 dl{margin:0;align-self:center}
 dl div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--rule)}
 dd{margin:0;color:var(--muted)}
-.gallery{background:#f1efeb}
+.gallery{background:#f5f0e7}
 .gallery-header{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}
 .controls{display:flex;gap:8px;margin-bottom:15px}
 .controls button{border:1px solid var(--olive);color:var(--olive);background:transparent;width:42px;height:42px;cursor:pointer;font-size:1.15rem}
@@ -73,11 +73,28 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .gallery-header{flex-wrap:wrap}
 .gallery-header .controls{margin-bottom:0}
 .controls #gallery-playback{width:auto;padding:0 12px;font:inherit;font-size:.86rem}
-.photo-strip figure{display:grid;grid-template-rows:clamp(240px,52vw,550px) auto;margin:0}
-.photo-strip img{display:block;place-self:center;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
-.photo-strip figcaption{text-align:center;padding:clamp(14px,2vw,24px) 12px 0;color:var(--olive)}
-.photo-strip time{display:block;color:var(--muted)}
-.photo-strip.has-timeline time{display:none}
+.gallery-header{margin-bottom:clamp(20px,4vw,48px)}
+.gallery-header .controls{align-items:center}
+.gallery-count{color:var(--muted);font-size:.8rem;font-variant-numeric:tabular-nums;margin-right:4px}
+.gallery-header .controls button{border-radius:50%;width:38px;height:38px}
+.gallery-header .controls #gallery-playback{border-radius:999px;width:auto}
+.photo-strip figure{display:grid;width:min(100%,1040px);gap:clamp(16px,2.6vw,32px);margin:0 auto}
+.story-image{display:grid;place-items:center;min-width:0;height:clamp(320px,47vw,620px);background:#eee7da}
+.photo-strip img{display:block;width:100%;height:100%;min-height:0;max-height:100%;object-fit:contain}
+.photo-strip figcaption{min-width:0;text-align:center}
+@supports(grid-template-rows:subgrid){
+  .photo-strip{grid-template-rows:auto auto;row-gap:clamp(16px,2.6vw,32px)}
+  .photo-strip > li,.photo-strip figure{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:normal}
+  .photo-strip figcaption{align-self:center}
+}
+.photo-strip figcaption time{display:block;color:var(--muted);font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.45}
+.photo-strip figcaption h3{font:400 clamp(1.35rem,2vw,1.8rem)/1.25 var(--serif);margin:.18em 0 0;overflow-wrap:anywhere}
+.photo-strip figcaption.story-has-context > :is(time,h3){display:none}
+.photo-strip figcaption .story-copy{font:400 clamp(1.2rem,1.85vw,1.65rem)/1.55 var(--serif);margin:0 auto;max-width:36em;white-space:pre-line;text-align:center;text-wrap:balance}
+@media(max-width:740px){
+  .story-image{height:clamp(230px,72vw,460px)}
+  .gallery-header .controls{gap:6px}
+}
 
 .gallery-timeline{max-width:720px;margin:clamp(18px,4vw,44px) auto 0;text-align:center}
 #gallery-month{margin:0;color:var(--olive);font-variant-numeric:tabular-nums}
@@ -86,7 +103,7 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .gallery-years span{position:absolute;transform:translateX(-50%)}
 
 
-html[lang=zh-Hans] :is(#gallery-title,.photo-strip figcaption,#gallery-month){
+html[lang=zh-Hans] :is(#gallery-title,.photo-strip figcaption h3,.photo-strip figcaption time){
   font-family:"Ma Shan Zheng","Kaiti SC","KaiTi",var(--serif);
   font-weight:400;
 }
@@ -172,3 +189,8 @@ label > .rsvp-error[hidden]{display:none}
 #party-field > .fields:first-of-type{align-items:end}
 @media(max-width:380px){#reply .fields{grid-template-columns:minmax(0,1fr)}}
 #reply .rsvp-stay{display:grid;gap:16px;border-top:1px solid var(--rule);padding-top:16px}
+
+html[lang=zh-Hans] .photo-strip figcaption .story-copy{font-family:"Ma Shan Zheng","Kaiti SC","KaiTi",var(--serif);font-weight:400}
+
+.photo-strip figcaption > :is(time,h3){font-size:clamp(1.2rem,1.85vw,1.65rem);line-height:1.55}
+.photo-strip figcaption:not(.story-has-context) .story-copy{margin-top:.4em}

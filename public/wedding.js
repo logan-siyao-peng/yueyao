@@ -13,7 +13,8 @@ const slideMonths = slideDates.map(date => {
 const lastMonth = slideMonths.at(-1);
 const playback = document.querySelector("#gallery-playback");
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
-let playing = !motionPreference.matches;
+const galleryCount = document.querySelector(".gallery-count");
+let playing = false;
 let galleryVisible = false;
 
 function updatePlaybackLabel() {
@@ -36,6 +37,7 @@ function currentSlide() {
 
 function updateTimeline() {
   const index = currentSlide();
+  galleryCount.textContent = `${index + 1} / ${slides.length}`;
   const month = slideDates[index].textContent;
   datePicker.value = slideMonths[index];
   if (galleryMonth.textContent !== month) {
@@ -118,7 +120,7 @@ const galleryObserver = new IntersectionObserver(([entry]) => {
 galleryObserver.observe(strip);
 setInterval(() => {
   if (playing && galleryVisible && !document.hidden) scrollPhoto(1);
-}, 2000);
+}, 7000);
 
 const form = document.querySelector("#reply");
 const publicSites = new Set(["https://yueyao.de", "https://www.yueyao.de"]);
