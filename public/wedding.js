@@ -14,8 +14,28 @@ const lastMonth = slideMonths.at(-1);
 const playback = document.querySelector("#gallery-playback");
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
 const galleryCount = document.querySelector(".gallery-count");
-let playing = false;
+const storyPreviewMode = new URLSearchParams(location.search).get("preview");
+const englishFontPreview = storyPreviewMode === "story-en-fonts";
+let playing = !motionPreference.matches && !englishFontPreview;
+
+if (englishFontPreview) {
+  const options = document.querySelector("#story-english-font-preview");
+  const buttons = [...options.querySelectorAll("button")];
+  const fontLink = document.createElement("link");
+  fontLink.rel = "stylesheet";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Caveat&family=Cormorant+Garamond&family=Handlee&family=Instrument+Serif&family=Kalam&family=Lora&family=Patrick+Hand&display=swap";
+  document.head.append(fontLink);
+  const gallery = strip.closest(".gallery");
+  function applyFont(selected) {
+    gallery.dataset.englishStoryFont = selected.dataset.storyFont;
+    for (const button of buttons) button.setAttribute("aria-pressed", String(button === selected));
+  }
+  for (const button of buttons) button.addEventListener("click", () => applyFont(button));
+  options.hidden = false;
+  applyFont(options.querySelector('[aria-pressed="true"]'));
+}
 let galleryVisible = false;
+let playbackTimer = 0;
 
 function updatePlaybackLabel() {
   const english = document.documentElement.lang === "en";
@@ -29,6 +49,7 @@ function updatePlaybackLabel() {
 function setPlayback(enabled) {
   playing = enabled;
   updatePlaybackLabel();
+  scheduleNextPhoto();
 }
 
 function currentSlide() {
@@ -37,11 +58,24 @@ function currentSlide() {
 
 let animatedSlide = null;
 
+function scheduleNextPhoto() {
+  clearTimeout(playbackTimer);
+  if (!playing || !galleryVisible || document.hidden || !animatedSlide) return;
+
+  const animations = animatedSlide.querySelector("figcaption").getAnimations({subtree: true});
+  const remaining = Math.max(0, ...animations.map(animation => {
+    const end = animation.effect.getComputedTiming().endTime;
+    return end - (animation.currentTime ?? 0);
+  }));
+  playbackTimer = setTimeout(() => scrollPhoto(1), remaining + 1500);
+}
+
 function animateStory(slide) {
   if (!galleryVisible || animatedSlide === slide) return;
   animatedSlide?.classList.remove("story-active");
   animatedSlide = slide;
   slide.classList.add("story-active");
+  scheduleNextPhoto();
 }
 
 function prepareStoryLines() {
@@ -72,7 +106,7 @@ function prepareStoryLines() {
   }
 }
 
-if (new URLSearchParams(location.search).get("preview") === "story-effects") {
+if (storyPreviewMode === "story-effects") {
   const preview = document.querySelector("#story-effect-preview");
   const effect = document.querySelector("#story-effect");
   function replayEffect() {
@@ -116,6 +150,10 @@ strip.classList.add("has-timeline");
 timeline.hidden = false;
 const storySection = strip.closest(".gallery");
 const storyFrame = strip.querySelector(".story-image");
+const widestPhotoAspect = Math.max(...slides.map(slide => {
+  const photo = slide.querySelector("img");
+  return Number(photo.getAttribute("width")) / Number(photo.getAttribute("height"));
+}));
 let storyFitFrame = 0;
 
 function scheduleStoryFit() {
@@ -124,8 +162,11 @@ function scheduleStoryFit() {
     storyFitFrame = 0;
     if (!storySection.getClientRects().length) return;
     const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-    const fixedHeight = timeline.getBoundingClientRect().bottom + window.scrollY
-      - storyFrame.getBoundingClientRect().height;
+    const {height: frameHeight, width: frameWidth} = storyFrame.getBoundingClientRect();
+    const photoWidth = Math.min(frameWidth, frameHeight * widestPhotoAspect);
+    storySection.style.setProperty("--story-photo-width", `${photoWidth}px`);
+    const fixedHeight = timeline.getBoundingClientRect().bottom + window.scrollY - frameHeight;
+    storySection.style.setProperty("--story-frame-height", `${frameHeight}px`);
     const available = `${Math.max(72, Math.floor(viewportHeight - fixedHeight - 8))}px`;
     if (storySection.style.getPropertyValue("--story-available-height") !== available) {
       storySection.style.setProperty("--story-available-height", available);
@@ -135,6 +176,7 @@ function scheduleStoryFit() {
 
 const storyFitObserver = new ResizeObserver(scheduleStoryFit);
 storyFitObserver.observe(storySection);
+storyFitObserver.observe(storyFrame);
 storyFitObserver.observe(document.querySelector(".top"));
 window.addEventListener("resize", scheduleStoryFit);
 window.visualViewport?.addEventListener("resize", scheduleStoryFit);
@@ -184,6 +226,8 @@ function navigateGallery(direction) {
 
 document.querySelector("#previous").addEventListener("click", () => navigateGallery(-1));
 document.querySelector("#next").addEventListener("click", () => navigateGallery(1));
+document.querySelector(".story-arrow-prev").addEventListener("click", () => navigateGallery(-1));
+document.querySelector(".story-arrow-next").addEventListener("click", () => navigateGallery(1));
 playback.addEventListener("click", () => setPlayback(!playing));
 strip.addEventListener("pointerdown", () => setPlayback(false));
 strip.addEventListener("wheel", event => {
@@ -204,12 +248,11 @@ const galleryObserver = new IntersectionObserver(([entry]) => {
   else {
     animatedSlide?.classList.remove("story-active");
     animatedSlide = null;
+    scheduleNextPhoto();
   }
 }, {threshold: 0.2});
 galleryObserver.observe(strip);
-setInterval(() => {
-  if (playing && galleryVisible && !document.hidden) scrollPhoto(1);
-}, 7000);
+document.addEventListener("visibilitychange", scheduleNextPhoto);
 
 const form = document.querySelector("#reply");
 const publicSites = new Set(["https://yueyao.de", "https://www.yueyao.de"]);
@@ -354,6 +397,7 @@ function applyLanguage(language) {
   const variant = language === "en" ? "english" : "chinese";
   for (const entry of translations) entry.element.textContent = entry[variant];
   prepareStoryLines();
+  scheduleNextPhoto();
   for (const entry of attributeTranslations) entry.element.setAttribute(entry.attribute, entry[variant]);
   for (const button of languageButtons) button.setAttribute("aria-pressed", String(button.lang === language));
   showFeedback(currentMessage);
@@ -369,7 +413,7 @@ try {
 } catch {
   // Language switching also works if browser storage is unavailable.
 }
-applyLanguage(initialLanguage);
+applyLanguage(englishFontPreview ? "en" : initialLanguage);
 for (const button of languageButtons) {
   button.addEventListener("click", () => {
     applyLanguage(button.lang);

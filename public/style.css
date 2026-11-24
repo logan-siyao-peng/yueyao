@@ -225,3 +225,35 @@ html[lang=zh-Hans] .photo-strip figcaption .story-copy{font-family:"Ma Shan Zhen
   from{clip-path:inset(0 100% 0 0)}
   to{clip-path:inset(0 0 0 0)}
 }
+
+.story-stage{position:relative;--story-strip-padding:12px;--story-arrow-size:clamp(44px,5vw,58px);--story-arrow-gap:6px}
+.story-stage .photo-strip{padding-bottom:var(--story-strip-padding)}
+.story-stage .story-image{width:calc(100% - 2 * (var(--story-arrow-size) + var(--story-arrow-gap)))}
+.story-arrow{position:absolute;z-index:1;bottom:calc(var(--story-strip-padding) + var(--story-frame-height,0px)/2);transform:translateY(50%);display:grid;place-items:center;width:var(--story-arrow-size);height:var(--story-arrow-size);padding:0;border:1px solid #ffffff40;border-radius:50%;background:#262a2099;color:white;cursor:pointer;font:400 2.5rem/1 system-ui,sans-serif}
+.story-arrow:hover,.story-arrow:focus-visible{background:#262a20df}
+.story-arrow span{position:relative;top:-.08em}
+.story-arrow-prev{left:max(0px,calc((100% - var(--story-photo-width,100%))/2 - var(--story-arrow-size) - var(--story-arrow-gap)))}
+.story-arrow-next{right:max(0px,calc((100% - var(--story-photo-width,100%))/2 - var(--story-arrow-size) - var(--story-arrow-gap)))}
+
+.gallery[data-english-story-font=cormorant]{--english-story-font:"Cormorant Garamond",Georgia,serif}
+.gallery[data-english-story-font=instrument]{--english-story-font:"Instrument Serif",Georgia,serif}
+.gallery[data-english-story-font=caveat]{--english-story-font:"Caveat",cursive}
+.gallery[data-english-story-font=lora]{--english-story-font:"Lora",Georgia,serif}
+html[lang=en] .gallery :is(#gallery-title,figcaption time,figcaption h3,.story-copy){font-family:var(--english-story-font,"Kalam",cursive)}
+
+.story-font-options{width:100%}
+.story-font-options button{padding:6px 10px;border:1px solid var(--olive);border-radius:999px;background:transparent;color:var(--olive);font:inherit;cursor:pointer}
+.story-font-options button[aria-pressed=true]{background:var(--olive);color:white}
+
+.gallery[data-english-story-font=handlee]{--english-story-font:"Handlee",cursive}
+.gallery[data-english-story-font=patrick]{--english-story-font:"Patrick Hand",cursive}
+.gallery[data-english-story-font=kalam]{--english-story-font:"Kalam",cursive}
+
+html[lang=en] .photo-strip figcaption .story-copy{
+  font-size:clamp(1rem,1.55vw,1.4rem);
+  line-height:1.3;
+  max-width:48em
+}
+@media(max-height:550px){
+  html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.9rem,2.12svh,1.1rem)}
+}
