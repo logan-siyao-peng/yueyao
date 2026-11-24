@@ -141,6 +141,23 @@ label > .form-note{display:block;margin-top:4px}
 .schedule-list>li>:first-child{color:var(--olive);font-variant-numeric:tabular-nums}
 .schedule-list h3{font:500 1.3rem var(--serif);margin:0}
 .schedule-list p{margin:5px 0 0;color:var(--muted)}
+.schedule-page{width:min(88%,820px);padding:clamp(16px,4svh,36px) 0;margin-inline:auto}
+.schedule-page > :is(h2,p){text-align:left;margin:0}
+.schedule-page > h2{font-size:clamp(2rem,3.8vw,3.15rem);line-height:1.1}
+.schedule-page > p{margin-top:.4rem}
+.schedule-page .schedule-draft{font-size:.9rem;line-height:1.45}
+.schedule-page .schedule-list{max-width:none;margin:clamp(12px,2.5svh,24px) 0 0}
+.schedule-page .schedule-list > li{grid-template-columns:minmax(0,7.25rem) minmax(0,1fr);gap:clamp(8px,2vw,20px);padding:clamp(9px,1.5svh,15px) 0;line-height:1.4}
+.schedule-page .schedule-list h3{font-size:1.18rem;line-height:1.2}
+.schedule-page .schedule-list p{margin:3px 0 0;font-size:.92rem}
+@media(min-width:760px){
+  .schedule-page .schedule-list > li > div{display:grid;grid-template-columns:4rem minmax(0,1fr);gap:12px;align-items:baseline}
+  html[lang=en] .schedule-page .schedule-list > li > div{grid-template-columns:8.8rem minmax(0,1fr)}
+  .schedule-page .schedule-list p{margin:0}
+}
+@media(max-width:480px){
+  .schedule-page .schedule-list > li{grid-template-columns:6.15rem minmax(0,1fr);font-size:.88rem}
+}
 .schedule-prompts{margin:8px 0 0;padding-left:1.2em}
 
 .map-overview,.arrival-guide,.local-guide{margin-top:24px}
