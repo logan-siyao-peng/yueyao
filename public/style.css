@@ -323,3 +323,20 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
   15%,70%{visibility:visible;opacity:1}
   100%{visibility:hidden;opacity:0}
 }
+
+@media(max-width:700px){
+  .gallery{padding-inline:clamp(10px,3vw,20px)}
+  .story-stage .photo-strip{grid-template-rows:auto}
+  .story-stage .photo-strip>li{grid-row:auto;display:block}
+  .story-stage .photo-strip figure{grid-row:auto;grid-template-rows:auto auto;row-gap:10px}
+  .story-stage .story-image{grid-row:1;width:100%;max-height:52svh}
+  .story-stage .photo-strip figcaption{grid-row:2;align-self:start}
+  .story-stage .story-arrow{top:calc(var(--story-frame-height,0px)/2);bottom:auto;transform:translateY(-50%)}
+  .story-stage .story-arrow-prev{left:4px}
+  .story-stage .story-arrow-next{right:4px}
+  .story-voice+ .story-voice{margin-top:8px}
+  .photo-strip .story-context,
+  .photo-strip figcaption .story-copy,
+  html[lang=en] .photo-strip .story-context,
+  html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.92rem,3.8vw,1.12rem);line-height:1.35}
+}
