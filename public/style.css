@@ -120,10 +120,22 @@ label > .form-note{display:block;margin-top:4px}
 .guide-links{display:flex;flex-wrap:wrap;gap:8px 20px}
 .guide-links a,.guide-stays a{text-decoration:underline;text-underline-offset:.2em}
 .stay-detail{display:block;color:var(--muted);font-size:.9rem}
-.stay-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,48px);margin-top:24px}
+.stay-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,48px);margin-top:24px;border-top:1px solid var(--rule)}
 .stay-card{border-top:1px solid var(--rule);padding-top:16px}
+.stay-card:first-child{border-top:0}
+@media(min-width:761px){.stay-card:nth-child(2){border-top:0}}
 .stay-card h4{font:500 1.4rem var(--serif);margin:0}
 .stay-card p{margin:10px 0}
+.stay-email-template{border-bottom:0}
+.stay-card:has(.stay-apartment-details[open]){grid-column:1/-1}
+.stay-card:has(.stay-apartment-details[open]) .stay-photos{max-width:760px}
+.stay-apartment-details{max-width:none}
+.apartment-plans{list-style:none;padding-left:0}
+.apartment-plans>li{display:grid;grid-template-columns:minmax(0,1fr) 64%;gap:16px;align-items:center;padding:16px 0}
+.apartment-plans>li+li{border-top:1px solid var(--rule);margin-top:0}
+.apartment-plans ul{padding-left:1.2em;margin:6px 0 0}
+.apartment-plans img{display:block;width:100%;height:auto}
+@media(max-width:600px){.apartment-plans>li{grid-template-columns:1fr}}
 .stay-card a{text-decoration:underline;text-underline-offset:.2em}
 .stay-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .stay-photos figure{margin:0}
@@ -162,10 +174,7 @@ label > .form-note{display:block;margin-top:4px}
 
 .map-overview,.arrival-guide,.local-guide{margin-top:24px}
 .venue-travel h4{font:500 1.23rem var(--serif);margin:0}
-.map-controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.map-controls button{font:inherit;background:transparent;border:1px solid var(--olive);color:var(--olive);padding:6px 12px;cursor:pointer}
-.map-controls button[aria-pressed=true]{color:white;background:var(--olive)}
-#wedding-map{height:clamp(340px,54vw,560px);border:1px solid var(--rule);background:#ede9dc;z-index:0}
+.wedding-map{margin-top:12px;height:clamp(340px,54vw,560px);border:1px solid var(--rule);background:#ede9dc;z-index:0}
 .wedding-map-pin{border-radius:50%;border:2px solid white;box-shadow:0 1px 4px #0007;background:#cf8549}
 .wedding-map-pin-airport{background:#346386}
 .wedding-map-pin-venue{background:#485939}
@@ -180,10 +189,10 @@ label > .form-note{display:block;margin-top:4px}
 @media(max-width:760px){.airport-grid,.map-hotel-list{grid-template-columns:1fr}}
 
 .wedding-map-label{font-weight:600;color:var(--ink);font-size:.75rem}
-#wedding-map:not(.map-show-hotel-labels) .wedding-map-label-hotel{display:none}
+[data-wedding-map="local"]:not(.map-show-hotel-labels) .wedding-map-label-hotel{display:none}
 
 .wedding-map-pin-station{background:#78517d}
-#wedding-map:not(.map-show-hotel-labels) .wedding-map-label-station{display:none}
+[data-wedding-map="local"]:not(.map-show-hotel-labels) .wedding-map-label-station{display:none}
 
 #attendance-slider{display:block;width:100%;padding:0;accent-color:var(--olive)}
 label > .rsvp-error[hidden]{display:none}

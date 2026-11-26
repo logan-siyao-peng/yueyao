@@ -470,9 +470,8 @@ form.addEventListener("submit", async event => {
   }
 });
 
-const weddingMapElement = document.querySelector("#wedding-map");
-const weddingMapControls = document.querySelector(".map-controls");
-let weddingMap;
+const weddingMapElements = document.querySelectorAll("[data-wedding-map]");
+const weddingMaps = new Map();
 let stationMarker;
 
 function updateStationLabel() {
@@ -490,34 +489,35 @@ function updateStationLabel() {
 
 function showWeddingMap() {
   if (!window.L) return;
-  if (weddingMap) {
-    weddingMap.invalidateSize({pan: false});
-    return;
+  for (const element of weddingMapElements) {
+    const map = weddingMaps.get(element);
+    if (map) map.invalidateSize({pan: false});
+    else weddingMaps.set(element, createWeddingMap(element));
   }
-  weddingMapElement.hidden = false;
-  weddingMapControls.hidden = false;
-  weddingMap = L.map(weddingMapElement, {scrollWheelZoom: false});
+  updateStationLabel();
+}
+
+function createWeddingMap(element) {
+  const isLocal = element.dataset.weddingMap === "local";
+  element.hidden = false;
+  const weddingMap = L.map(element, {scrollWheelZoom: false});
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(weddingMap);
 
-  const regionalPoints = [];
-  const localPoints = [];
+  const points = [];
   const hotelLabels = {
     "Hotel Kristall": ["right", [12, -18]],
     "ALPtyrol Appartements": ["right", [12, 2]],
-    "Haus Pepi Eiter": ["left", [-12, 5]],
-    "Skihotel Galzig": ["top", [0, -12]],
-    "Hotel Garni Rundeck": ["right", [12, 16]],
-    "Hotel Montana": ["left", [-12, -12]]
+    "Hotel Garni Rundeck": ["right", [12, 16]]
   };
   for (const link of document.querySelectorAll("[data-map-point]")) {
     const coordinates = link.dataset.coordinates.split(",").map(Number);
     const kind = link.dataset.mapPoint;
     const label = link.dataset.marker || link.textContent.trim().split(" · ")[0];
-    regionalPoints.push(coordinates);
-    if (kind !== "airport") localPoints.push(coordinates);
+    if (kind !== "venue" && (isLocal ? kind === "airport" : kind !== "airport")) continue;
+    points.push(coordinates);
     const marker = L.marker(coordinates, {
       title: label,
       alt: label,
@@ -539,7 +539,7 @@ function showWeddingMap() {
     marker.bindPopup(() => {
       const popup = document.createElement("div");
       const title = document.createElement("strong");
-      title.textContent = kind === "venue" ? label : kind === "station" ? marker.options.title : link.textContent.trim();
+      title.textContent = kind === "station" ? marker.options.title : label;
       popup.append(title);
       const distance = link.closest("article, li")?.querySelector(".map-distance");
       if (distance) {
@@ -556,27 +556,15 @@ function showWeddingMap() {
     });
   }
 
-  const viewButtons = weddingMapControls.querySelectorAll("button");
-  function setView(view) {
-    weddingMap.closePopup();
-    weddingMap.fitBounds(view === "local" ? localPoints : regionalPoints, {
-      padding: [30, 30],
-      maxZoom: 17
-    });
-    for (const button of viewButtons) {
-      button.setAttribute("aria-pressed", String(button.dataset.mapView === view));
-    }
+  weddingMap.fitBounds(points, {padding: [30, 30], maxZoom: 17});
+  if (isLocal) {
+    const updateMapLabels = () => {
+      element.classList.toggle("map-show-hotel-labels", weddingMap.getZoom() >= 14);
+    };
+    weddingMap.on("zoomend", updateMapLabels);
+    updateMapLabels();
   }
-  for (const button of viewButtons) {
-    button.addEventListener("click", () => setView(button.dataset.mapView));
-  }
-  function updateMapLabels() {
-    weddingMapElement.classList.toggle("map-show-hotel-labels", weddingMap.getZoom() >= 14);
-  }
-  weddingMap.on("zoomend", updateMapLabels);
-  setView("regional");
-  updateMapLabels();
-  updateStationLabel();
+  return weddingMap;
 }
 
 document.addEventListener("wedding-language-change", updateStationLabel);
