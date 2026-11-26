@@ -81,7 +81,15 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .photo-strip figure{display:grid;width:min(100%,1040px);gap:clamp(8px,1.5svh,18px);margin:0 auto}
 .story-image{position:relative;width:100%;min-width:0;justify-self:center;aspect-ratio:3/2;max-height:min(620px,var(--story-available-height,55svh))}
 .photo-strip img{position:absolute;inset:0;display:block;width:auto;height:100%;max-width:100%;margin:auto;object-fit:contain;box-shadow:0 0 0 3px #e8e0d2}
-.photo-strip figcaption{min-width:0;text-align:center}
+.photo-strip figcaption{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:start;gap:clamp(6px,1.5vw,20px);min-width:0}
+.story-voice{min-width:0;padding:clamp(6px,1vw,14px);border:1px solid var(--rule);border-radius:4px 14px 14px;background:#faf7f0}
+.story-voice+ .story-voice{margin-top:clamp(12px,3svh,32px);border-radius:14px 4px 14px 14px;background:#eaece2}
+.story-voice:has(.story-copy:empty){visibility:hidden}
+.gallery .story-author{margin:0 0 .3em;color:var(--olive);font-size:.85rem;font-weight:500}
+.story-voice+ .story-voice .story-author{text-align:right}
+@media(prefers-reduced-motion:no-preference){
+  .photo-strip .story-active .story-voice+ .story-voice{animation:story-line-in .25s ease-out var(--voice-delay,0s) both}
+}
 @supports(grid-template-rows:subgrid){
   .photo-strip{grid-template-rows:auto auto;row-gap:clamp(8px,1.5svh,18px)}
   .photo-strip > li,.photo-strip figure{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:normal}
@@ -89,7 +97,7 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 }
 .photo-strip figcaption time{display:block;color:var(--muted);font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.45}
 .photo-strip figcaption h3{font:400 clamp(1.35rem,2vw,1.8rem)/1.25 var(--serif);margin:.18em 0 0;overflow-wrap:anywhere}
-.photo-strip figcaption.story-has-context > :is(time,h3){display:none}
+.photo-strip figcaption.story-has-context .story-voice > :is(time,h3){display:none}
 .photo-strip figcaption .story-copy{font:400 clamp(1.2rem,1.85vw,1.65rem)/1.55 var(--serif);margin:0 auto;max-width:36em;white-space:pre-line;text-align:center;text-wrap:balance}
 @media(max-width:740px){
   .gallery-header .controls{gap:6px}
@@ -282,4 +290,36 @@ html[lang=en] .photo-strip figcaption .story-copy{
 }
 @media(max-height:550px){
   html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.9rem,2.12svh,1.1rem)}
+}
+
+.photo-strip .story-context{grid-column:1/-1;text-align:center}
+.photo-strip .story-context-meta{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:0 .6em}
+.photo-strip .story-context :is(time,h3,p){margin:0;font:inherit;line-height:1.4}
+.photo-strip .story-context :is(time,h3){color:var(--olive);font-weight:600}
+.photo-strip .story-context p{margin-top:.2em;color:var(--muted);font-size:.9rem;text-wrap:balance}
+.photo-strip .story-context{font-size:clamp(1.2rem,1.85vw,1.65rem)}
+.photo-strip .story-context p{font-size:inherit}
+html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
+@media(max-height:550px){
+  .photo-strip .story-context{font-size:clamp(.95rem,2.25svh,1.2rem)}
+  html[lang=en] .photo-strip .story-context{font-size:clamp(.9rem,2.12svh,1.1rem)}
+}
+
+
+.story-zoom{position:absolute;inset:0;width:100%;padding:0;border:0;background:transparent;pointer-events:none}
+.story-zoom img{pointer-events:auto;cursor:zoom-in}
+.story-zoom:focus-visible img{outline:2px solid var(--olive);outline-offset:4px}
+.story-photo-dialog{box-sizing:border-box;max-width:96vw;max-height:96vh;max-height:96dvh;margin:auto;padding:0;border:0;background:transparent;overflow:visible}
+.story-photo-dialog::backdrop{background:rgb(0 0 0 / 82%)}
+.story-photo-dialog img{display:block;max-width:96vw;max-height:96vh;max-height:96dvh;object-fit:contain}
+.story-photo-close{position:absolute;top:8px;right:8px;width:44px;height:44px;border:1px solid white;border-radius:50%;background:rgb(0 0 0 / 72%);color:white;font:1.6rem/1 system-ui;cursor:pointer}
+
+.story-swipe-hint{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:12px;background:rgb(0 0 0 / 62%);color:white;font-size:clamp(1rem,2.5vw,1.4rem);pointer-events:none;visibility:hidden}
+@media(prefers-reduced-motion:no-preference){
+  .photo-strip .story-active .story-swipe-hint{animation:story-swipe-intro 1.6s ease both}
+}
+@keyframes story-swipe-intro{
+  0%{visibility:visible;opacity:0}
+  15%,70%{visibility:visible;opacity:1}
+  100%{visibility:hidden;opacity:0}
 }

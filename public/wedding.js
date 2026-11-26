@@ -67,7 +67,7 @@ function scheduleNextPhoto() {
     const end = animation.effect.getComputedTiming().endTime;
     return end - (animation.currentTime ?? 0);
   }));
-  playbackTimer = setTimeout(() => scrollPhoto(1), remaining + 1500);
+  playbackTimer = setTimeout(() => scrollPhoto(1), remaining + 2000);
 }
 
 function animateStory(slide) {
@@ -81,8 +81,7 @@ function animateStory(slide) {
 function prepareStoryLines() {
   for (const slide of slides) {
     const caption = slide.querySelector("figcaption");
-    const story = caption.querySelector(".story-copy");
-    let delay = 0;
+    let delay = slide.querySelector(".story-swipe-hint") ? 1.6 : 0;
     if (!caption.classList.contains("story-has-context")) {
       for (const item of caption.querySelectorAll("time, h3")) {
         item.classList.add("story-line");
@@ -90,19 +89,25 @@ function prepareStoryLines() {
         delay += 0.5;
       }
     }
-    if (!story) continue;
     const bySentence = strip.dataset.storyEffect === "sentence";
-    const lines = story.textContent.trim().split("\n").map((line, index) => {
-      const span = document.createElement("span");
-      span.className = "story-line";
-      span.textContent = line;
-      span.style.setProperty("--story-delay", `${delay}s`);
-      if (!bySentence || index === 0 || /[。！？.!?]$/.test(line.trim())) delay += 0.5;
-      return span;
-    });
-    story.replaceChildren(...lines.flatMap((line, index) =>
-      index ? [document.createTextNode("\n"), line] : [line]
-    ));
+    for (const story of caption.querySelectorAll(".story-copy")) {
+      if (!story.textContent.trim()) continue;
+      const voice = story.closest(".story-voice");
+      voice.style.setProperty("--voice-delay", `${delay}s`);
+      let lineDelay = delay;
+      const lines = story.textContent.trim().split("\n").map((line, index) => {
+        const span = document.createElement("span");
+        span.className = "story-line";
+        span.textContent = line;
+        span.style.setProperty("--story-delay", `${lineDelay}s`);
+        if (!bySentence || index === 0 || /[。！？.!?]$/.test(line.trim())) lineDelay += 0.5;
+        return span;
+      });
+      delay = lineDelay + 0.25;
+      story.replaceChildren(...lines.flatMap((line, index) =>
+        index ? [document.createTextNode("\n"), line] : [line]
+      ));
+    }
   }
 }
 
@@ -230,6 +235,21 @@ document.querySelector(".story-arrow-prev").addEventListener("click", () => navi
 document.querySelector(".story-arrow-next").addEventListener("click", () => navigateGallery(1));
 playback.addEventListener("click", () => setPlayback(!playing));
 strip.addEventListener("pointerdown", () => setPlayback(false));
+const photoDialog = document.querySelector(".story-photo-dialog");
+const dialogPhoto = photoDialog.querySelector("img");
+strip.addEventListener("click", event => {
+  const button = event.target.closest(".story-zoom");
+  if (!button || button.closest("li") !== slides[currentSlide()]) return;
+  setPlayback(false);
+  const photo = button.querySelector("img");
+  dialogPhoto.src = photo.currentSrc || photo.src;
+  dialogPhoto.alt = photo.alt;
+  photoDialog.showModal();
+});
+photoDialog.querySelector("button").addEventListener("click", () => photoDialog.close());
+photoDialog.addEventListener("click", event => {
+  if (event.target === photoDialog) photoDialog.close();
+});
 strip.addEventListener("wheel", event => {
   if (event.deltaX || event.shiftKey) setPlayback(false);
 }, {passive: true});
@@ -587,6 +607,11 @@ function showSitePage() {
 }
 
 showSitePage();
+window.addEventListener("pageshow", event => {
+  if (event.persisted || location.hash !== "#photos" || !strip.clientWidth) return;
+  strip.scrollTo({left: 0, behavior: "instant"});
+  updateTimeline();
+});
 window.addEventListener("hashchange", () => {
   showSitePage();
   window.scrollTo(0, 0);
