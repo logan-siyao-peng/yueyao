@@ -1,3 +1,5 @@
+import {serveTasting} from './tasting.mjs';
+
 const starterTasks = [
   '确认婚礼当天的到场与仪式时间',
   '和 Museum Café 确认餐酒菜单',
@@ -46,7 +48,7 @@ function page(rows) {
     </li>`).join('');
   return `<!doctype html><html lang="zh-Hans"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>越 &amp; 尧 · To Do</title>
   <style>body{font:16px/1.55 system-ui,sans-serif;background:#f9f5ed;color:#262a20;margin:0;padding:28px 18px}main{max-width:42rem;margin:auto}a{color:inherit}form{display:flex;gap:.5rem;flex-wrap:wrap}input,button{font:inherit;padding:.4rem .65rem;border:1px solid #777963;background:#fffdf8;color:inherit}form>input:not([type=hidden]){flex:1;min-width:0}button{cursor:pointer}ul{list-style:none;padding:0}li{padding:.75rem 0;border-bottom:1px solid #d6cfbe;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:space-between}li span{overflow-wrap:anywhere}.done{text-decoration:line-through;color:#5b5d50}</style>
-  <main><a href="https://yueyao.de/plan/">越 &amp; 尧 · 婚礼筹备</a><h1>To Do</h1>
+  <main><a href="https://yueyao.de/plan/">越 &amp; 尧 · 婚礼筹备</a><h1>To Do</h1><p><a href="/tasting">填写试菜评分 ↗</a></p>
   <p>这份清单也会显示在公开筹备页。</p>
   <form method="post"><label for="title">新增待办</label><input id="title" name="title" required maxlength="160"><button name="action" value="add">添加</button></form>
   <ul>${tasks}</ul></main></html>`;
@@ -55,7 +57,7 @@ function page(rows) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (!['/', '/todo'].includes(url.pathname)) return response('页面不存在。', 404);
+    if (!['/', '/todo', '/tasting'].includes(url.pathname)) return response('页面不存在。', 404);
     if (!env.TODO_LOGIN_SECRET || !env.DB) return response('待办尚未启用。', 503);
     const header = request.headers.get('Authorization') || '';
     let credentials = '';
@@ -64,6 +66,7 @@ export default {
       return response('请登录查看待办。', 401, {'WWW-Authenticate':'Basic realm="Yue and Yao To Do", charset="UTF-8"'});
     }
     if (request.method !== 'GET' && request.method !== 'POST') return response(null, 405, {Allow:'GET, POST'});
+    if (url.pathname === '/tasting') return serveTasting(request, env.DB, response);
     try {
       if (request.method === 'POST') {
         if (request.headers.get('Origin') !== url.origin) return response('请从待办网页提交。', 403);

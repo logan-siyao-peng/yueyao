@@ -38,7 +38,7 @@ function readFields(data) {
 export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
-    if (path === '/todo') return todos.fetch(request, env);
+    if (path === '/todo' || path === '/tasting') return todos.fetch(request, env);
     if (path === '/api/todos') {
       const headers = {'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store'};
       if (request.method !== 'GET') return new Response(null, {status:405, headers:{...headers, Allow:'GET'}});
