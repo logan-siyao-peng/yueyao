@@ -133,13 +133,13 @@ label > .form-note{display:block;margin-top:4px}
 .stay-card:first-child{border-top:0}
 @media(min-width:761px){.stay-card:nth-child(2){border-top:0}}
 .stay-card h4{font:500 1.4rem var(--serif);margin:0}
+.stay-card-recommended h4{font-weight:600}
+.stay-stars{display:block;margin-top:.2rem;font-size:1.1rem}
 .stay-card p{margin:10px 0}
 .stay-email-template{border-bottom:0}
-.stay-card:has(.stay-apartment-details[open]){grid-column:1/-1}
-.stay-card:has(.stay-apartment-details[open]) .stay-photos{max-width:760px}
 .stay-apartment-details{max-width:none}
 .apartment-plans{list-style:none;padding-left:0}
-.apartment-plans>li{display:grid;grid-template-columns:minmax(0,1fr) 64%;gap:16px;align-items:center;padding:16px 0}
+.apartment-plans>li{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:center;padding:16px 0}
 .apartment-plans>li+li{border-top:1px solid var(--rule);margin-top:0}
 .apartment-plans ul{padding-left:1.2em;margin:6px 0 0}
 .apartment-plans img{display:block;width:100%;height:auto}
@@ -339,4 +339,14 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
   .photo-strip figcaption .story-copy,
   html[lang=en] .photo-strip .story-context,
   html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.92rem,3.8vw,1.12rem);line-height:1.35}
+}
+
+
+@media(min-width:761px){
+  .stay-cards>.stay-card-recommended{
+    display:grid;
+    grid-row:span 6;
+    grid-template-rows:subgrid;
+    row-gap:0;
+  }
 }

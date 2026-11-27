@@ -528,6 +528,7 @@ function createWeddingMap(element) {
 
   const points = [];
   const hotelLabels = {
+    "Skihotel Galzig": ["top", [0, -12]],
     "Hotel Kristall": ["right", [12, -18]],
     "ALPtyrol Appartements": ["right", [12, 2]],
     "Hotel Garni Rundeck": ["right", [12, 16]]

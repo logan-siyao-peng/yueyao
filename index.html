@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<link rel="stylesheet" href="public/style.css?v=story-mobile">
+<link rel="stylesheet" href="public/style.css?v=half-width-apartments">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
-<script src="public/wedding.js?v=story-swipe-overlay" defer></script>
+<script src="public/wedding.js?v=galzig-stays" defer></script>
 </head>
 <body>
 <header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation">
@@ -97,15 +97,21 @@
     </div>
     <div class="wedding-map" data-wedding-map="local" role="region" aria-labelledby="stay-title" hidden></div>
     <div class="stay-cards">
-      <article class="stay-card">
-        <h4><span data-en="[First choice]">【首选】</span> Hotel Garni Rundeck</h4>
-        <p><strong><span data-en="€140/night for two, €85/night for one, apartments €140–290/night">双人入住 €140／晚，单人入住 €85／晚，公寓 €140–290／套／晚</span></strong></p>
-        <p class="stay-detail"><a data-map-point="hotel" data-coordinates="47.1279907,10.2659759" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Garni Rundeck"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (170 reviews)">Google 地图 4.9/5（170 条评价）</span> ↗</a></p>
+      <article class="stay-card stay-card-recommended">
+        <h4><span data-en="[Recommended]">【优选】</span> Hotel Garni Rundeck <span class="stay-stars" role="img" aria-label="四星级" data-en-aria-label="Four-star hotel">⭐️⭐️⭐️⭐️</span></h4>
+        <p><strong><span data-en="Hotel rooms €140/night for two or €85/night for one, with breakfast">客房双人 €140／晚、单人 €85／晚，含早餐</span><br><span data-en="Apartments about €45–60 per person per night at full occupancy, breakfast excluded">公寓住满约 €45–60／人／晚，不含早餐</span></strong></p>
+        <p class="stay-detail"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (170 reviews)">Google 地图 4.9/5（170 条评价）</span> ↗</a></p>
         <p class="guide-links"><a href="https://www.hotelrundeck.at/zimmer/doppelzimmer-3/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
-        <div class="stay-photos"><figure><a href="public/museum-stays/rundeck-exterior.jpg"><img src="public/museum-stays/rundeck-exterior.jpg" loading="lazy" alt="Hotel Garni Rundeck 外观" data-en-alt="Hotel Garni Rundeck Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/rundeck-room.jpg"><img src="public/museum-stays/rundeck-room.jpg" loading="lazy" alt="Hotel Garni Rundeck 标准双人房" data-en-alt="Hotel Garni Rundeck Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
+        <div class="stay-photos"><figure><a href="public/museum-stays/rundeck-exterior.jpg"><img src="public/museum-stays/rundeck-exterior.jpg" loading="lazy" alt="Hotel Garni Rundeck 外观" data-en-alt="Hotel Garni Rundeck Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/rundeck-room.jpg"><img src="public/museum-stays/rundeck-room.jpg" loading="lazy" alt="Hotel Garni Rundeck 舒适双人房" data-en-alt="Hotel Garni Rundeck Comfort double room"></a><figcaption><span data-en="Comfort double room">舒适双人房</span></figcaption></figure></div>
+        <div class="stay-card-content">
         <ul class="stay-terms">
-          <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Near the station, with rooms, suites and apartments. Breakfast is included with rooms and suites.">靠近火车站，有客房、套房和公寓。客房和套房含早餐。</span></li>
-          <li><strong><span data-en="Drawback">劣势</span></strong> <span data-en="Apartment breakfast costs extra, with arrangements still pending.">公寓早餐另收费，具体安排仍待确认。</span></li>
+          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 3 min to the train station">到火车站约 3 分钟</span> · <a data-map-point="hotel" data-coordinates="47.1279907,10.2659759" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Garni Rundeck"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a></li>
+          <li><strong><span data-en="Parking">停车</span></strong> <span data-en="One parking space included per room or apartment.">每间客房或每套公寓含 1 个车位。</span></li>
+          <li><strong><span data-en="Style">风格</span></strong> <span data-en="Warm Alpine style.">温暖的阿尔卑斯风格。</span></li>
+          <li><strong><span data-en="Room count">房量</span></strong> <span data-en="17 doubles, 1 junior suite and 6 apartments.">17 间双人房、1 间套房、6 套公寓。</span></li>
+          <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Hotel rooms can be booked for 1–2 nights.">酒店客房可住一晚或两晚。</span></li>
+          <li><strong><span data-en="Drawback">劣势</span></strong> <span data-en="One-night apartment stays still need hotel confirmation.">公寓能否只住一晚，仍待酒店确认。</span></li>
+          <li><strong><span data-en="Breakfast">早餐</span></strong> <span data-en="Hotel rooms and suites include breakfast. Apartment guests can add it for about €20 per person per day (ages 11+).">客房和套房含早餐。公寓早餐另计，11 岁起约 €20／人／天。</span></li>
           <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="From noon.">12:00 起。</span></li>
           <li><strong><span data-en="Payment">付款</span></strong> <span data-en="Full payment about one month before arrival.">入住前约一个月付清。</span></li>
           <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Free cancellation up to about one month before arrival.">提前约一个月可免费取消。</span></li>
@@ -151,20 +157,90 @@ Mit freundlichen Grüßen
           <p><a href="mailto:info@hotelrundeck.at?subject=Buchungsanfrage%20zur%20Hochzeit%20%E2%80%93%20YUEYAO%20%E2%80%93%20Juni%202027&amp;body=Liebes%20Team%20von%20Hotel%20Garni%20Rundeck%2C%0D%0A%0D%0Awir%20sind%20am%2019.%20Juni%202027%20zur%20Hochzeit%20von%20Herrn%20Yue%20Yin%20und%20Herrn%20Siyao%20Peng%20im%20Museum%20Restaurant%E2%80%93Caf%C3%A9%20eingeladen%20und%20w%C3%BCrden%20gerne%20eine%20Unterkunft%20mit%20dem%20Buchungscode%20YUEYAO%20reservieren.%0D%0A%0D%0AName%20f%C3%BCr%20die%20Buchung%3A%20%5Bvollst%C3%A4ndiger%20Name%5D%0D%0AAnreise%3A%20%5B19.%20Juni%202027%5D%0D%0AAbreise%3A%20%5B20.%20Juni%202027%5D%0D%0AAnzahl%20der%20Erwachsenen%3A%20%5BAnzahl%5D%0D%0AAnzahl%20der%20Kinder%3A%20%5BAnzahl%5D%0D%0AZimmerwunsch%3A%20%5BDoppelzimmer%2C%20Suite%20oder%20Apartment%5D%0D%0A%0D%0ABitte%20teilen%20Sie%20uns%20mit%2C%20wie%20wir%20die%20Buchung%20best%C3%A4tigen%20k%C3%B6nnen.%0D%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0D%0A%5BIhr%20Name%5D"><span data-en="Open German email draft">打开德文邮件草稿</span> ↗</a></p>
         </details>
         <details class="stay-email-template stay-apartment-details">
-          <summary><span data-en="Apartment layouts and rates">公寓房型与价格</span></summary>
-          <p><span data-en="These rates were quoted by the hotel for 18–20 June 2027 and are per apartment per night. Breakfast and local tax are extra.">以下是酒店邮件提供的 2027 年 6 月 18–20 日报价，按整套公寓每晚计价。早餐和住宿税另计。</span></p>
+          <summary><span data-en="Apartment layouts, rates and floor plans">公寓房型、价格与平面图</span></summary>
           <ul class="stay-terms apartment-plans">
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-1/">Apartment Top 1 ↗</a><ul><li><span data-en="50 m²">50 m²</span></li><li><span data-en="1 double bedroom plus sleeping space in the living room">1 间双人卧室，客厅也可睡</span></li><li><span data-en="1 bathroom with shower and toilet">1 间浴室（淋浴和卫生间）</span></li><li><strong><span data-en="2 guests €140, 3–4 guests €180">2 人 €140，3–4 人 €180</span></strong></li></ul></div><img src="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 1 平面图" data-en-alt="Apartment Top 1 floor plan"></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-3/">Apartment Top 3 ↗</a><ul><li><span data-en="70 m²">70 m²</span></li><li><span data-en="2 double bedrooms plus a fold-out double bed in the living room">2 间双人卧室，客厅另有折叠双人床</span></li><li><span data-en="2 bathrooms, each with shower and toilet">2 间浴室（均有淋浴和卫生间）</span></li><li><strong><span data-en="4 guests €220, 5–6 guests €280">4 人 €220，5–6 人 €280</span></strong></li></ul></div></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-4/">Apartment Top 4 ↗</a><ul><li><span data-en="80 m²">80 m²</span></li><li><span data-en="2 bedrooms">2 间卧室</span></li><li><span data-en="2 bathrooms, each with shower and toilet">2 间浴室（均有淋浴和卫生间）</span></li><li><strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><img src="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 4 平面图" data-en-alt="Apartment Top 4 floor plan"></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-5/">Apartment Top 5 ↗</a><ul><li><span data-en="80 m²">80 m²</span></li><li><span data-en="3 double bedrooms">3 间双人卧室</span></li><li><span data-en="1 shower room and a separate toilet">1 间淋浴浴室，另有独立卫生间</span></li><li><strong><span data-en="4 guests €240, 5–6 guests €290">4 人 €240，5–6 人 €290</span></strong></li></ul></div><img src="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 5 平面图" data-en-alt="Apartment Top 5 floor plan"></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-8/">Apartment Top 8 ↗</a><ul><li><span data-en="60 m²">60 m²</span></li><li><span data-en="2 double bedrooms">2 间双人卧室</span></li><li><span data-en="2 bathrooms, each with shower and toilet">2 间浴室（均有淋浴和卫生间）</span></li><li><strong><span data-en="4 guests €230">4 人 €230</span></strong></li></ul></div><img src="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 8 平面图" data-en-alt="Apartment Top 8 floor plan"></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/hotel-apartment/">Hotel Apartment ↗</a><ul><li><span data-en="70 m²">70 m²</span></li><li><span data-en="2 double bedrooms and 1 single bedroom">2 间双人卧室、1 间单人卧室</span></li><li><span data-en="1 shower room and a separate toilet">1 间淋浴浴室，另有独立卫生间</span></li><li><strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><img src="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png" loading="lazy" decoding="async" alt="Hotel Apartment 平面图" data-en-alt="Hotel Apartment floor plan"></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-1/">Apartment Top 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="50 m²">50 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="1 double bedroom">1 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="2 guests €140, 3–4 guests €180">2 人 €140，3–4 人 €180</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 1 平面图" data-en-alt="Apartment Top 1 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-3/">Apartment Top 3 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5–6 guests €280">4 人 €220，5–6 人 €280</span></strong></li></ul></div></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-4/">Apartment Top 4 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 bedrooms">2 间卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 4 平面图" data-en-alt="Apartment Top 4 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-5/">Apartment Top 5 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €240, 5–6 guests €290">4 人 €240，5–6 人 €290</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 5 平面图" data-en-alt="Apartment Top 5 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-8/">Apartment Top 8 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="60 m²">60 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €230">4 人 €230</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 8 平面图" data-en-alt="Apartment Top 8 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/hotel-apartment/">Hotel Apartment ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms and 1 single bedroom">2 间双人卧室、1 间单人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png"><img src="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png" loading="lazy" decoding="async" alt="Hotel Apartment 平面图" data-en-alt="Hotel Apartment floor plan"></a></li>
           </ul>
         </details>
+        </div>
+      </article>
+      <article class="stay-card stay-card-recommended">
+        <h4><span data-en="[Recommended]">【优选】</span> Skihotel Galzig <span class="stay-stars" role="img" aria-label="四星级" data-en-aria-label="Four-star hotel">⭐️⭐️⭐️⭐️</span></h4>
+        <p><strong><span data-en="Hotel rooms about €70 per person per night with breakfast">客房约 €70／人／晚，含早餐</span><br><span data-en="Apartments about €80 per person per night at full occupancy, breakfast excluded">公寓住满约 €80／人／晚，不含早餐</span></strong></p>
+        <p class="stay-detail"><a href="https://maps.app.goo.gl/yag1rBFHL9LaM2Rd6"><span data-en="Google Maps 4.8/5 (106 reviews)">Google 地图 4.8/5（106 条评价）</span> ↗</a></p>
+        <p class="guide-links"><a href="https://www.skihotelgalzig.at/en/rooms-suites/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
+        <div class="stay-photos"><figure><a href="public/museum-stays/galzig-exterior.jpg"><img src="public/museum-stays/galzig-exterior.jpg" loading="lazy" alt="酒店外观" data-en-alt="Hotel exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/galzig-room.jpg"><img src="public/museum-stays/galzig-room.jpg" loading="lazy" alt="舒适双人房" data-en-alt="Comfort double room"></a><figcaption><span data-en="Comfort double room">舒适双人房</span></figcaption></figure></div>
+        <div class="stay-card-content">
+        <ul class="stay-terms">
+          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 7 min to the train station">到火车站约 7 分钟</span> · <a data-map-point="hotel" data-coordinates="47.128396,10.2638698" data-marker="Skihotel Galzig" href="https://www.google.com/maps/dir/?api=1&amp;origin=Skihotel+Galzig%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking"><span data-en="About 6 min on foot to the venue">步行到场地约 6 分钟</span></a></li>
+          <li><strong><span data-en="Parking">停车</span></strong> <span data-en="€10 per car per night.">每车 €10／晚。</span></li>
+          <li><strong><span data-en="Style">风格</span></strong> <span data-en="Contemporary boutique style.">现代精品酒店风格。</span></li>
+          <li><strong><span data-en="Room count">房量</span></strong> <span data-en="15 double rooms, 6 suites and 3 Lodge apartments.">15 间双人房、6 间套房、3 套 公寓。</span></li>
+          <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Hotel rooms can be booked for 1–2 nights.">酒店客房可住一晚或两晚。</span></li>
+          <li><strong><span data-en="Drawback">劣势</span></strong> <span data-en="Lodge apartments require at least two nights.">公寓至少住两晚。</span></li>
+          <li><strong><span data-en="Breakfast">早餐</span></strong> <span data-en="Hotel rooms include breakfast. Lodge breakfast costs about €28 per person.">客房含早餐。公寓早餐另计，约 €28／人。</span></li>
+          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Check-in is generally possible around noon.">中午 12 点左右一般可以入住。</span></li>
+          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="Confirm payment terms with the hotel when booking.">付款安排请在订房时向酒店确认。</span></li>
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Free until 15 days before arrival. Room charges apply from 14 days before arrival.">提前 15 天可免费取消，14 天内收取房费。</span></li>
+          <li><strong><span data-en="Booking">预订方式</span></strong> <span data-en="Email the hotel and quote booking code YUEYAO.">邮件联系酒店，注明预订代码 YUEYAO。</span> <a href="mailto:info@skihotelgalzig.at">info@skihotelgalzig.at</a></li>
+        </ul>
+        <details class="stay-email-template">
+          <summary><span data-en="English booking email template">英文订房邮件模板</span></summary>
+          <p lang="en"><strong>Subject:</strong> Wedding accommodation request – YUEYAO – June 2027</p>
+          <p lang="en" style="white-space: pre-wrap">Dear Skihotel Galzig team,
+
+We're attending the wedding of Mr. Yue Yin and Mr. Siyao Peng on 19th June 2027 at the Museum Restaurant–Café. We'd like to book a stay using the booking code YUEYAO.
+
+Name for the booking: [guest's full name]
+Check-in: [19 June 2027]
+Check-out: [20 June 2027]
+Number of adults: [number]
+Number of children: [number]
+Preferred room type: [double room, suite or apartment]
+
+Please let us know how to confirm our booking.
+
+Kind regards,
+[Your name]</p>
+          <p><a href="mailto:info@skihotelgalzig.at?subject=Wedding%20accommodation%20request%20%E2%80%93%20YUEYAO%20%E2%80%93%20June%202027&amp;body=Dear%20Skihotel%20Galzig%20team%2C%0D%0A%0D%0AWe%27re%20attending%20the%20wedding%20of%20Mr.%20Yue%20Yin%20and%20Mr.%20Siyao%20Peng%20on%2019th%20June%202027%20at%20the%20Museum%20Restaurant%E2%80%93Caf%C3%A9.%20We%27d%20like%20to%20book%20a%20stay%20using%20the%20booking%20code%20YUEYAO.%0D%0A%0D%0AName%20for%20the%20booking%3A%20%5Bguest%27s%20full%20name%5D%0D%0ACheck-in%3A%20%5B19%20June%202027%5D%0D%0ACheck-out%3A%20%5B20%20June%202027%5D%0D%0ANumber%20of%20adults%3A%20%5Bnumber%5D%0D%0ANumber%20of%20children%3A%20%5Bnumber%5D%0D%0APreferred%20room%20type%3A%20%5Bdouble%20room%2C%20suite%20or%20apartment%5D%0D%0A%0D%0APlease%20let%20us%20know%20how%20to%20confirm%20our%20booking.%0D%0A%0D%0AKind%20regards%2C%0D%0A%5BYour%20name%5D"><span data-en="Open English email draft">打开英文邮件草稿</span> ↗</a></p>
+        </details>
+        <details class="stay-email-template">
+          <summary><span data-en="German booking email template">德文订房邮件模板</span></summary>
+          <p lang="de"><strong>Betreff:</strong> Buchungsanfrage zur Hochzeit – YUEYAO – Juni 2027</p>
+          <p lang="de" style="white-space: pre-wrap">Liebes Team von Skihotel Galzig,
+
+wir sind am 19. Juni 2027 zur Hochzeit von Herrn Yue Yin und Herrn Siyao Peng im Museum Restaurant–Café eingeladen und würden gerne eine Unterkunft mit dem Buchungscode YUEYAO reservieren.
+
+Name für die Buchung: [vollständiger Name]
+Anreise: [19. Juni 2027]
+Abreise: [20. Juni 2027]
+Anzahl der Erwachsenen: [Anzahl]
+Anzahl der Kinder: [Anzahl]
+Zimmerwunsch: [Doppelzimmer, Suite oder Apartment]
+
+Bitte teilen Sie uns mit, wie wir die Buchung bestätigen können.
+
+Mit freundlichen Grüßen
+[Ihr Name]</p>
+          <p><a href="mailto:info@skihotelgalzig.at?subject=Buchungsanfrage%20zur%20Hochzeit%20%E2%80%93%20YUEYAO%20%E2%80%93%20Juni%202027&amp;body=Liebes%20Team%20von%20Skihotel%20Galzig%2C%0D%0A%0D%0Awir%20sind%20am%2019.%20Juni%202027%20zur%20Hochzeit%20von%20Herrn%20Yue%20Yin%20und%20Herrn%20Siyao%20Peng%20im%20Museum%20Restaurant%E2%80%93Caf%C3%A9%20eingeladen%20und%20w%C3%BCrden%20gerne%20eine%20Unterkunft%20mit%20dem%20Buchungscode%20YUEYAO%20reservieren.%0D%0A%0D%0AName%20f%C3%BCr%20die%20Buchung%3A%20%5Bvollst%C3%A4ndiger%20Name%5D%0D%0AAnreise%3A%20%5B19.%20Juni%202027%5D%0D%0AAbreise%3A%20%5B20.%20Juni%202027%5D%0D%0AAnzahl%20der%20Erwachsenen%3A%20%5BAnzahl%5D%0D%0AAnzahl%20der%20Kinder%3A%20%5BAnzahl%5D%0D%0AZimmerwunsch%3A%20%5BDoppelzimmer%2C%20Suite%20oder%20Apartment%5D%0D%0A%0D%0ABitte%20teilen%20Sie%20uns%20mit%2C%20wie%20wir%20die%20Buchung%20best%C3%A4tigen%20k%C3%B6nnen.%0D%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0D%0A%5BIhr%20Name%5D"><span data-en="Open German email draft">打开德文邮件草稿</span> ↗</a></p>
+        </details>
+        <details class="stay-email-template stay-apartment-details">
+          <summary><span data-en="Apartment layouts, rates and floor plans">公寓房型、价格与平面图</span></summary>
+          <ul class="stay-terms apartment-plans">
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga/">Valluga 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="140 m²">140 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga1_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga1_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 1 平面图" data-en-alt="Valluga 1 floor plan"></a></li>
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-2/">Valluga 2 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="130 m²">130 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga2_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga2_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 2 平面图" data-en-alt="Valluga 2 floor plan"></a></li>
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-on-top/">Valluga on Top ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €320">4 人 €320</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga3_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga3_lodge.jpg" loading="lazy" decoding="async" alt="Valluga on Top 平面图" data-en-alt="Valluga on Top floor plan"></a></li>
+          </ul>
+        </details>
+        </div>
       </article>
       <article class="stay-card">
-        <h4><span data-en="[Alternative]">【备选】</span> Hotel Kristall</h4>
+        <h4><span data-en="[Alternative]">【备选】</span> Hotel Kristall <span role="img" aria-label="三星级" data-en-aria-label="Three-star hotel">⭐️⭐️⭐️</span></h4>
         <p><strong><span data-en="Double €150/night, suite for three €225/night">双人房 €150／晚，三人套房 €225／晚</span></strong></p>
         <p class="stay-detail"><a data-map-point="hotel" data-coordinates="47.1298522,10.2667522" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Kristall%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Kristall"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Kristall%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.5/5 (58 reviews)">Google 地图 4.5/5（58 条评价）</span> ↗</a></p>
         <p class="guide-links"><a href="https://www.hotelkristall.com/en/rooms/doublerooms/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
@@ -172,12 +248,11 @@ Mit freundlichen Grüßen
         <ul class="stay-terms">
           <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Traditional Tyrolean hotel with wood interiors and a restaurant.">传统蒂罗尔风格酒店，木质装修，设有餐厅。</span></li>
           <li><strong><span data-en="Drawback">劣势</span></strong> <span data-en="Its Google rating is slightly lower than the other two options. The main concern in negative reviews is street and bar noise at night. We asked about it and heard the nearby bar may be closed in summer.">Google 评分比另外两家略低，差评主要提到夜间街道和酒吧的噪音。我们问过，附近的酒吧夏季可能不营业。</span></li>
-          <li><strong><span data-en="Length of stay">入住晚数</span></strong> <span data-en="For a one- or two-night stay, please confirm your dates with us when booking.">住一晚或两晚，请在订房时和我们确认日期。</span></li>
           <li><strong><span data-en="Breakfast">早餐</span></strong> <span data-en="The room rate includes breakfast.">房价含早餐。</span></li>
           <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="From noon on Saturday.">周六 12:00 起。</span></li>
           <li><strong><span data-en="Payment">付款</span></strong> <span data-en="Pay by card at the hotel (Amex excluded).">到店刷卡，无需预付（不收 Amex）。</span></li>
-          <li><strong><span data-en="Changes or cancellation">取消或更改</span></strong> <span data-en="Contact us if your plans change.">请先联系我们。</span></li>
-          <li><strong><span data-en="Booking">预订方式</span></strong> <span data-en="Contact us directly and we’ll assign the rooms.">请直接联系我们，由我们统一安排房间。</span></li>
+          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Contact us if your plans change.">如需取消或更改，请先联系我们。</span></li>
+          <li><strong><span data-en="Booking">预订方式</span></strong> <span data-en="Contact us directly and we’ll assign the rooms. Please confirm your dates with us if staying one or two nights.">请直接联系我们，由我们统一安排房间。住一晚或两晚，请在订房时和我们确认日期。</span></li>
         </ul>
       </article>
       <article class="stay-card">
@@ -248,7 +323,7 @@ Mit freundlichen Grüßen
             <li><a href="https://www.alptyrol.at/en/apartments/alpenrose/">Alpenrose ↗</a><br><span data-en="2–4 guests · 45 m² · separate double bedroom and bunk bed">2–4 人 · 45 m² · 独立双人卧室和上下铺</span><br><strong><span data-en="2 guests €384, 3 guests €406, 4 guests €450">2 人 €384，3 人 €406，4 人 €450</span></strong></li>
             <li><a href="https://www.alptyrol.at/en/apartments/rosmarin/">Rosmarin ↗</a><br><span data-en="4 guests · 45 m² · described as a studio with two double beds">4 人 · 45 m² · 官网描述为单间公寓，配两张双人床</span><br><strong><span data-en="2 guests €348, 3 guests €368, 4 guests €408">2 人 €348，3 人 €368，4 人 €408</span></strong></li>
             <li><a href="https://www.alptyrol.at/en/apartments/anemone/">Anemone ↗</a><br><span data-en="2–5 guests · 45 m² · separate double bedroom and bunk bed. Ask the property about the fifth bed.">2–5 人 · 45 m² · 独立双人卧室和上下铺，第五个床位请向住宿方确认</span><br><strong><span data-en="2 guests €442, 3 guests €468, 4 guests €520, 5 guests €566">2 人 €442，3 人 €468，4 人 €520，5 人 €566</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/penthouse-lilie/">Penthouse Lilie ↗</a><br><span data-en="8 guests · 110 m² · 4 double bedrooms and 2 shower rooms">8 人 · 110 m² · 4 间双人卧室、2 间淋浴室</span><br><strong><span data-en="2–6 guests €920, 7 guests €972, 8 guests €1,080">2–6 人 €920，7 人 €972，8 人 €1,080</span></strong></li>
+            <li><a href="https://www.alptyrol.at/en/apartments/penthouse-lilie/">Penthouse Lilie ↗</a><br><span data-en="8 guests · 110 m² · 4 double bedrooms and 2 bathrooms">8 人 · 110 m² · 4 间双人卧室、2 间浴室</span><br><strong><span data-en="2–6 guests €920, 7 guests €972, 8 guests €1,080">2–6 人 €920，7 人 €972，8 人 €1,080</span></strong></li>
           </ul>
         </details>
       </article>
@@ -456,6 +531,7 @@ Mit freundlichen Grüßen
     <select name="lodging_preference">
       <option value="" data-en="Undecided">待定</option>
       <option value="rundeck" data-en="Hotel Garni Rundeck (double €140/night)">Hotel Garni Rundeck（双人房 €140／晚）</option>
+      <option value="galzig" data-en="Skihotel Galzig (hotel room about €70/person/night)">Skihotel Galzig（酒店客房约 €70／人／晚）</option>
       <option value="kristall" data-en="Hotel Kristall (double €150/night, one or two nights)">Hotel Kristall（双人房 €150／晚，可住一或两晚）</option>
       <option value="alptyrol" data-en="ALPtyrol Appartements (about €70–100/person/night, minimum two nights)">ALPtyrol Appartements（约 €70–100／人／晚，至少两晚）</option>
       <option value="own" data-en="I’ll arrange my own accommodation">自行安排住宿</option>
