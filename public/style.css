@@ -79,7 +79,7 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .gallery-header .controls button{border-radius:50%;width:38px;height:38px}
 .gallery-header .controls #gallery-playback{border-radius:999px;width:auto}
 .photo-strip figure{display:grid;width:min(100%,1040px);gap:clamp(8px,1.5svh,18px);margin:0 auto}
-.story-image{position:relative;width:100%;min-width:0;justify-self:center;aspect-ratio:3/2;max-height:min(620px,var(--story-available-height,55svh))}
+.story-image{position:relative;width:100%;min-width:0;justify-self:center;aspect-ratio:3/1.944;max-height:min(603px,calc(var(--story-available-height,55svh) * .972))}
 .photo-strip img{position:absolute;inset:0;display:block;width:auto;height:100%;max-width:100%;margin:auto;object-fit:contain;box-shadow:0 0 0 3px #e8e0d2}
 .photo-strip figcaption{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:start;gap:clamp(6px,1.5vw,20px);min-width:0}
 .story-voice{min-width:0;padding:clamp(6px,1vw,14px);border:1px solid var(--rule);border-radius:4px 14px 14px;background:#faf7f0}
@@ -328,7 +328,7 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
   .story-stage .photo-strip{grid-template-rows:auto}
   .story-stage .photo-strip>li{grid-row:auto;display:block}
   .story-stage .photo-strip figure{grid-row:auto;grid-template-rows:auto auto;row-gap:10px}
-  .story-stage .story-image{grid-row:1;width:100%;max-height:52svh}
+  .story-stage .story-image{grid-row:1;width:100%;aspect-ratio:3/1.76;max-height:45.76svh}
   .story-stage .photo-strip figcaption{grid-row:2;align-self:start}
   .story-stage .story-arrow{top:calc(var(--story-frame-height,0px)/2);bottom:auto;transform:translateY(-50%)}
   .story-stage .story-arrow-prev{left:4px}
@@ -337,9 +337,20 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
   .photo-strip .story-context,
   .photo-strip figcaption .story-copy,
   html[lang=en] .photo-strip .story-context,
-  html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.92rem,3.8vw,1.12rem);line-height:1.35}
+  html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.97rem,4.05vw,1.18rem);line-height:1.35}
 }
 
+
+@media(min-width:701px) and (min-height:551px){
+  .photo-strip figure{width:min(100%,1120px)}
+  .photo-strip figcaption{row-gap:clamp(5px,1svh,12px)}
+  .story-voice{padding:clamp(6px,.8vw,11px)}
+  .story-voice+ .story-voice{margin-top:clamp(8px,1.8svh,20px)}
+  .photo-strip .story-context,
+  .photo-strip figcaption .story-copy{font-size:clamp(1.05rem,1.55vw,1.4rem);line-height:1.4}
+  html[lang=en] .photo-strip .story-context,
+  html[lang=en] .photo-strip figcaption .story-copy{font-size:clamp(.95rem,1.35vw,1.25rem)}
+}
 
 @media(min-width:761px){
   .stay-cards>.stay-card-recommended{
