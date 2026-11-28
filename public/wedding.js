@@ -62,7 +62,7 @@ function scheduleNextPhoto() {
   clearTimeout(playbackTimer);
   if (!playing || !galleryVisible || document.hidden || !animatedSlide) return;
 
-  const animations = animatedSlide.querySelector("figcaption").getAnimations({subtree: true});
+  const animations = animatedSlide.getAnimations({subtree: true});
   const remaining = Math.max(0, ...animations.map(animation => {
     const end = animation.effect.getComputedTiming().endTime;
     return end - (animation.currentTime ?? 0);
@@ -83,12 +83,14 @@ function prepareStoryLines() {
   for (const slide of slides) {
     const caption = slide.querySelector("figcaption");
     let delay = slide.querySelector(".story-swipe-hint") ? 1.6 : 0;
-    if (!caption.classList.contains("story-has-context")) {
-      for (const item of caption.querySelectorAll("time, h3")) {
-        item.classList.add("story-line");
-        item.style.setProperty("--story-delay", `${delay}s`);
-        delay += lineInterval;
-      }
+    const intro = caption.classList.contains("story-has-context")
+      ? [...caption.querySelectorAll(".story-context-meta, .story-context > p")]
+      : [...caption.querySelectorAll("time, h3")];
+    intro.push(slide.querySelector(".story-zoom"));
+    for (const item of intro) {
+      item.classList.add("story-reveal");
+      item.style.setProperty("--story-delay", `${delay}s`);
+      delay += lineInterval;
     }
     const bySentence = strip.dataset.storyEffect === "sentence";
     for (const story of caption.querySelectorAll(".story-copy")) {

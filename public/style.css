@@ -88,7 +88,8 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .gallery .story-author{margin:0 0 .3em;color:var(--olive);font-size:.85rem;font-weight:500}
 .story-voice+ .story-voice .story-author{text-align:right}
 @media(prefers-reduced-motion:no-preference){
-  .photo-strip .story-active .story-voice+ .story-voice{animation:story-line-in .25s ease-out var(--voice-delay,0s) both}
+  .photo-strip .story-active .story-voice:has(.story-line){animation:story-line-in .25s ease-out var(--voice-delay,0s) both}
+  .photo-strip .story-active .story-reveal{animation:story-stage-in .38s ease-out var(--story-delay,0s) both}
 }
 @supports(grid-template-rows:subgrid){
   .photo-strip{grid-template-rows:auto auto;row-gap:clamp(8px,1.5svh,18px)}
@@ -227,6 +228,10 @@ html[lang=zh-Hans] .photo-strip figcaption .story-copy{font-family:"Ma Shan Zhen
 .photo-strip figcaption > :is(time,h3){font-size:clamp(1.2rem,1.85vw,1.65rem);line-height:1.55}
 .photo-strip figcaption:not(.story-has-context) .story-copy{margin-top:.4em}
 
+@keyframes story-stage-in{
+  from{opacity:0;visibility:hidden}
+  to{opacity:1;visibility:visible}
+}
 @keyframes story-line-in{
   from{opacity:0}
   to{opacity:1}
