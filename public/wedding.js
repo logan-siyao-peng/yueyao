@@ -67,7 +67,7 @@ function scheduleNextPhoto() {
     const end = animation.effect.getComputedTiming().endTime;
     return end - (animation.currentTime ?? 0);
   }));
-  playbackTimer = setTimeout(() => scrollPhoto(1), remaining + 2000);
+  playbackTimer = setTimeout(() => scrollPhoto(1), remaining + 3000);
 }
 
 function animateStory(slide) {
@@ -79,7 +79,7 @@ function animateStory(slide) {
 }
 
 function prepareStoryLines() {
-  const lineInterval = 0.8;
+  const lineInterval = 1;
   for (const slide of slides) {
     const caption = slide.querySelector("figcaption");
     let delay = slide.querySelector(".story-swipe-hint") ? 1.6 : 0;

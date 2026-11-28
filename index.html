@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<link rel="stylesheet" href="public/style.css?v=story-sequence">
+<link rel="stylesheet" href="public/style.css?v=sunday-itinerary-spacing">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
-<script src="public/wedding.js?v=story-sequence" defer></script>
+<script src="public/wedding.js?v=story-pace" defer></script>
 </head>
 <body>
 <header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation">
@@ -40,10 +40,10 @@
       </p>
       <a class="button" href="#rsvp"><span data-en="Send us a note">给我们捎个信</span> <span aria-hidden="true">↗</span></a>
       <p class="hero-links">
-        <a href="#details"><span data-en="Getting Here (Travel)">抵达（交通）</span> ↗</a>
-        <a href="#stays"><span data-en="Where to Stay (Accommodation)">下榻（住宿）</span> ↗</a>
-        <a href="#schedule"><span data-en="The Celebration (Wedding Schedule)">共聚（婚礼流程）</span> ↗</a>
-        <a href="#activities"><span data-en="Explore (A Sunday in St. Anton)">漫游（周日闲逛）</span> ↗</a>
+        <a href="#details"><span data-en="Getting Here · How to Get to St. Anton">抵达 · 怎么去圣安东</span> ↗</a>
+        <a href="#stays"><span data-en="Where to Stay · Recommended Hotels">下榻 · 优选酒店</span> ↗</a>
+        <a href="#schedule"><span data-en="The Celebration · Wedding Schedule">共聚 · 婚礼流程</span> ↗</a>
+        <a href="#activities"><span data-en="Explore · St. Anton">漫游 · 探索圣安东</span> ↗</a>
         <a href="#photos"><span data-en="Our Story">我们的故事</span> ↗</a>
       </p>
     </div>
@@ -63,7 +63,7 @@
     <img class="venue-portrait" src="public/museum-venue.jpg" alt="Museum Restaurant–Café 的历史别墅和山景" data-en-alt="The historic Museum Restaurant–Café villa and mountain scenery" loading="lazy">
   </div>
   <section class="venue-travel" aria-labelledby="travel-title">
-    <h3 id="travel-title"><span data-en="Getting to St. Anton">如何抵达圣安东</span></h3>
+    <h3 id="travel-title"><span data-en="Getting to St. Anton">怎么去圣安东</span></h3>
     <div class="map-overview">
       <div class="wedding-map" data-wedding-map="regional" role="region" aria-labelledby="travel-title" hidden></div>
       <p class="guide-links"><a data-map-point="venue" data-coordinates="47.1276294,10.2604917" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg" target="_blank" rel="noopener">Museum Restaurant–Café · Google Maps ↗</a></p>
@@ -294,10 +294,11 @@ Mit freundlichen Grüßen
   </ol>
 </section>
 <section id="activities" class="section" aria-labelledby="activities-title">
-  <h2 id="activities-title"><span data-en="Explore St. Anton">漫游圣安东</span></h2>
-  <p><strong data-en="Sunday, June 20, 2027">2027 年 6 月 20 日（周日）</strong><br>
-    <span data-en="We’re planning a few optional outings around St. Anton.">这一天我们会安排几项自愿参加的周边活动。</span></p>
-  <p class="activities-update"><strong data-en="Draft · Summer hours pending · Full plan expected April–May 2027">行程初稿 · 夏季开放待确认 · 预计 2027 年四、五月公布</strong></p>
+  <h2 id="activities-title"><span data-en="Explore St. Anton">探索圣安东</span></h2>
+  <div class="activities-update">
+    <h3 data-en="On Sunday, June 20, we’ll organise a few optional outings around St. Anton.">6 月 20 日（周日），我们会安排几项圣安东周边活动，大家可以自愿参加。</h3>
+    <p><span data-en="The ideas below are provisional, and we expect to share the full itinerary in April or May 2027 once lift and other summer opening dates are confirmed.">以下是初步建议，等缆车等设施的夏季开放时间确定后，预计在 2027 年四、五月公布具体行程。</span></p>
+  </div>
   <h3 class="activity-heading"><span data-en="Summer mountain lifts">夏季缆车</span></h3>
   <p><span data-en="Gampenbahn, Kapallbahn and Rendlbahn may run that weekend. The 2027 summer timetable is still pending.">Gampenbahn、Kapallbahn 和 Rendlbahn 那个周末可能开放，具体以 2027 年夏季时刻表为准。</span>
     <a href="https://www.arlbergerbergbahnen.com/de/stanton-sommer/betriebszeiten-sommer/" target="_blank" rel="noopener"><span data-en="2026 timetable for reference">参考 2026 年时刻表</span> ↗</a></p>
@@ -560,13 +561,31 @@ Mit freundlichen Grüßen
 </label>
     <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="child_2_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
     </fieldset>
+    <fieldset class="rsvp-guest" hidden disabled>
+      <legend><span data-en="Child 3">儿童 3</span> <button type="button" class="rsvp-guest-remove" data-guest-change="-1" aria-label="移除儿童 3" data-en-aria-label="Remove Child 3">−</button></legend>
+      <label><span data-en="Age on the wedding day">婚礼当天的年龄</span> <span aria-hidden="true">*</span><input name="child_age_3" type="number" min="0" max="17" required></label>
+      <label for="child_3-attendance"><span data-en="Likelihood of attending">出席概率</span></label>
+      <output for="child_3-attendance">50%</output>
+      <input type="range" id="child_3-attendance" min="0" max="100" step="1" value="50">
+      <input type="hidden" name="child_probability_3" value="50">
+      <label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
+  <select name="child_3_dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
+  </select>
+</label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="child_3_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+    </fieldset>
     <div class="rsvp-guest-actions">
       <button type="button" data-guest-change="1"><span data-en="+ Add child">＋ 添加儿童</span></button>
     </div>
   </div>
 </fieldset>
 <div id="stay-field" class="rsvp-stay">
-  <p class="form-note"><strong data-en="The following questions are optional.">以下选填</strong><span data-en=" Tell us where you’d prefer to stay.">。可以告诉我们你更想住哪儿。</span> <a href="#recommended-stays" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: .18em"><span data-en="See our two recommended hotels">查看两家优选住宿</span> ↗</a></p>
+  <p class="form-note"><strong data-en="The following questions are optional.">以下选填</strong><span data-en=" Tell us where you’d prefer to stay.">。可以告诉我们你更想住哪儿。</span></p>
+  <p class="form-note"><a href="#recommended-stays" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: .18em"><span data-en="See our two recommended hotels">查看两家优选住宿</span> ↗</a></p>
   <label><span data-en="How many nights do you expect to stay?">预计住几晚？</span>
     <select name="stay_nights">
       <option value="" data-en="Undecided">待定</option>

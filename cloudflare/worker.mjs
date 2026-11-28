@@ -2,7 +2,8 @@ import todos from './todo.mjs';
 
 const origins = new Set(['https://yueyao.de', 'https://www.yueyao.de']);
 const probabilities = new Set(['0', '20', '40', '50', '60', '80', '100']);
-const counts = new Set(['0', '1', '2']);
+const adultCounts = new Set(['0', '1', '2']);
+const childCounts = new Set(['0', '1', '2', '3']);
 const columns = 'name,email,attendance_probability,additional_adults,child_count,adult_name_1,adult_probability_1,adult_name_2,adult_probability_2,dietary_preference,stay_nights,lodging_preference,note,guest_details';
 const schema = `CREATE TABLE IF NOT EXISTS rsvps (id INTEGER PRIMARY KEY, received_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, name TEXT NOT NULL, email TEXT NOT NULL, attendance_probability INTEGER NOT NULL, additional_adults INTEGER NOT NULL, child_count INTEGER NOT NULL, adult_name_1 TEXT, adult_probability_1 INTEGER, adult_name_2 TEXT, adult_probability_2 INTEGER, dietary_preference TEXT NOT NULL, stay_nights TEXT NOT NULL, lodging_preference TEXT NOT NULL, note TEXT NOT NULL, guest_details TEXT NOT NULL DEFAULT '')`;
 
@@ -17,7 +18,7 @@ function readFields(data) {
   const attending = probability !== '0';
   const adults = attending ? data.additional_adults : '0';
   const children = attending ? data.child_count : '0';
-  if (!counts.has(adults) || !counts.has(children)) return null;
+  if (!adultCounts.has(adults) || !childCounts.has(children)) return null;
   const companions = [];
   for (const i of [1, 2]) {
     if (i > Number(adults)) {

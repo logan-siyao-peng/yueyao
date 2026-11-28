@@ -15,7 +15,7 @@ nav{display:flex;gap:clamp(12px,3vw,42px);font-size:.86rem}
 .hero-copy{padding:clamp(55px,9vw,135px) 6vw;align-self:center;text-align:center}
 .hero-photo{position:relative;min-height:350px;background:#c1ac91}
 .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:24% center}
-.hero-links{display:flex;justify-content:center;gap:8px 24px;flex-wrap:wrap;margin:18px 0 0}
+.hero-links{display:grid;justify-items:center;gap:5px;margin:18px 0 0;text-align:center}
 .hero-map,.hero-links a{text-decoration:underline;text-underline-offset:.2em}
 .hero-map{font-size:.9rem}
 h1,h2{font-family:var(--serif);font-weight:500;margin:0;line-height:1.15}
@@ -89,6 +89,10 @@ html[lang=en] h1{font-family:Georgia,serif;font-size:clamp(2.85rem,5.4vw,6rem);l
 .story-voice+ .story-voice .story-author{text-align:right}
 @media(prefers-reduced-motion:no-preference){
   .photo-strip .story-active .story-voice:has(.story-line){animation:story-line-in .25s ease-out var(--voice-delay,0s) both}
+  .photo-strip .story-reveal,
+  .photo-strip .story-line,
+  .photo-strip .story-voice:has(.story-line){opacity:0}
+  .photo-strip li:not(.story-active) .story-zoom.story-reveal{visibility:hidden}
   .photo-strip .story-active .story-reveal{animation:story-stage-in .38s ease-out var(--story-delay,0s) both}
 }
 @supports(grid-template-rows:subgrid){
@@ -297,7 +301,7 @@ html[lang=en] .photo-strip figcaption .story-copy{
 }
 
 .photo-strip .story-context{grid-column:1/-1;text-align:center}
-.photo-strip .story-context-meta{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:0 .6em}
+.photo-strip .story-context-meta{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:0 .6em;font-size:1.08em}
 .photo-strip .story-context :is(time,h3,p){margin:0;font:inherit;line-height:1.4}
 .photo-strip .story-context :is(time,h3){color:var(--olive);font-weight:600}
 .photo-strip .story-context p{margin-top:.2em;color:var(--muted);font-size:.9rem;text-wrap:balance}
@@ -372,7 +376,9 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
 .rsvp-guest-remove{min-width:2.75rem;min-height:2.75rem;margin-inline-start:.25rem}
 #recommended-stays{scroll-margin-top:7rem}
 
-.activities-update{padding:.75rem 1rem;border-inline-start:3px solid var(--olive);background:#eeeadf}
+.activities-update{margin-top:clamp(1rem,2.2vw,1.75rem);padding:.75rem 1rem;border-inline-start:3px solid var(--olive);background:#eeeadf}
+.activities-update h3{font:500 clamp(1.05rem,1.6vw,1.25rem)/1.35 var(--serif);margin:0;color:var(--olive)}
+.activities-update p{margin:.35rem 0 0}
 .activity-with-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,19rem);gap:.65rem;align-items:center}
 .activity-map{display:block;width:100%;height:clamp(150px,23vw,205px);margin:0;overflow:hidden}
 .activity-map img{display:block;width:100%;height:100%;object-fit:cover}
