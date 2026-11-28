@@ -119,7 +119,7 @@ label > .form-note{display:block;margin-top:4px}
 
 .wedding-guide address{font-style:normal}
 .venue-portrait{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;align-self:center}
-.venue-travel,.venue-stays{margin-top:clamp(28px,5vw,60px)}
+.venue-travel{margin-top:clamp(28px,5vw,60px)}
 .stay-terms{padding-left:1.2em;margin:12px 0}
 .stay-terms li+li{margin-top:5px}
 .wedding-guide h3{font:500 1.7rem var(--serif);margin:0}
@@ -355,3 +355,14 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
 
 .rsvp-guest-remove{min-width:2.75rem;min-height:2.75rem;margin-inline-start:.25rem}
 #recommended-stays{scroll-margin-top:7rem}
+
+.activities-update{padding:.75rem 1rem;border-inline-start:3px solid var(--olive);background:#eeeadf}
+.activity-with-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,19rem);gap:.65rem;align-items:center}
+.activity-map{display:block;width:100%;height:clamp(150px,23vw,205px);margin:0;overflow:hidden}
+.activity-map img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:640px){.activity-with-map{grid-template-columns:minmax(0,1fr)}}
+
+#activities .activity-heading{font-size:clamp(1.55rem,3vw,2.1rem);margin:.8em 0 .3em}
+#activities h4{margin:.75em 0 .2em}
+#activities .guide-list{margin:.25em 0 .65em}
+#activities .guide-list li{padding-block:.45rem}

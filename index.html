@@ -9,15 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<link rel="stylesheet" href="public/style.css?v=rsvp-guest-controls">
+<link rel="stylesheet" href="public/style.css?v=outings-photo-height">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
-<script src="public/wedding.js?v=rsvp-stays-tab" defer></script>
+<script src="public/wedding.js?v=stuben-photo" defer></script>
 </head>
 <body>
 <header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation">
   <a href="#home"><span data-en="Home">首页</span></a>
   <a href="#rsvp"><span data-en="RSVP">诚邀</span></a>
   <a href="#details"><span data-en="Getting Here">抵达</span></a>
+  <a href="#stays"><span data-en="Where to Stay">下榻</span></a>
   <a href="#schedule"><span data-en="The Celebration">共聚</span></a>
   <a href="#activities"><span data-en="Explore">漫游</span></a>
   <a href="#photos"><span data-en="Our Story">我们的故事</span></a>
@@ -35,11 +36,12 @@
         <time datetime="2027-06-19" data-en="Saturday, June 19, 2027">2027 年 6 月 19 日（周六）</time><br>
         <span lang="en">Museum Restaurant Cafe</span><br>
         <span data-en="St. Anton, Austria">奥地利圣安东</span><br>
-        <a class="hero-map" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a>
+        <a class="hero-map" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg" target="_blank" rel="noopener"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a>
       </p>
       <a class="button" href="#rsvp"><span data-en="Send us a note">给我们捎个信</span> <span aria-hidden="true">↗</span></a>
       <p class="hero-links">
-        <a href="#details"><span data-en="Getting Here (Travel &amp; Stays)">抵达（交通和住宿）</span> ↗</a>
+        <a href="#details"><span data-en="Getting Here (Travel)">抵达（交通）</span> ↗</a>
+        <a href="#stays"><span data-en="Where to Stay (Accommodation)">下榻（住宿）</span> ↗</a>
         <a href="#schedule"><span data-en="The Celebration (Wedding Schedule)">共聚（婚礼流程）</span> ↗</a>
         <a href="#activities"><span data-en="Explore (A Sunday in St. Anton)">漫游（周日闲逛）</span> ↗</a>
         <a href="#photos"><span data-en="Our Story">我们的故事</span> ↗</a>
@@ -56,7 +58,7 @@
       <h2 id="details-title">Museum Restaurant–Café</h2>
       <p><span data-en="We’re celebrating in St. Anton am Arlberg, Tyrol, Austria, at a historic wooden villa on the hillside that houses a ski museum and restaurant.">我们会在奥地利蒂罗尔的 St. Anton am Arlberg 举办婚礼。场地是一座坐落在山坡上的木质历史别墅，里面有滑雪博物馆和餐厅。</span></p>
       <address>Rudi-Matt-Weg 10, 6580 St. Anton am Arlberg, <span data-en="Austria">奥地利</span></address>
-      <p class="guide-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a><a href="https://www.museum-restaurant.at/de/hochzeiten/"><span data-en="Venue website">场地官网</span> ↗</a></p>
+      <p class="guide-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg" target="_blank" rel="noopener"><span data-en="Open in Google Maps">在地图上查看</span> ↗</a><a href="https://www.museum-restaurant.at/de/hochzeiten/" target="_blank" rel="noopener"><span data-en="Venue website">场地官网</span> ↗</a></p>
     </div>
     <img class="venue-portrait" src="public/museum-venue.jpg" alt="Museum Restaurant–Café 的历史别墅和山景" data-en-alt="The historic Museum Restaurant–Café villa and mountain scenery" loading="lazy">
   </div>
@@ -64,49 +66,50 @@
     <h3 id="travel-title"><span data-en="Getting to St. Anton">如何抵达圣安东</span></h3>
     <div class="map-overview">
       <div class="wedding-map" data-wedding-map="regional" role="region" aria-labelledby="travel-title" hidden></div>
-      <p class="guide-links"><a data-map-point="venue" data-coordinates="47.1276294,10.2604917" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg">Museum Restaurant–Café · Google Maps ↗</a></p>
+      <p class="guide-links"><a data-map-point="venue" data-coordinates="47.1276294,10.2604917" href="https://www.google.com/maps/search/?api=1&amp;query=Museum+Restaurant+Cafe+Rudi-Matt-Weg+10+St+Anton+am+Arlberg" target="_blank" rel="noopener">Museum Restaurant–Café · Google Maps ↗</a></p>
     </div>
     <div class="arrival-guide">
       <div class="airport-grid">
         <article>
           <h4><span data-en="From Zürich Airport (ZRH)">从苏黎世机场出发（ZRH）</span></h4>
-          <p class="guide-links"><a data-map-point="airport" data-coordinates="47.4646,8.5491" data-marker="Zürich · ZRH" href="https://www.google.com/maps/dir/?api=1&amp;origin=Z%C3%BCrich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=Z%C3%BCrich+Flughafen%21&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=07%3A00&amp;timesel=depart"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
+          <p class="guide-links"><a data-map-point="airport" data-coordinates="47.4646,8.5491" data-marker="Zürich · ZRH" href="https://www.google.com/maps/dir/?api=1&amp;origin=Z%C3%BCrich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving" target="_blank" rel="noopener"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=Z%C3%BCrich+Flughafen%21&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=07%3A00&amp;timesel=depart" target="_blank" rel="noopener"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
           <p class="map-distance"><span data-en="About 200 km to St. Anton">到 St. Anton 约 200 公里</span></p>
           <p><span data-en="International guests can look at flights to Zürich first. Direct trains from Zürich HB to St. Anton take about 2½–3 hours. Driving from Zürich takes about 2½ hours.">国际旅客可优先飞苏黎世机场。从苏黎世中央火车站直达圣安东约 2.5–3 小时，从苏黎世自驾约 2.5 小时。</span></p>
         </article>
         <article>
           <h4><span data-en="From Innsbruck Airport (INN)">从因斯布鲁克机场出发（INN）</span></h4>
-          <p class="guide-links"><a data-map-point="airport" data-coordinates="47.2600,11.3439" data-marker="Innsbruck · INN" href="https://www.google.com/maps/dir/?api=1&amp;origin=Innsbruck+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=Innsbruck+Flughafen&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=09%3A00&amp;timesel=depart"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
+          <p class="guide-links"><a data-map-point="airport" data-coordinates="47.2600,11.3439" data-marker="Innsbruck · INN" href="https://www.google.com/maps/dir/?api=1&amp;origin=Innsbruck+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving" target="_blank" rel="noopener"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=Innsbruck+Flughafen&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=09%3A00&amp;timesel=depart" target="_blank" rel="noopener"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
           <p class="map-distance"><span data-en="About 100 km to St. Anton">到 St. Anton 约 100 公里</span></p>
           <p><span data-en="Innsbruck is the closest airport to St. Anton, with fewer international flights. From the airport, head to Innsbruck Hbf and take a train to St. Anton.">因斯布鲁克是离圣安东最近的机场，国际航班较少。可从机场前往因斯布鲁克中央火车站，再搭火车到圣安东。</span></p>
         </article>
         <article>
           <h4><span data-en="From Munich Airport (MUC)">从慕尼黑机场出发（MUC）</span></h4>
-          <p class="guide-links"><a data-map-point="airport" data-coordinates="48.3538,11.7861" data-marker="Munich · MUC" href="https://www.google.com/maps/dir/?api=1&amp;origin=Munich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=M%C3%BCnchen+Flughafen+Terminal&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=06%3A00&amp;timesel=depart"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
+          <p class="guide-links"><a data-map-point="airport" data-coordinates="48.3538,11.7861" data-marker="Munich · MUC" href="https://www.google.com/maps/dir/?api=1&amp;origin=Munich+Airport&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=driving" target="_blank" rel="noopener"><span data-en="Driving route">自驾路线</span> ↗</a><a href="https://fahrplan.oebb.at/bin/query.exe/en?start=1&amp;_charset_=UTF-8&amp;S=M%C3%BCnchen+Flughafen+Terminal&amp;Z=St.Anton+am+Arlberg+Bahnhof&amp;REQ0JourneyDate=19.06.2027&amp;time=06%3A00&amp;timesel=depart" target="_blank" rel="noopener"><span data-en="Find trains on ÖBB">在 ÖBB 查火车路线</span> ↗</a></p>
           <p class="map-distance"><span data-en="About 250 km to St. Anton">到 St. Anton 约 250 公里</span></p>
           <p><span data-en="If you’re coming from Germany, you can drive from Munich Airport or take the train via Munich. Both journeys are generally longer than from Zürich.">从德国出发，可以从慕尼黑机场自驾，也可以经慕尼黑市区搭火车。两种方式通常都比从苏黎世出发更久。</span></p>
         </article>
       </div>
     </div>
   </section>
-  <section class="venue-stays" aria-labelledby="stay-title">
-    <h3 id="stay-title"><span data-en="Getting around and where to stay">镇上交通和住宿</span></h3>
+</section>
+<section id="stays" class="section wedding-guide" aria-labelledby="stay-title">
+    <h2 id="stay-title"><span data-en="Where to Stay">下榻</span></h2>
     <div class="local-guide">
       <p><span data-en="The train station, recommended hotels and wedding venue are all within a 10-minute walk of one another.">火车站、优选酒店和婚礼场地彼此步行都在 10 分钟以内。</span></p>
-      <p class="guide-links"><a data-map-point="station" data-coordinates="47.12739,10.26699" data-marker="St. Anton 火车站" data-marker-en="St. Anton Train Station" href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg+Bahnhof&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking"><span data-en="Walk from the station">车站到场地的步行路线</span> ↗</a></p>
+      <p class="guide-links"><a data-map-point="station" data-coordinates="47.12739,10.26699" data-marker="St. Anton 火车站" data-marker-en="St. Anton Train Station" href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg+Bahnhof&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" target="_blank" rel="noopener"><span data-en="Walk from the station">车站到场地的步行路线</span> ↗</a></p>
     </div>
     <div class="wedding-map" data-wedding-map="local" role="region" aria-labelledby="stay-title" hidden></div>
-    <p><span data-en="Both hotels are holding rooms for our wedding guests, so there’s no rush to book next month. We’ll share more details as soon as we have them.">两家酒店都为我们的婚礼宾客暂时保留了房间，大家下个月不用急着订。有了更多消息，我们会告诉大家。</span></p>
+    <p><span data-en="Both hotels are holding rooms for our guests, so there’s no need to book yet. We’ll share booking details after our mid-December visit.">两家酒店都已为大家留房，暂时不用订。我们十二月中旬再去看看，之后统一通知订房安排。</span></p>
     <div class="stay-cards" id="recommended-stays">
       <article class="stay-card stay-card-recommended">
         <h4><span data-en="[Recommended]">【优选】</span> Hotel Garni Rundeck <span class="stay-stars" role="img" aria-label="四星级" data-en-aria-label="Four-star hotel">⭐️⭐️⭐️⭐️</span></h4>
         <p><strong><span data-en="Hotel rooms €140/night for two or €85/night for one, with breakfast">客房双人 €140／晚、单人 €85／晚，含早餐</span><br><span data-en="Apartments about €45–60 per person per night at full occupancy, breakfast excluded">公寓住满约 €45–60／人／晚，不含早餐</span></strong></p>
-        <p class="stay-detail"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (170 reviews)">Google 地图 4.9/5（170 条评价）</span> ↗</a></p>
-        <p class="guide-links"><a href="https://www.hotelrundeck.at/zimmer/doppelzimmer-3/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
+        <p class="stay-detail"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg%2C+Austria" target="_blank" rel="noopener"><span data-en="Google Maps 4.9/5 (170 reviews)">Google 地图 4.9/5（170 条评价）</span> ↗</a></p>
+        <p class="guide-links"><a href="https://www.hotelrundeck.at/zimmer/doppelzimmer-3/" target="_blank" rel="noopener"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
         <div class="stay-photos"><figure><a href="public/museum-stays/rundeck-exterior.jpg"><img src="public/museum-stays/rundeck-exterior.jpg" loading="lazy" alt="Hotel Garni Rundeck 外观" data-en-alt="Hotel Garni Rundeck Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/rundeck-room.jpg"><img src="public/museum-stays/rundeck-room.jpg" loading="lazy" alt="Hotel Garni Rundeck 舒适双人房" data-en-alt="Hotel Garni Rundeck Comfort double room"></a><figcaption><span data-en="Comfort double room">舒适双人房</span></figcaption></figure></div>
         <div class="stay-card-content">
         <ul class="stay-terms">
-          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 3 min to the train station">到火车站约 3 分钟</span> · <a data-map-point="hotel" data-coordinates="47.1279907,10.2659759" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Garni Rundeck"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a></li>
+          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 3 min to the train station">到火车站约 3 分钟</span> · <a data-map-point="hotel" data-coordinates="47.1279907,10.2659759" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Garni+Rundeck%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Garni Rundeck" target="_blank" rel="noopener"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a></li>
           <li><strong><span data-en="Parking">停车</span></strong> <span data-en="One parking space included per room or apartment.">每间客房或每套公寓含 1 个车位。</span></li>
           <li><strong><span data-en="Style">风格</span></strong> <span data-en="Warm Alpine style.">温暖的阿尔卑斯风格。</span></li>
           <li><strong><span data-en="Room count">房量</span></strong> <span data-en="17 doubles, 1 junior suite and 6 apartments.">17 间双人房、1 间套房、6 套公寓。</span></li>
@@ -160,12 +163,12 @@ Mit freundlichen Grüßen
         <details class="stay-email-template stay-apartment-details">
           <summary><span data-en="Apartment layouts, rates and floor plans">公寓房型、价格与平面图</span></summary>
           <ul class="stay-terms apartment-plans">
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-1/">Apartment Top 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="50 m²">50 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="1 double bedroom">1 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="2 guests €140, 3–4 guests €180">2 人 €140，3–4 人 €180</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 1 平面图" data-en-alt="Apartment Top 1 floor plan"></a></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-3/">Apartment Top 3 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5–6 guests €280">4 人 €220，5–6 人 €280</span></strong></li></ul></div></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-4/">Apartment Top 4 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 bedrooms">2 间卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 4 平面图" data-en-alt="Apartment Top 4 floor plan"></a></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-5/">Apartment Top 5 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €240, 5–6 guests €290">4 人 €240，5–6 人 €290</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 5 平面图" data-en-alt="Apartment Top 5 floor plan"></a></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-8/">Apartment Top 8 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="60 m²">60 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €230">4 人 €230</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 8 平面图" data-en-alt="Apartment Top 8 floor plan"></a></li>
-            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/hotel-apartment/">Hotel Apartment ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms and 1 single bedroom">2 间双人卧室、1 间单人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png"><img src="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png" loading="lazy" decoding="async" alt="Hotel Apartment 平面图" data-en-alt="Hotel Apartment floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-1/" target="_blank" rel="noopener">Apartment Top 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="50 m²">50 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="1 double bedroom">1 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="2 guests €140, 3–4 guests €180">2 人 €140，3–4 人 €180</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-1-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 1 平面图" data-en-alt="Apartment Top 1 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-3/" target="_blank" rel="noopener">Apartment Top 3 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5–6 guests €280">4 人 €220，5–6 人 €280</span></strong></li></ul></div></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-4/" target="_blank" rel="noopener">Apartment Top 4 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 bedrooms">2 间卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png"><img src="public/museum-stays/rundeck-plans/Top-4-Apartment-Raumplan-1.png" loading="lazy" decoding="async" alt="Apartment Top 4 平面图" data-en-alt="Apartment Top 4 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-5/" target="_blank" rel="noopener">Apartment Top 5 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="80 m²">80 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €240, 5–6 guests €290">4 人 €240，5–6 人 €290</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-5-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 5 平面图" data-en-alt="Apartment Top 5 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/apartment-top-8/" target="_blank" rel="noopener">Apartment Top 8 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="60 m²">60 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €230">4 人 €230</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png"><img src="public/museum-stays/rundeck-plans/Top-8-Apartment-Raumplan.png" loading="lazy" decoding="async" alt="Apartment Top 8 平面图" data-en-alt="Apartment Top 8 floor plan"></a></li>
+            <li><div><a href="https://www.hotelrundeck.at/apart-rundeck/hotel-apartment/" target="_blank" rel="noopener">Hotel Apartment ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms and 1 single bedroom">2 间双人卧室、1 间单人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="1 bathroom">1 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €220, 5 guests €280">4 人 €220，5 人 €280</span></strong></li></ul></div><a href="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png"><img src="public/museum-stays/rundeck-plans/UG1-Hotel-Apartment-Raumplan-2.png" loading="lazy" decoding="async" alt="Hotel Apartment 平面图" data-en-alt="Hotel Apartment floor plan"></a></li>
           </ul>
         </details>
         </div>
@@ -173,12 +176,12 @@ Mit freundlichen Grüßen
       <article class="stay-card stay-card-recommended">
         <h4><span data-en="[Recommended]">【优选】</span> Skihotel Galzig <span class="stay-stars" role="img" aria-label="四星级" data-en-aria-label="Four-star hotel">⭐️⭐️⭐️⭐️</span></h4>
         <p><strong><span data-en="Hotel rooms about €70 per person per night with breakfast">客房约 €70／人／晚，含早餐</span><br><span data-en="Apartments about €80 per person per night at full occupancy, breakfast excluded">公寓住满约 €80／人／晚，不含早餐</span></strong></p>
-        <p class="stay-detail"><a href="https://maps.app.goo.gl/yag1rBFHL9LaM2Rd6"><span data-en="Google Maps 4.8/5 (106 reviews)">Google 地图 4.8/5（106 条评价）</span> ↗</a></p>
-        <p class="guide-links"><a href="https://www.skihotelgalzig.at/en/rooms-suites/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
+        <p class="stay-detail"><a href="https://maps.app.goo.gl/yag1rBFHL9LaM2Rd6" target="_blank" rel="noopener"><span data-en="Google Maps 4.8/5 (106 reviews)">Google 地图 4.8/5（106 条评价）</span> ↗</a></p>
+        <p class="guide-links"><a href="https://www.skihotelgalzig.at/en/rooms-suites/" target="_blank" rel="noopener"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
         <div class="stay-photos"><figure><a href="public/museum-stays/galzig-exterior.jpg"><img src="public/museum-stays/galzig-exterior.jpg" loading="lazy" alt="酒店外观" data-en-alt="Hotel exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/galzig-room.jpg"><img src="public/museum-stays/galzig-room.jpg" loading="lazy" alt="舒适双人房" data-en-alt="Comfort double room"></a><figcaption><span data-en="Comfort double room">舒适双人房</span></figcaption></figure></div>
         <div class="stay-card-content">
         <ul class="stay-terms">
-          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 7 min to the train station">到火车站约 7 分钟</span> · <a data-map-point="hotel" data-coordinates="47.128396,10.2638698" data-marker="Skihotel Galzig" href="https://www.google.com/maps/dir/?api=1&amp;origin=Skihotel+Galzig%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking"><span data-en="About 6 min on foot to the venue">步行到场地约 6 分钟</span></a></li>
+          <li><strong><span data-en="On foot">步行</span></strong> <span data-en="About 7 min to the train station">到火车站约 7 分钟</span> · <a data-map-point="hotel" data-coordinates="47.128396,10.2638698" data-marker="Skihotel Galzig" href="https://www.google.com/maps/dir/?api=1&amp;origin=Skihotel+Galzig%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" target="_blank" rel="noopener"><span data-en="About 6 min on foot to the venue">步行到场地约 6 分钟</span></a></li>
           <li><strong><span data-en="Parking">停车</span></strong> <span data-en="€10 per car per night.">每车 €10／晚。</span></li>
           <li><strong><span data-en="Style">风格</span></strong> <span data-en="Contemporary boutique style.">现代精品酒店风格。</span></li>
           <li><strong><span data-en="Room count">房量</span></strong> <span data-en="15 double rooms, 6 suites and 3 Lodge apartments.">15 间双人房、6 间套房、3 套 公寓。</span></li>
@@ -233,15 +236,14 @@ Mit freundlichen Grüßen
         <details class="stay-email-template stay-apartment-details">
           <summary><span data-en="Apartment layouts, rates and floor plans">公寓房型、价格与平面图</span></summary>
           <ul class="stay-terms apartment-plans">
-            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga/">Valluga 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="140 m²">140 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga1_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga1_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 1 平面图" data-en-alt="Valluga 1 floor plan"></a></li>
-            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-2/">Valluga 2 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="130 m²">130 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga2_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga2_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 2 平面图" data-en-alt="Valluga 2 floor plan"></a></li>
-            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-on-top/">Valluga on Top ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €320">4 人 €320</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga3_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga3_lodge.jpg" loading="lazy" decoding="async" alt="Valluga on Top 平面图" data-en-alt="Valluga on Top floor plan"></a></li>
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga/" target="_blank" rel="noopener">Valluga 1 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="140 m²">140 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga1_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga1_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 1 平面图" data-en-alt="Valluga 1 floor plan"></a></li>
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-2/" target="_blank" rel="noopener">Valluga 2 ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="130 m²">130 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="3 double bedrooms">3 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="3 bathrooms">3 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="6 guests €480">6 人 €480</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga2_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga2_lodge.jpg" loading="lazy" decoding="async" alt="Valluga 2 平面图" data-en-alt="Valluga 2 floor plan"></a></li>
+            <li><div><a href="https://www.skihotelgalzig.at/en/rooms-suites/galzig-lodge-valluga-on-top/" target="_blank" rel="noopener">Valluga on Top ↗</a><ul><li><strong><span data-en="Size">面积</span></strong> <span data-en="70 m²">70 m²</span></li><li><strong><span data-en="Bedrooms">卧室</span></strong> <span data-en="2 double bedrooms">2 间双人卧室</span></li><li><strong><span data-en="Bathrooms">浴室</span></strong> <span data-en="2 bathrooms">2 间浴室</span></li><li><strong><span data-en="Nightly rate per apartment">每晚整套价</span></strong> <strong><span data-en="4 guests €320">4 人 €320</span></strong></li></ul></div><a href="public/museum-stays/galzig-plans/valluga3_lodge.jpg"><img src="public/museum-stays/galzig-plans/valluga3_lodge.jpg" loading="lazy" decoding="async" alt="Valluga on Top 平面图" data-en-alt="Valluga on Top floor plan"></a></li>
           </ul>
         </details>
         </div>
       </article>
     </div>
-  </section>
 </section>
 <section id="schedule" class="section schedule-page" aria-labelledby="schedule-title">
   <h2 id="schedule-title"><span data-en="Wedding schedule">婚礼流程</span></h2>
@@ -284,12 +286,76 @@ Mit freundlichen Grüßen
 </section>
 <section id="activities" class="section" aria-labelledby="activities-title">
   <h2 id="activities-title"><span data-en="Explore St. Anton">漫游圣安东</span></h2>
-  <p><span data-en="Follow a path through the meadows, and see where the mountains take you.">沿着草地走一走，让山间的小路带你去看看。</span></p>
-  <p data-en="If you’re staying in St. Anton for the weekend, here are a few ways to explore the area on your own. Check opening times and conditions before you go.">如果你会在 St. Anton 多待一会儿，可以自行安排这些活动。出发前请查看开放时间和当天情况。</p>
+  <p><strong data-en="Sunday, June 20, 2027">2027 年 6 月 20 日（周日）</strong><br>
+    <span data-en="We’re planning a few optional outings around St. Anton.">这一天我们会安排几项自愿参加的周边活动。</span></p>
+  <p class="activities-update"><strong data-en="Draft · Summer hours pending · Full plan expected April–May 2027">行程初稿 · 夏季开放待确认 · 预计 2027 年四、五月公布</strong></p>
+  <h3 class="activity-heading"><span data-en="Summer mountain lifts">夏季缆车</span></h3>
+  <p><span data-en="Gampenbahn, Kapallbahn and Rendlbahn may run that weekend. The 2027 summer timetable is still pending.">Gampenbahn、Kapallbahn 和 Rendlbahn 那个周末可能开放，具体以 2027 年夏季时刻表为准。</span>
+    <a href="https://www.arlbergerbergbahnen.com/de/stanton-sommer/betriebszeiten-sommer/" target="_blank" rel="noopener"><span data-en="2026 timetable for reference">参考 2026 年时刻表</span> ↗</a></p>
+  <h3 class="activity-heading"><span data-en="Preliminary hiking itinerary">初步徒步行程</span></h3>
+  <h4><span data-en="Start in St. Anton · no car needed">从圣安东镇上出发 · 无需开车</span></h4>
   <ul class="guide-list guide-stays">
-    <li><a href="https://www.stantonamarlberg.com/en/summer/hiking"><span data-en="Hiking around St. Anton">St. Anton 周边徒步</span> ↗</a></li>
-    <li><a href="https://www.stantonamarlberg.com/en/the-region-st-anton-am-arlberg/the-villages/st-anton/summer"><span data-en="Verwall Valley and Arlberg WellCom">Verwall 山谷和 Arlberg WellCom 休闲中心</span> ↗</a></li>
-    <li><a href="https://www.stantonamarlberg.com/en/summer/mountain-region/arlberger-mountain-railways"><span data-en="Summer mountain lifts">夏季登山缆车</span> ↗</a></li>
+    <li class="activity-with-map">
+      <div><strong data-en="Putzenwald forest loop">Putzenwald 森林环线</strong><br>
+        <span data-en="Start in St. Anton village · no car needed">起点：圣安东镇上 · 无需开车</span><br>
+        <span data-en="8.7 km · 469 m ascent · about 3–3.5 hours">8.7 公里 · 累计爬升 469 米 · 约 3–3.5 小时</span><br>
+        <span data-en="Follow the Schöngrabenbach stream into the forest for views over the valley.">顺着 Schöngrabenbach 溪流进森林，途中可以俯瞰山谷。</span><br>
+        <a href="https://www.alltrails.com/trail/austria/tyrol/aus-st-anton-am-arlberg-in-den-putzenwald" target="_blank" rel="noopener"><span data-en="Route map on AllTrails">在 AllTrails 查看路线图</span> ↗</a>
+      </div>
+      <a class="activity-map" href="https://www.alltrails.com/trail/austria/tyrol/aus-st-anton-am-arlberg-in-den-putzenwald/photos" target="_blank" rel="noopener">
+        <img src="https://www.almenrausch.at/uploads/tx_webxhousingv2/trips/3764/Putzenalm_35645.jpg" loading="lazy" alt="Putzenwald 森林环线沿途风光" data-en-alt="Scenery near the Putzenwald forest loop">
+      </a>
+    </li>
+    <li class="activity-with-map">
+      <div><strong data-en="Rosanna Gorge and Wagner Hütte loop">Rosanna 峡谷与 Wagner Hütte 环线</strong><br>
+        <span data-en="Start in St. Anton village · no car needed">起点：圣安东镇上 · 无需开车</span><br>
+        <span data-en="13 km · 503 m ascent · about 4–4.5 hours">13 公里 · 累计爬升 503 米 · 约 4–4.5 小时</span><br>
+        <span data-en="Pass through the Rosanna Gorge and by Wagner Hütte on a loop back to town.">经过 Rosanna 峡谷和 Wagner Hütte 山屋，再绕回镇上。</span><br>
+        <a href="https://www.alltrails.com/trail/austria/tyrol/sattelkopfweg-zur-wagner-hutte-uber-die-rosannaschlucht" target="_blank" rel="noopener"><span data-en="Route map on AllTrails">在 AllTrails 查看路线图</span> ↗</a>
+      </div>
+      <a class="activity-map" href="public/rosanna-loop.jpg" target="_blank" rel="noopener">
+        <img src="public/rosanna-loop.jpg" loading="lazy" alt="Rosanna 峡谷与 Wagner Hütte 环线沿途风光" data-en-alt="Scenery near the Rosanna Gorge and Wagner Hütte loop">
+      </a>
+    </li>
+    <li class="activity-with-map"><div><strong data-en="Alpenrosen Trail mountain loop">Alpenrosen Trail 山上环线</strong><br>
+      <span data-en="Walk to the Rendlbahn valley station in St. Anton, then take the lift up. The loop starts at Rendl-Spielplatz near the top station and returns there.">从圣安东镇上步行到 Rendlbahn 谷站，坐缆车上山。徒步从山站旁的 Rendl-Spielplatz 出发，绕一圈回到山站。</span><br>
+      <span data-en="6.26 km · 200 m ascent · about 2 hours · easy (Komoot). Rendlbahn operation on Sunday, June 20, 2027, is still to be confirmed.">6.26 公里 · 累计爬升 200 米 · 约 2 小时 · Komoot 标为简单。2027 年 6 月 20 日（周日）缆车是否开放待确认。</span><br>
+      <a href="https://www.komoot.com/smarttour/2852823/" target="_blank" rel="noopener"><span data-en="Route map and elevation profile on Komoot">在 Komoot 查看路线图和海拔剖面</span> ↗</a></div>
+      <a class="activity-map" href="public/alpenrosen-trail.jpg" target="_blank" rel="noopener">
+        <img src="public/alpenrosen-trail.jpg" loading="lazy" alt="Alpenrosen Trail 山间步道与溪流" data-en-alt="Mountain trail and stream along the Alpenrosen Trail">
+      </a></li>
+  </ul>
+  <h4><span data-en="Drive to a nearby trailhead">开车到邻镇再徒步</span></h4>
+  <ul class="guide-list guide-stays">
+    <li class="activity-with-map"><div><strong data-en="Stuben waterfall loop">Stuben 瀑布环线</strong><br>
+      <span data-en="5.84 km · 205 m ascent · 1,335–1,540 m elevation · about 2 hours · easy.">5.84 公里 · 累计爬升 205 米 · 海拔 1,335–1,540 米 · 约 2 小时 · 简单</span><br>
+      <span data-en="Drive about 15–20 minutes from St. Anton to the trailhead in Stuben village. The walking loop starts there and passes meadows and the Flexental waterfall.">徒步从 Stuben 村出发。先从圣安东开车约 15–20 分钟到起点，再步行走环线，沿途经过草甸和 Flexental 瀑布。</span><br>
+      <a href="https://www.vorarlberg.travel/en/route/stuben-circular-hike/" target="_blank" rel="noopener"><span data-en="Route details">路线详情</span> ↗</a> · <a href="public/stuben-loop.gpx" download><span data-en="Download GPX">下载 GPX</span> ↓</a></div>
+      <a class="activity-map" href="public/stuben-valley.jpg" target="_blank" rel="noopener">
+        <img src="public/stuben-valley.jpg" loading="lazy" alt="Stuben 村和周围山谷的航拍照" data-en-alt="Aerial view of Stuben and the surrounding valley">
+      </a></li>
+    <li class="activity-with-map"><div><strong>Pettneu · Stöcklweg</strong><br>
+      <span data-en="6 km · 400 m ascent">6 公里 · 累计爬升 400 米</span><br>
+      <span data-en="Drive about 10 minutes from St. Anton to Pettneu village, then hike uphill through the forest to the Pettneu spring and past the historic Nessler Thaja hut.">先从圣安东开车约 10 分钟到 Pettneu，再从村里沿林间步道上坡，经过 Pettneu 泉水点和老山屋 Nessler Thaja。</span><br>
+      <a href="https://www.stantonamarlberg.com/en/summer/outdoor/trailrunning" target="_blank" rel="noopener"><span data-en="Route and interactive map">路线及互动地图</span> ↗</a></div>
+      <a class="activity-map" href="public/pettneu-stocklweg.png" target="_blank" rel="noopener">
+        <img src="public/pettneu-stocklweg.png" width="400" height="200" loading="lazy" alt="Pettneu 周边山谷全景" data-en-alt="Panoramic view of the valley around Pettneu">
+      </a></li>
+  </ul>
+  <h3 class="activity-heading"><span data-en="More Sunday activity ideas">周日其他玩法推荐</span></h3>
+  <ul class="guide-list guide-stays">
+    <li><a href="https://www.tirolwest.at/en/stanz-bei-landeck/info/tasting-stanzer-plum-in-the-distillery-village.html" target="_blank" rel="noopener"><strong data-en="Stanz fruit distilleries">Stanz 水果蒸馏酒村</strong> ↗</a><br>
+      <span data-en="Try local plum spirits. Sunday visits need confirmation.">可以品尝当地的李子蒸馏酒，周日能否参观待确认。</span>
+      <br><span data-en="Stanz bei Landeck · about 30 minutes by car. Change in Landeck for a local bus to Stanz.">Stanz bei Landeck · 约 30 分钟车程。公交可经 Landeck 转往 Stanz。</span><br>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg%2C+Austria&amp;destination=Stanz+bei+Landeck%2C+Austria&amp;travelmode=driving" target="_blank" rel="noopener"><span data-en="Driving route">自驾路线</span> ↗</a> · <a href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg%2C+Austria&amp;destination=Stanz+bei+Landeck%2C+Austria&amp;travelmode=transit" target="_blank" rel="noopener"><span data-en="Public transport">公共交通</span> ↗</a></li>
+    <li><a href="https://www.imster-bergbahnen.at/en/summer/alpine-coaster/fun-facts/" target="_blank" rel="noopener"><strong data-en="Hoch-Imst Alpine Coaster">Hoch-Imst 山地过山车</strong> ↗</a><br>
+      <span data-en="A downhill coaster on rails. June 2027 opening is still to be confirmed.">沿轨道滑下山的过山车。2027 年六月开放安排待确认。</span>
+      <br><span data-en="Hoch-Imst valley station above Imst · about 35–40 minutes by car. Take the train to Imst-Pitztal, then connect by bus via central Imst.">Imst 上方的 Hoch-Imst 谷站 · 约 35–40 分钟车程。可坐火车到 Imst-Pitztal，再经 Imst 镇中心换乘巴士。</span><br>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg%2C+Austria&amp;destination=Alpine+Coaster%2C+Hoch-Imst%2C+Austria&amp;travelmode=driving" target="_blank" rel="noopener"><span data-en="Driving route">自驾路线</span> ↗</a> · <a href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg%2C+Austria&amp;destination=Alpine+Coaster%2C+Hoch-Imst%2C+Austria&amp;travelmode=transit" target="_blank" rel="noopener"><span data-en="Public transport">公共交通</span> ↗</a></li>
+    <li><a href="https://www.arlberg-wellcom.at/en/" target="_blank" rel="noopener"><strong data-en="Arlberg WellCom swimming pools">Arlberg WellCom 游泳池</strong> ↗</a><br>
+      <span data-en="Indoor pool and heated outdoor pool.">有室内泳池和室外恒温泳池。</span>
+      <br><span data-en="In central St. Anton, within walking distance.">就在圣安东镇中心，步行可达。</span><br>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg%2C+Austria&amp;destination=Arlberg+WellCom%2C+St+Anton+am+Arlberg&amp;travelmode=walking" target="_blank" rel="noopener"><span data-en="Walk from St. Anton">从镇上步行</span> ↗</a></li>
   </ul>
 </section>
 <section id="photos" class="section gallery" aria-labelledby="gallery-title">

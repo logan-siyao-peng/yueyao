@@ -538,6 +538,7 @@ function updateStationLabel() {
 function showWeddingMap() {
   if (!window.L) return;
   for (const element of weddingMapElements) {
+    if (element.closest(".section").hidden) continue;
     const map = weddingMaps.get(element);
     if (map) map.invalidateSize({pan: false});
     else weddingMaps.set(element, createWeddingMap(element));
@@ -551,7 +552,7 @@ function createWeddingMap(element) {
   const weddingMap = L.map(element, {scrollWheelZoom: false});
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
   }).addTo(weddingMap);
 
   const points = [];
@@ -596,6 +597,8 @@ function createWeddingMap(element) {
       }
       const directions = document.createElement("a");
       directions.href = link.href;
+      directions.target = "_blank";
+      directions.rel = "noopener";
       directions.textContent = kind === "venue" ? "Google Maps ↗"
         : document.documentElement.lang === "en" ? "Directions on Google Maps ↗" : "Google Maps 路线 ↗";
       popup.append(document.createElement("br"), directions);
@@ -623,11 +626,11 @@ const siteTabs = document.querySelectorAll(".site-tabs a");
 const siteFooter = document.querySelector("body > footer");
 
 function showSitePage() {
-  const current = location.hash === "#recommended-stays" ? "#details"
+  const current = location.hash === "#recommended-stays" ? "#stays"
     : sitePages.has(location.hash) ? location.hash : "#home";
   for (const [hash, page] of sitePages) page.hidden = hash !== current;
   siteFooter.hidden = current === "#home";
-  if (current === "#details") showWeddingMap();
+  if (current === "#details" || current === "#stays") showWeddingMap();
   for (const tab of siteTabs) {
     if (tab.hash === current) tab.setAttribute("aria-current", "page");
     else tab.removeAttribute("aria-current");
