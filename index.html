@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam&amp;family=Ma+Shan+Zheng&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<link rel="stylesheet" href="public/style.css?v=half-width-apartments">
+<link rel="stylesheet" href="public/style.css?v=rsvp-guest-controls">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
-<script src="public/wedding.js?v=galzig-stays" defer></script>
+<script src="public/wedding.js?v=rsvp-stays-tab" defer></script>
 </head>
 <body>
 <header class="top"><a class="monogram" href="#home" aria-label="回到首页" data-en-aria-label="Back to home"><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></a><nav class="site-tabs" aria-label="主导航" data-en-aria-label="Main navigation">
@@ -96,7 +96,8 @@
       <p class="guide-links"><a data-map-point="station" data-coordinates="47.12739,10.26699" data-marker="St. Anton 火车站" data-marker-en="St. Anton Train Station" href="https://www.google.com/maps/dir/?api=1&amp;origin=St.+Anton+am+Arlberg+Bahnhof&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking"><span data-en="Walk from the station">车站到场地的步行路线</span> ↗</a></p>
     </div>
     <div class="wedding-map" data-wedding-map="local" role="region" aria-labelledby="stay-title" hidden></div>
-    <div class="stay-cards">
+    <p><span data-en="Both hotels are holding rooms for our wedding guests, so there’s no rush to book next month. We’ll share more details as soon as we have them.">两家酒店都为我们的婚礼宾客暂时保留了房间，大家下个月不用急着订。有了更多消息，我们会告诉大家。</span></p>
+    <div class="stay-cards" id="recommended-stays">
       <article class="stay-card stay-card-recommended">
         <h4><span data-en="[Recommended]">【优选】</span> Hotel Garni Rundeck <span class="stay-stars" role="img" aria-label="四星级" data-en-aria-label="Four-star hotel">⭐️⭐️⭐️⭐️</span></h4>
         <p><strong><span data-en="Hotel rooms €140/night for two or €85/night for one, with breakfast">客房双人 €140／晚、单人 €85／晚，含早餐</span><br><span data-en="Apartments about €45–60 per person per night at full occupancy, breakfast excluded">公寓住满约 €45–60／人／晚，不含早餐</span></strong></p>
@@ -238,94 +239,6 @@ Mit freundlichen Grüßen
           </ul>
         </details>
         </div>
-      </article>
-      <article class="stay-card">
-        <h4><span data-en="[Alternative]">【备选】</span> Hotel Kristall <span role="img" aria-label="三星级" data-en-aria-label="Three-star hotel">⭐️⭐️⭐️</span></h4>
-        <p><strong><span data-en="Double €150/night, suite for three €225/night">双人房 €150／晚，三人套房 €225／晚</span></strong></p>
-        <p class="stay-detail"><a data-map-point="hotel" data-coordinates="47.1298522,10.2667522" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel+Kristall%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="Hotel Kristall"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Kristall%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.5/5 (58 reviews)">Google 地图 4.5/5（58 条评价）</span> ↗</a></p>
-        <p class="guide-links"><a href="https://www.hotelkristall.com/en/rooms/doublerooms/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
-        <div class="stay-photos"><figure><a href="public/museum-stays/kristall-exterior.jpg"><img src="public/museum-stays/kristall-exterior.jpg" loading="lazy" alt="Hotel Kristall 外观" data-en-alt="Hotel Kristall Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/kristall-room.jpg"><img src="public/museum-stays/kristall-room.jpg" loading="lazy" alt="Hotel Kristall 标准双人房" data-en-alt="Hotel Kristall Standard double room"></a><figcaption><span data-en="Standard double room">标准双人房</span></figcaption></figure></div>
-        <ul class="stay-terms">
-          <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Traditional Tyrolean hotel with wood interiors and a restaurant.">传统蒂罗尔风格酒店，木质装修，设有餐厅。</span></li>
-          <li><strong><span data-en="Drawback">劣势</span></strong> <span data-en="Its Google rating is slightly lower than the other two options. The main concern in negative reviews is street and bar noise at night. We asked about it and heard the nearby bar may be closed in summer.">Google 评分比另外两家略低，差评主要提到夜间街道和酒吧的噪音。我们问过，附近的酒吧夏季可能不营业。</span></li>
-          <li><strong><span data-en="Breakfast">早餐</span></strong> <span data-en="The room rate includes breakfast.">房价含早餐。</span></li>
-          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="From noon on Saturday.">周六 12:00 起。</span></li>
-          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="Pay by card at the hotel (Amex excluded).">到店刷卡，无需预付（不收 Amex）。</span></li>
-          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Contact us if your plans change.">如需取消或更改，请先联系我们。</span></li>
-          <li><strong><span data-en="Booking">预订方式</span></strong> <span data-en="Contact us directly and we’ll assign the rooms. Please confirm your dates with us if staying one or two nights.">请直接联系我们，由我们统一安排房间。住一晚或两晚，请在订房时和我们确认日期。</span></li>
-        </ul>
-      </article>
-      <article class="stay-card">
-        <h4><span data-en="[Alternative]">【备选】</span> ALPtyrol Appartements</h4>
-        <p><strong><span data-en="About €70–100 per person per night, two-night minimum">约 €70–100／人／晚，至少住两晚</span></strong></p>
-        <p class="stay-detail"><a data-map-point="hotel" data-coordinates="47.1286357,10.2668082" href="https://www.google.com/maps/dir/?api=1&amp;origin=ALPtyrol+Appartements%2C+St.+Anton+am+Arlberg&amp;destination=Museum+Restaurant+Caf%C3%A9%2C+Rudi-Matt-Weg+10%2C+St.+Anton+am+Arlberg&amp;travelmode=walking" data-marker="ALPtyrol Appartements"><span data-en="About 9 min on foot to the venue">步行到场地约 9 分钟</span></a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=ALPtyrol+Appartements%2C+St.+Anton+am+Arlberg%2C+Austria"><span data-en="Google Maps 4.9/5 (62 reviews)">Google 地图 4.9/5（62 条评价）</span> ↗</a></p>
-        <p class="guide-links"><a href="https://www.alptyrol.at/en/apartments-alptyrol/"><span data-en="Hotel website">酒店官网</span> ↗</a></p>
-        <div class="stay-photos"><figure><a href="public/museum-stays/alptyrol-exterior.jpg"><img src="public/museum-stays/alptyrol-exterior.jpg" loading="lazy" alt="ALPtyrol Appartements 外观" data-en-alt="ALPtyrol Appartements Exterior"></a><figcaption><span data-en="Exterior">外观</span></figcaption></figure><figure><a href="public/museum-stays/alptyrol-room.jpg"><img src="public/museum-stays/alptyrol-room.jpg" loading="lazy" alt="ALPtyrol Appartements Galzigblick 基础双人公寓" data-en-alt="ALPtyrol Appartements Galzigblick two-person apartment"></a><figcaption><span data-en="Galzigblick two-person apartment">Galzigblick 基础双人公寓</span></figcaption></figure></div>
-        <ul class="stay-terms">
-          <li><strong><span data-en="Advantage">优势</span></strong> <span data-en="Self-catering apartments for 2–8 guests, ideal for sharing with friends.">自炊公寓可住 2–8 人，适合和朋友合住。</span></li>
-          <li><strong><span data-en="Drawback">劣势</span></strong> <strong><span data-en="Two-night minimum.">至少住两晚。</span></strong> <span data-en="A typical four-person layout has a double room and a bunk bed. If you’re happy with bunk beds and don’t need two separate bedrooms, it could be a good fit. The per-person cost may be higher if the apartment isn’t full.">常见的四人配置是一间双人卧室加一张上下铺。若不介意睡上下铺，也不需要两间独立卧室，可以考虑。公寓住不满时，人均费用可能偏高。</span></li>
-          <li><strong><span data-en="Breakfast">早餐</span></strong> <span data-en="Breakfast is not provided.">公寓不提供早餐。</span></li>
-          <li><strong><span data-en="Check-in">入住</span></strong> <span data-en="Usually from 2 pm.">通常 14:00 起。</span></li>
-          <li><strong><span data-en="Payment">付款</span></strong> <span data-en="50% deposit at booking.">预订时付 50%。</span></li>
-          <li><strong><span data-en="Cancellation">取消</span></strong> <span data-en="Free cancellation at least two weeks before arrival.">入住前至少两周可免费取消。</span></li>
-          <li><strong><span data-en="Booking">预订方式</span></strong> <span data-en="Email the property directly and quote booking code YUEYAO.">直接邮件联系住宿方订房，并注明预订代码 YUEYAO。</span> <a href="mailto:info@alptyrol.at?subject=Apartment%20booking%20request%20%E2%80%93%20June%202027&amp;body=Dear%20ALPtyrol%20Appartements%20team%2C%0D%0A%0D%0AWe%27re%20attending%20the%20wedding%20of%20Mr.%20Yue%20Yin%20and%20Mr.%20Siyao%20Peng%20on%2019th%20June%202027%20at%20the%20Museum%20Restaurant%E2%80%93Caf%C3%A9.%20We%27d%20like%20to%20book%20an%20apartment%20using%20the%20booking%20code%20YUEYAO.%0D%0A%0D%0AName%20for%20the%20booking%3A%20%5Bguest%27s%20full%20name%5D%0D%0ACheck-in%3A%20%5B18%20June%202027%5D%0D%0ACheck-out%3A%20%5B20%20June%202027%5D%0D%0ANumber%20of%20adults%3A%20%5Bnumber%5D%0D%0ANumber%20of%20children%3A%20%5Bnumber%5D%0D%0APreferred%20apartment%3A%20%5Bapartment%20name%20or%20preferred%20layout%5D%0D%0A%0D%0APlease%20let%20us%20know%20how%20to%20confirm%20our%20booking.%0D%0A%0D%0AKind%20regards%2C%0D%0A%5BYour%20name%5D">info@alptyrol.at</a></li>
-        </ul>
-        <details class="stay-email-template">
-          <summary><span data-en="English booking email template">英文订房邮件模板</span></summary>
-          <p lang="en"><strong>Subject:</strong> Apartment booking request – June 2027</p>
-          <p lang="en" style="white-space: pre-wrap">Dear ALPtyrol Appartements team,
-
-We're attending the wedding of Mr. Yue Yin and Mr. Siyao Peng on 19th June 2027 at the Museum Restaurant–Café. We'd like to book an apartment using the booking code YUEYAO.
-
-Name for the booking: [guest's full name]
-Check-in: [18 June 2027]
-Check-out: [20 June 2027]
-Number of adults: [number]
-Number of children: [number]
-Preferred apartment: [apartment name or preferred layout]
-
-Please let us know how to confirm our booking.
-
-Kind regards,
-[Your name]</p>
-        </details>
-        <details class="stay-email-template">
-          <summary><span data-en="German booking email template">德文订房邮件模板</span></summary>
-          <p lang="de"><strong>Betreff:</strong> Buchungsanfrage zur Hochzeit – YUEYAO – Juni 2027</p>
-          <p lang="de" style="white-space: pre-wrap">Liebes Team von ALPtyrol Appartements,
-
-wir sind am 19. Juni 2027 zur Hochzeit von Herrn Yue Yin und Herrn Siyao Peng im Museum Restaurant–Café eingeladen und würden gerne ein Apartment mit dem Buchungscode YUEYAO reservieren.
-
-Name für die Buchung: [vollständiger Name]
-Anreise: [18. Juni 2027]
-Abreise: [20. Juni 2027]
-Anzahl der Erwachsenen: [Anzahl]
-Anzahl der Kinder: [Anzahl]
-Apartmentwunsch: [Name oder gewünschte Aufteilung]
-
-Bitte teilen Sie uns mit, wie wir die Buchung bestätigen können.
-
-Mit freundlichen Grüßen
-[Ihr Name]</p>
-          <p><a href="mailto:info@alptyrol.at?subject=Buchungsanfrage%20zur%20Hochzeit%20%E2%80%93%20YUEYAO%20%E2%80%93%20Juni%202027&amp;body=Liebes%20Team%20von%20ALPtyrol%20Appartements%2C%0D%0A%0D%0Awir%20sind%20am%2019.%20Juni%202027%20zur%20Hochzeit%20von%20Herrn%20Yue%20Yin%20und%20Herrn%20Siyao%20Peng%20im%20Museum%20Restaurant%E2%80%93Caf%C3%A9%20eingeladen%20und%20w%C3%BCrden%20gerne%20ein%20Apartment%20mit%20dem%20Buchungscode%20YUEYAO%20reservieren.%0D%0A%0D%0AName%20f%C3%BCr%20die%20Buchung%3A%20%5Bvollst%C3%A4ndiger%20Name%5D%0D%0AAnreise%3A%20%5B18.%20Juni%202027%5D%0D%0AAbreise%3A%20%5B20.%20Juni%202027%5D%0D%0AAnzahl%20der%20Erwachsenen%3A%20%5BAnzahl%5D%0D%0AAnzahl%20der%20Kinder%3A%20%5BAnzahl%5D%0D%0AApartmentwunsch%3A%20%5BName%20oder%20gew%C3%BCnschte%20Aufteilung%5D%0D%0A%0D%0ABitte%20teilen%20Sie%20uns%20mit%2C%20wie%20wir%20die%20Buchung%20best%C3%A4tigen%20k%C3%B6nnen.%0D%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0D%0A%5BIhr%20Name%5D"><span data-en="Open German email draft">打开德文邮件草稿</span> ↗</a></p>
-        </details>
-        <details class="stay-email-template">
-          <summary><span data-en="Apartment layouts">公寓房型一览</span></summary>
-          <p><span data-en="18–20 June 2027 · Indicative totals for two nights per apartment, calculated from the official nightly rate by occupancy. Visitor tax is extra.">2027 年 6 月 18–20 日。以下是按官网分人数每晚价格计算的整套公寓两晚参考总价，另计住宿税。</span></p>
-          <ul class="stay-terms">
-            <li><a href="https://www.alptyrol.at/en/apartments/galzigblick/">Galzigblick ↗</a><br><span data-en="2 guests · 25 m² · separate double bedroom">2 人 · 25 m² · 独立双人卧室</span><br><strong><span data-en="2 guests €320">2 人 €320</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/edelweiss/">Edelweiss ↗</a><br><span data-en="2–3 guests · 35 m² · a double and a single bed in one bedroom">2–3 人 · 35 m² · 同一卧室内有一张双人床和一张单人床</span><br><strong><span data-en="2 guests €324, 3 guests €360">2 人 €324，3 人 €360</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/enzian/">Enzian ↗</a><br><span data-en="2–4 guests · 37 m² · a double and a single bed in one bedroom. The hotel recommends this layout for families of four.">2–4 人 · 37 m² · 同一卧室内有一张双人床和一张单人床，四人入住更适合带孩子的家庭</span><br><strong><span data-en="2 guests €384, 3 guests €406, 4 guests €450">2 人 €384，3 人 €406，4 人 €450</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/alpenherz/">Alpenherz ↗</a><br><span data-en="2–4 guests · 55 m² · separate double bedroom and bunk bed">2–4 人 · 55 m² · 独立双人卧室和上下铺</span><br><strong><span data-en="2 guests €480, 3 guests €508, 4 guests €564">2 人 €480，3 人 €508，4 人 €564</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/himmelschluessel/">Himmelschlüssel ↗</a><br><span data-en="2–4 guests · 45 m² · double bedroom with a sliding door and a bunk bed">2–4 人 · 45 m² · 推拉门隔开的双人卧室和上下铺</span><br><strong><span data-en="2 guests €384, 3 guests €406, 4 guests €450">2 人 €384，3 人 €406，4 人 €450</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/vergissmeinnicht/">Vergissmeinnicht ↗</a><br><span data-en="2–4 guests · 35 m² · double bed and bunk bed">2–4 人 · 35 m² · 一张双人床和一张上下铺</span><br><strong><span data-en="2 guests €384, 3 guests €406, 4 guests €450">2 人 €384，3 人 €406，4 人 €450</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/deluxe-tyrol/">DeLuxe Tyrol ↗</a><br><span data-en="2–4 guests · 45 m² · separate double bedroom and bunk bed">2–4 人 · 45 m² · 独立双人卧室和上下铺</span><br><strong><span data-en="2 guests €480, 3 guests €508, 4 guests €564">2 人 €480，3 人 €508，4 人 €564</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/alpenrose/">Alpenrose ↗</a><br><span data-en="2–4 guests · 45 m² · separate double bedroom and bunk bed">2–4 人 · 45 m² · 独立双人卧室和上下铺</span><br><strong><span data-en="2 guests €384, 3 guests €406, 4 guests €450">2 人 €384，3 人 €406，4 人 €450</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/rosmarin/">Rosmarin ↗</a><br><span data-en="4 guests · 45 m² · described as a studio with two double beds">4 人 · 45 m² · 官网描述为单间公寓，配两张双人床</span><br><strong><span data-en="2 guests €348, 3 guests €368, 4 guests €408">2 人 €348，3 人 €368，4 人 €408</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/anemone/">Anemone ↗</a><br><span data-en="2–5 guests · 45 m² · separate double bedroom and bunk bed. Ask the property about the fifth bed.">2–5 人 · 45 m² · 独立双人卧室和上下铺，第五个床位请向住宿方确认</span><br><strong><span data-en="2 guests €442, 3 guests €468, 4 guests €520, 5 guests €566">2 人 €442，3 人 €468，4 人 €520，5 人 €566</span></strong></li>
-            <li><a href="https://www.alptyrol.at/en/apartments/penthouse-lilie/">Penthouse Lilie ↗</a><br><span data-en="8 guests · 110 m² · 4 double bedrooms and 2 bathrooms">8 人 · 110 m² · 4 间双人卧室、2 间浴室</span><br><strong><span data-en="2–6 guests €920, 7 guests €972, 8 guests €1,080">2–6 人 €920，7 人 €972，8 人 €1,080</span></strong></li>
-          </ul>
-        </details>
       </article>
     </div>
   </section>
@@ -470,7 +383,7 @@ Mit freundlichen Grüßen
 <form id="reply" method="post" action="/api/rsvp">
 <p class="form-note" data-en="Fields marked with * are required.">带 * 的项目为必填。</p>
 <div class="fields">
-  <label><span data-en="Legal name">法定姓名</span> <span aria-hidden="true">*</span>
+  <label><span data-en="Adult 1 · Name">成人 1 · 姓名</span> <span aria-hidden="true">*</span>
     <input name="name" required maxlength="100" autocomplete="name">
   </label>
   <label><span data-en="Email address">电子邮箱</span> <span aria-hidden="true">*</span>
@@ -485,29 +398,7 @@ Mit freundlichen Grüßen
   <input type="hidden" name="attendance_probability" value="50">
   <div class="rsvp-slider-labels" aria-hidden="true"><span>0%</span><span>20%</span><span>40%</span><span>50%</span><span>60%</span><span>80%</span><span>100%</span></div>
 </fieldset>
-<fieldset id="party-field">
-  <div class="fields">
-    <label><span data-en="Adults coming with you">和你一起来的大朋友</span> <span aria-hidden="true">*</span><select name="additional_adults" required><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label>
-    <label><span data-en="Children coming with you">和你一起来的小朋友</span> <span aria-hidden="true">*</span><select name="child_count" required><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></label>
-  </div>
-  <div id="adult-names" class="fields" hidden>
-    <div class="adult-guest" hidden>
-    <label><span data-en="Additional adult guest 1 · Legal name">额外同行成人 1 · 法定姓名</span> <span aria-hidden="true">*</span><input name="adult_name_1" maxlength="100" required disabled></label>
-      <label for="adult-attendance-1"><span data-en="Additional adult guest 1 · Likelihood of attending">额外同行成人 1 · 出席概率</span></label>
-      <output for="adult-attendance-1">50%</output>
-      <input type="range" id="adult-attendance-1" min="0" max="100" step="1" value="50" disabled>
-      <input type="hidden" name="adult_probability_1" value="50" disabled>
-    </div>
-    <div class="adult-guest" hidden>
-    <label><span data-en="Additional adult guest 2 · Legal name">额外同行成人 2 · 法定姓名</span> <span aria-hidden="true">*</span><input name="adult_name_2" maxlength="100" required disabled></label>
-      <label for="adult-attendance-2"><span data-en="Additional adult guest 2 · Likelihood of attending">额外同行成人 2 · 出席概率</span></label>
-      <output for="adult-attendance-2">50%</output>
-      <input type="range" id="adult-attendance-2" min="0" max="100" step="1" value="50" disabled>
-      <input type="hidden" name="adult_probability_2" value="50" disabled>
-    </div>
-  </div>
-</fieldset>
-<label><span data-en="Any dietary preferences?">你们有什么饮食偏好？</span> <span aria-hidden="true">*</span>
+<label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
   <select name="dietary_preference" required>
     <option value="" data-en="Please choose">请选择</option>
     <option value="none" data-en="No special requirements">无特殊要求</option>
@@ -515,8 +406,92 @@ Mit freundlichen Grüßen
     <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
   </select>
 </label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+<input type="hidden" name="guest_details_version" value="1">
+<fieldset id="party-field">
+  <div class="rsvp-guest-group" data-count="additional_adults">
+    <input type="hidden" name="additional_adults" value="0">
+    <fieldset class="rsvp-guest" hidden disabled>
+      <legend><span data-en="Adult 2">成人 2</span> <button type="button" class="rsvp-guest-remove" data-guest-change="-1" aria-label="移除成人 2" data-en-aria-label="Remove Adult 2">−</button></legend>
+      <label><span data-en="Name">姓名</span> <span aria-hidden="true">*</span><input name="adult_name_1" maxlength="100" required></label>
+      <label for="adult_1-attendance"><span data-en="Likelihood of attending">出席概率</span></label>
+      <output for="adult_1-attendance">50%</output>
+      <input type="range" id="adult_1-attendance" min="0" max="100" step="1" value="50">
+      <input type="hidden" name="adult_probability_1" value="50">
+      <label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
+  <select name="adult_1_dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
+  </select>
+</label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="adult_1_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+    </fieldset>
+    <fieldset class="rsvp-guest" hidden disabled>
+      <legend><span data-en="Adult 3">成人 3</span> <button type="button" class="rsvp-guest-remove" data-guest-change="-1" aria-label="移除成人 3" data-en-aria-label="Remove Adult 3">−</button></legend>
+      <label><span data-en="Name">姓名</span> <span aria-hidden="true">*</span><input name="adult_name_2" maxlength="100" required></label>
+      <label for="adult_2-attendance"><span data-en="Likelihood of attending">出席概率</span></label>
+      <output for="adult_2-attendance">50%</output>
+      <input type="range" id="adult_2-attendance" min="0" max="100" step="1" value="50">
+      <input type="hidden" name="adult_probability_2" value="50">
+      <label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
+  <select name="adult_2_dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
+  </select>
+</label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="adult_2_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+    </fieldset>
+    <div class="rsvp-guest-actions">
+      <button type="button" data-guest-change="1"><span data-en="+ Add adult">＋ 添加成人</span></button>
+    </div>
+  </div>
+  <div class="rsvp-guest-group" data-count="child_count">
+    <input type="hidden" name="child_count" value="0">
+    <fieldset class="rsvp-guest" hidden disabled>
+      <legend><span data-en="Child 1">儿童 1</span> <button type="button" class="rsvp-guest-remove" data-guest-change="-1" aria-label="移除儿童 1" data-en-aria-label="Remove Child 1">−</button></legend>
+      <label><span data-en="Age on the wedding day">婚礼当天的年龄</span> <span aria-hidden="true">*</span><input name="child_age_1" type="number" min="0" max="17" required></label>
+      <label for="child_1-attendance"><span data-en="Likelihood of attending">出席概率</span></label>
+      <output for="child_1-attendance">50%</output>
+      <input type="range" id="child_1-attendance" min="0" max="100" step="1" value="50">
+      <input type="hidden" name="child_probability_1" value="50">
+      <label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
+  <select name="child_1_dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
+  </select>
+</label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="child_1_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+    </fieldset>
+    <fieldset class="rsvp-guest" hidden disabled>
+      <legend><span data-en="Child 2">儿童 2</span> <button type="button" class="rsvp-guest-remove" data-guest-change="-1" aria-label="移除儿童 2" data-en-aria-label="Remove Child 2">−</button></legend>
+      <label><span data-en="Age on the wedding day">婚礼当天的年龄</span> <span aria-hidden="true">*</span><input name="child_age_2" type="number" min="0" max="17" required></label>
+      <label for="child_2-attendance"><span data-en="Likelihood of attending">出席概率</span></label>
+      <output for="child_2-attendance">50%</output>
+      <input type="range" id="child_2-attendance" min="0" max="100" step="1" value="50">
+      <input type="hidden" name="child_probability_2" value="50">
+      <label><span data-en="Dietary preference">饮食偏好</span> <span aria-hidden="true">*</span>
+  <select name="child_2_dietary_preference" required>
+    <option value="" data-en="Please choose">请选择</option>
+    <option value="none" data-en="No special requirements">无特殊要求</option>
+    <option value="vegetarian" data-en="Vegetarian (eggs and dairy are OK)">蛋奶素（可吃蛋和奶）</option>
+    <option value="vegan" data-en="Vegan (no animal products)">全素（不吃动物性食材）</option>
+  </select>
+</label>
+    <label><span data-en="Allergies or foods to avoid">过敏或忌口</span><input name="child_2_dietary_restrictions" maxlength="250" placeholder="如无，可留空" data-en-placeholder="Leave blank if none"></label>
+    </fieldset>
+    <div class="rsvp-guest-actions">
+      <button type="button" data-guest-change="1"><span data-en="+ Add child">＋ 添加儿童</span></button>
+    </div>
+  </div>
+</fieldset>
 <div id="stay-field" class="rsvp-stay">
-  <p class="form-note" data-en="Haven’t figured out where to stay yet? Just choose “Undecided” for now. Drop us a message once your travel plans are set.">住宿还没定也没关系，先选「待定」就好。等行程定了，再私聊告诉我们。</p>
+  <p class="form-note"><strong data-en="The following questions are optional.">以下选填</strong><span data-en=" Tell us where you’d prefer to stay.">。可以告诉我们你更想住哪儿。</span> <a href="#recommended-stays" target="_blank" rel="noopener" style="text-decoration: underline; text-underline-offset: .18em"><span data-en="See our two recommended hotels">查看两家优选住宿</span> ↗</a></p>
   <label><span data-en="How many nights do you expect to stay?">预计住几晚？</span>
     <select name="stay_nights">
       <option value="" data-en="Undecided">待定</option>
@@ -532,9 +507,8 @@ Mit freundlichen Grüßen
       <option value="" data-en="Undecided">待定</option>
       <option value="rundeck" data-en="Hotel Garni Rundeck (double €140/night)">Hotel Garni Rundeck（双人房 €140／晚）</option>
       <option value="galzig" data-en="Skihotel Galzig (hotel room about €70/person/night)">Skihotel Galzig（酒店客房约 €70／人／晚）</option>
-      <option value="kristall" data-en="Hotel Kristall (double €150/night, one or two nights)">Hotel Kristall（双人房 €150／晚，可住一或两晚）</option>
-      <option value="alptyrol" data-en="ALPtyrol Appartements (about €70–100/person/night, minimum two nights)">ALPtyrol Appartements（约 €70–100／人／晚，至少两晚）</option>
-      <option value="own" data-en="I’ll arrange my own accommodation">自行安排住宿</option>
+      <option value="own" data-en="I’ll book another hotel">自行选择其他酒店</option>
+      <option value="own_apartment" data-en="I’ll book another apartment or holiday rental">自行选择其他公寓或民宿</option>
     </select>
   </label>
 </div>
@@ -543,8 +517,6 @@ Mit freundlichen Grüßen
   <label for="rsvp-note"><span data-en="Additional notes">备注</span></label>
   <ul id="rsvp-note-help" class="form-note">
     <li><span data-en="Staying more than two nights? Share your planned check-in and check-out dates.">住宿超过两晚，请写预计入住和退房日期。</span></li>
-    <li><span data-en="For allergies or dietary restrictions, tell us which guest needs to avoid which ingredients.">有过敏或忌口，请写哪位宾客需要避开哪些食材。</span></li>
-    <li><span data-en="Bringing children? Please share each child’s approximate age on June 19, 2027, so we can plan for them.">如果带小朋友来，告诉我们他们到婚礼那天大概几岁，我们好提前准备。</span></li>
     <li><span data-en="Let us know about anything else we can help arrange, such as a high chair, a cot, or step-free access.">如需高脚椅、婴儿床或无台阶通行等安排，也可以写在这里。</span></li>
   </ul>
   <textarea id="rsvp-note" name="note" maxlength="1000" rows="3" aria-describedby="rsvp-note-help"></textarea>
@@ -553,7 +525,6 @@ Mit freundlichen Grüßen
 <button type="submit" class="button" disabled><span data-en="Send your note">把信寄给我们</span> <span aria-hidden="true">↗</span></button>
 <p id="feedback" role="status"></p>
 </form>
-<section class="faq rsvp-faq" aria-labelledby="faq-title"><h2 id="faq-title"><span data-en="Frequently asked questions">常见问题</span></h2><details><summary><span data-en="What if I’m not sure whether I can attend yet?">现在还不能确定是否出席，怎么办？</span></summary><p><span data-en="Leave the RSVP slider at 50% if you’re unsure.">可将回执滑杆留在 50%（不确定）。</span></p></details><details><summary><span data-en="When will the wedding schedule be available?">什么时候能看到婚礼流程？</span></summary><p><span data-en="We’ll post the arrival and ceremony times under Schedule once they’re confirmed.">到场时间和仪式安排确认后，会更新到「婚礼流程」。</span></p></details></section>
 </section>
 </main>
 <footer><span data-en="Yue">越</span> <i>&amp;</i> <span data-en="Yao">尧</span></footer>

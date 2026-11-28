@@ -1,0 +1,1 @@
+ALTER TABLE rsvps ADD COLUMN guest_details TEXT NOT NULL DEFAULT '';

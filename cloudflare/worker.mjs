@@ -3,8 +3,8 @@ import todos from './todo.mjs';
 const origins = new Set(['https://yueyao.de', 'https://www.yueyao.de']);
 const probabilities = new Set(['0', '20', '40', '50', '60', '80', '100']);
 const counts = new Set(['0', '1', '2']);
-const columns = 'name,email,attendance_probability,additional_adults,child_count,adult_name_1,adult_probability_1,adult_name_2,adult_probability_2,dietary_preference,stay_nights,lodging_preference,note';
-const schema = 'CREATE TABLE IF NOT EXISTS rsvps (id INTEGER PRIMARY KEY, received_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, name TEXT NOT NULL, email TEXT NOT NULL, attendance_probability INTEGER NOT NULL, additional_adults INTEGER NOT NULL, child_count INTEGER NOT NULL, adult_name_1 TEXT, adult_probability_1 INTEGER, adult_name_2 TEXT, adult_probability_2 INTEGER, dietary_preference TEXT NOT NULL, stay_nights TEXT NOT NULL, lodging_preference TEXT NOT NULL, note TEXT NOT NULL)';
+const columns = 'name,email,attendance_probability,additional_adults,child_count,adult_name_1,adult_probability_1,adult_name_2,adult_probability_2,dietary_preference,stay_nights,lodging_preference,note,guest_details';
+const schema = `CREATE TABLE IF NOT EXISTS rsvps (id INTEGER PRIMARY KEY, received_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, name TEXT NOT NULL, email TEXT NOT NULL, attendance_probability INTEGER NOT NULL, additional_adults INTEGER NOT NULL, child_count INTEGER NOT NULL, adult_name_1 TEXT, adult_probability_1 INTEGER, adult_name_2 TEXT, adult_probability_2 INTEGER, dietary_preference TEXT NOT NULL, stay_nights TEXT NOT NULL, lodging_preference TEXT NOT NULL, note TEXT NOT NULL, guest_details TEXT NOT NULL DEFAULT '')`;
 
 function readFields(data) {
   if (!data || typeof data !== 'object' || Array.isArray(data) || Object.values(data).some(value => typeof value !== 'string')) return null;
@@ -31,8 +31,32 @@ function readFields(data) {
   }
   const nights = attending ? data.stay_nights || '' : '';
   const lodging = attending && nights !== '0' ? data.lodging_preference || '' : '';
-  if (!['', '0', '1', '2', '3+'].includes(nights) || !['', 'kristall','galzig','rundeck','alptyrol','own'].includes(lodging)) return null;
-  return [name, email, Number(probability), Number(adults), Number(children), ...companions, dietary, nights, lodging, note];
+  if (!['', '0', '1', '2', '3+'].includes(nights) || !['', 'kristall','galzig','rundeck','alptyrol','own','own_apartment'].includes(lodging)) return null;
+  let guestDetails = '';
+  if (data.guest_details_version === '1') {
+    const guestDiet = prefix => {
+      const preference = data[prefix + '_preference'];
+      const restrictions = (data[prefix + '_restrictions'] || '').trim();
+      return ['none', 'vegetarian', 'vegan'].includes(preference) && restrictions.length <= 250
+        ? {preference, restrictions} : null;
+    };
+    const details = {adult_1: guestDiet('dietary'), additional_adults: [], children: []};
+    if (!details.adult_1) return null;
+    for (let i = 1; i <= Number(adults); i++) {
+      const diet = guestDiet('adult_' + i + '_dietary');
+      if (!diet) return null;
+      details.additional_adults.push(diet);
+    }
+    for (let i = 1; i <= Number(children); i++) {
+      const age = data['child_age_' + i];
+      const chance = data['child_probability_' + i];
+      const diet = guestDiet('child_' + i + '_dietary');
+      if (!/^(?:[0-9]|1[0-7])$/.test(age || '') || !probabilities.has(chance) || !diet) return null;
+      details.children.push({age: Number(age), attendance_probability: Number(chance), ...diet});
+    }
+    guestDetails = JSON.stringify(details);
+  }
+  return [name, email, Number(probability), Number(adults), Number(children), ...companions, dietary, nights, lodging, note, guestDetails];
 }
 
 export default {
@@ -60,7 +84,12 @@ export default {
       return reply(204);
     }
     if (request.method === 'HEAD') {
-      try { await env.DB.prepare('SELECT 1').first(); return reply(204); }
+      try {
+        await env.DB.prepare('SELECT guest_details FROM rsvps LIMIT 1').first();
+        headers['Access-Control-Expose-Headers'] = 'X-RSVP-Guest-Details';
+        headers['X-RSVP-Guest-Details'] = '1';
+        return reply(204);
+      }
       catch { return reply(503); }
     }
     if (request.method !== 'POST') return reply(405);
@@ -75,7 +104,7 @@ export default {
     try {
       await env.DB.batch([
         env.DB.prepare(schema),
-        env.DB.prepare('INSERT INTO rsvps (' + columns + ') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(...fields),
+        env.DB.prepare('INSERT INTO rsvps (' + columns + ') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(...fields),
       ]);
       return reply(201, {received:true});
     } catch { return reply(503, {error:'暂时无法保存，请稍后重试。'}); }

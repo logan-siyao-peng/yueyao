@@ -79,6 +79,7 @@ function animateStory(slide) {
 }
 
 function prepareStoryLines() {
+  const lineInterval = 0.8;
   for (const slide of slides) {
     const caption = slide.querySelector("figcaption");
     let delay = slide.querySelector(".story-swipe-hint") ? 1.6 : 0;
@@ -86,7 +87,7 @@ function prepareStoryLines() {
       for (const item of caption.querySelectorAll("time, h3")) {
         item.classList.add("story-line");
         item.style.setProperty("--story-delay", `${delay}s`);
-        delay += 0.5;
+        delay += lineInterval;
       }
     }
     const bySentence = strip.dataset.storyEffect === "sentence";
@@ -100,7 +101,7 @@ function prepareStoryLines() {
         span.className = "story-line";
         span.textContent = line;
         span.style.setProperty("--story-delay", `${lineDelay}s`);
-        if (!bySentence || index === 0 || /[。！？.!?]$/.test(line.trim())) lineDelay += 0.5;
+        if (!bySentence || index === 0 || /[。！？.!?]$/.test(line.trim())) lineDelay += lineInterval;
         return span;
       });
       delay = lineDelay + 0.25;
@@ -285,6 +286,7 @@ let canSubmit = false;
 fetch(rsvpEndpoint, {method: "HEAD", cache: "no-store"})
   .then(response => {
     if (response.status !== 204) return;
+    if (publicSites.has(location.origin) && response.headers.get("X-RSVP-Guest-Details") !== "1") return;
     rsvpUnavailable.hidden = true;
     canSubmit = true;
     submit.disabled = false;
@@ -304,11 +306,10 @@ const attendanceOptions = [
   [80, "大概会出席", "Likely to attend"],
   [100, "肯定会出席", "Definitely attending"],
 ];
-const adultNames = document.querySelector("#adult-names");
-const adultGuests = [...adultNames.querySelectorAll(".adult-guest")];
+const guestGroups = [...partyField.querySelectorAll(".rsvp-guest-group")];
 const lodging = document.querySelector("#lodging-preference");
 const stay = form.elements.stay_nights;
-const probabilitySliders = [slider, ...adultNames.querySelectorAll("input[type=range]")];
+const probabilitySliders = [slider, ...partyField.querySelectorAll("input[type=range]")];
 
 function updateProbability(control, value) {
   const [percent, chinese, english] = attendanceOptions.reduce((nearest, option) =>
@@ -322,7 +323,7 @@ function updateProbability(control, value) {
     sliderDescription.textContent = description;
     form.elements.attendance_probability.value = percent;
   } else {
-    const guest = control.closest(".adult-guest");
+    const guest = control.closest(".rsvp-guest");
     guest.querySelector("output").textContent = `${percent}% · ${description}`;
     guest.querySelector("input[type=hidden]").value = percent;
   }
@@ -348,13 +349,14 @@ function updatePartyField() {
   partyField.disabled = !planning;
   stayField.hidden = !planning;
   form.elements.stay_nights.disabled = !planning;
-  const count = Number(form.elements.additional_adults.value);
-  adultNames.hidden = !planning || count === 0;
-  adultGuests.forEach((guest, index) => {
-    const active = planning && index < count;
-    guest.hidden = !active;
-    guest.querySelectorAll("input").forEach(input => { input.disabled = !active; });
-  });
+  for (const group of guestGroups) {
+    const count = Number(form.elements[group.dataset.count].value);
+    const guests = [...group.querySelectorAll(".rsvp-guest")];
+    guests.forEach((guest, index) => {
+      guest.hidden = guest.disabled = index >= count;
+    });
+    group.querySelector('[data-guest-change="1"]').hidden = count >= guests.length;
+  }
   lodging.hidden = !planning || stay.value === "0";
   form.elements.lodging_preference.disabled = lodging.hidden;
 }
@@ -370,13 +372,38 @@ for (const control of probabilitySliders) {
   });
 }
 stay.addEventListener("change", updatePartyField);
-form.elements.additional_adults.addEventListener("change", updatePartyField);
+for (const group of guestGroups) {
+  group.addEventListener("click", event => {
+    const button = event.target.closest("[data-guest-change]");
+    if (!button) return;
+    const count = form.elements[group.dataset.count];
+    const guests = [...group.querySelectorAll(".rsvp-guest")];
+    const adding = button.dataset.guestChange === "1";
+    const activeCount = Number(count.value);
+    const next = activeCount + (adding ? 1 : -1);
+    if (next < 0 || next > guests.length) return;
+    if (!adding) {
+      const removed = guests.indexOf(button.closest(".rsvp-guest"));
+      for (let index = removed; index < activeCount; index++) {
+        const following = index + 1 < activeCount
+          ? [...guests[index + 1].querySelectorAll("input, select")] : [];
+        guests[index].querySelectorAll("input, select").forEach((control, field) => {
+          control.value = following[field]?.value ?? (control.type === "range" || control.type === "hidden" ? "50" : "");
+        });
+      }
+    }
+    count.value = next;
+    updatePartyField();
+    if (adding) guests[next - 1].querySelector("input").focus();
+    else group.querySelector('[data-guest-change="1"]').focus();
+  });
+}
 updatePartyField();
 const languageButtons = document.querySelectorAll(".languages button");
 const translations = Array.from(document.querySelectorAll("[data-en]"), element => ({
   element, chinese: element.textContent, english: element.dataset.en
 }));
-const attributeTranslations = ["content", "aria-label", "alt"].flatMap(attribute =>
+const attributeTranslations = ["content", "aria-label", "alt", "placeholder"].flatMap(attribute =>
   Array.from(document.querySelectorAll(`[data-en-${attribute}]`), element => ({
     element, attribute, chinese: element.getAttribute(attribute),
     english: element.getAttribute(`data-en-${attribute}`)
@@ -459,10 +486,10 @@ form.noValidate = true;
 form.addEventListener("submit", async event => {
   event.preventDefault();
   if (!canSubmit) return;
-  const invalid = form.querySelector(":invalid:not(fieldset)");
+  const invalid = form.querySelector("input:invalid, select:invalid, textarea:invalid");
   showEmailError(!email.validity.valid);
   if (invalid) {
-    showFeedback(validationMessages[invalid.name] || "请填写有效的同行人数及儿童年龄。");
+    showFeedback(validationMessages[invalid.name] || (invalid.name.endsWith("_dietary_preference") && validationMessages.dietary_preference) || "请填写有效的同行人数及儿童年龄。");
     invalid.focus();
     return;
   }
@@ -480,6 +507,7 @@ form.addEventListener("submit", async event => {
       return;
     }
     form.reset();
+    for (const group of guestGroups) form.elements[group.dataset.count].value = "0";
     showEmailError(false);
     updatePartyField();
     showFeedback("收到你的信啦，谢谢你！");
@@ -529,8 +557,6 @@ function createWeddingMap(element) {
   const points = [];
   const hotelLabels = {
     "Skihotel Galzig": ["top", [0, -12]],
-    "Hotel Kristall": ["right", [12, -18]],
-    "ALPtyrol Appartements": ["right", [12, 2]],
     "Hotel Garni Rundeck": ["right", [12, 16]]
   };
   for (const link of document.querySelectorAll("[data-map-point]")) {
@@ -597,7 +623,8 @@ const siteTabs = document.querySelectorAll(".site-tabs a");
 const siteFooter = document.querySelector("body > footer");
 
 function showSitePage() {
-  const current = sitePages.has(location.hash) ? location.hash : "#home";
+  const current = location.hash === "#recommended-stays" ? "#details"
+    : sitePages.has(location.hash) ? location.hash : "#home";
   for (const [hash, page] of sitePages) page.hidden = hash !== current;
   siteFooter.hidden = current === "#home";
   if (current === "#details") showWeddingMap();
@@ -607,7 +634,16 @@ function showSitePage() {
   }
 }
 
+function scrollToSiteSection() {
+  if (location.hash === "#recommended-stays") {
+    document.querySelector("#recommended-stays").scrollIntoView();
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+
 showSitePage();
+if (location.hash === "#recommended-stays") scrollToSiteSection();
 window.addEventListener("pageshow", event => {
   if (event.persisted || location.hash !== "#photos" || !strip.clientWidth) return;
   strip.scrollTo({left: 0, behavior: "instant"});
@@ -615,14 +651,14 @@ window.addEventListener("pageshow", event => {
 });
 window.addEventListener("hashchange", () => {
   showSitePage();
-  window.scrollTo(0, 0);
+  scrollToSiteSection();
 });
 document.addEventListener("click", event => {
   const link = event.target.closest('a[href^="#"]');
-  if (!link || !sitePages.has(link.hash) || event.button !== 0 ||
+  if (!link || link.target === "_blank" || (!sitePages.has(link.hash) && link.hash !== "#recommended-stays") || event.button !== 0 ||
       event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   if (location.hash !== link.hash) history.pushState(null, "", link.hash);
   showSitePage();
-  window.scrollTo(0, 0);
+  scrollToSiteSection();
 });

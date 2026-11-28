@@ -153,7 +153,6 @@ label > .form-note{display:block;margin-top:4px}
 
 .site-tabs{flex-wrap:wrap;column-gap:clamp(10px,2vw,26px);row-gap:6px}
 .site-tabs a[aria-current=page]{text-decoration:underline;text-underline-offset:.35em}
-.rsvp-faq{grid-column:1/-1;width:100%}
 
 .schedule-draft{color:var(--muted)}
 .schedule-list{max-width:850px;padding:0;list-style:none;margin:28px 0 0}
@@ -206,7 +205,7 @@ label > .form-note{display:block;margin-top:4px}
 label > .rsvp-error[hidden]{display:none}
 .rsvp-error{color:#a62a26}
 #reply input[aria-invalid=true]{border-color:#a62a26}
-#reply .adult-guest input[type=range]{display:block;width:100%;padding:0;accent-color:var(--olive)}
+#reply .rsvp-guest input[type=range]{display:block;width:100%;padding:0;accent-color:var(--olive)}
 .rsvp-slider-labels{position:relative;height:1.4em;margin-inline:.5rem;font-size:clamp(.65rem,2.4vw,.78rem);letter-spacing:-.025em}
 .rsvp-slider-labels span{position:absolute;transform:translateX(-50%)}
 .rsvp-slider-labels span:nth-child(1){left:0;transform:none}
@@ -350,3 +349,9 @@ html[lang=en] .photo-strip .story-context{font-size:clamp(1rem,1.55vw,1.4rem)}
     row-gap:0;
   }
 }
+
+#reply .rsvp-guest{min-width:0;margin:0 0 1rem;padding:.75rem;border:1px solid var(--rule)}
+#reply .rsvp-guest-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+
+.rsvp-guest-remove{min-width:2.75rem;min-height:2.75rem;margin-inline-start:.25rem}
+#recommended-stays{scroll-margin-top:7rem}
